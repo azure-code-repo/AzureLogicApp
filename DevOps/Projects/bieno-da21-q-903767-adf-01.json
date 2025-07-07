@@ -1,0 +1,99 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"AzureDatabricksDeltaLake1_Domain": {
+			"value": "https://adb-6743301743652337.17.azuredatabricks.net"
+		},
+		"LS_ADB_Domain": {
+			"value": "https://adb-6743301743652337.17.azuredatabricks.net"
+		},
+		"LS_ADB_ResourceId": {
+			"value": "/subscriptions/105cc892-0276-4b01-b5ff-426df8be49e2/resourceGroups/bieno-da21-q-903767-rg/providers/Microsoft.Databricks/workspaces/bieno-da21-q-903767-adb-01"
+		},
+		"LS_ADB_UC_STORAGE_LOCATION": {
+			"value": "abfss://unilever@dbstorageda21q903767adls.dfs.core.windows.net/"
+		},
+		"LS_ADB_BigCluster_Domain": {
+			"value": "https://adb-6743301743652337.17.azuredatabricks.net"
+		},
+		"LS_ADB_BigCluster_ResourceId": {
+			"value": "/subscriptions/105cc892-0276-4b01-b5ff-426df8be49e2/resourceGroups/bieno-da21-q-903767-rg/providers/Microsoft.Databricks/workspaces/bieno-da21-q-903767-adb-01"
+		},
+		"LS_ADB_BigCluster_UC_STORAGE_LOCATION": {
+			"value": "abfss://unilever@dbstorageda21q903767adls.dfs.core.windows.net/"
+		},
+		"LS_ADB_NonUniframe_Domain": {
+			"value": "https://adb-6743301743652337.17.azuredatabricks.net"
+		},
+		"LS_ADB_NonUniframe_ResourceId": {
+			"value": "/subscriptions/105cc892-0276-4b01-b5ff-426df8be49e2/resourceGroups/bieno-da21-q-903767-rg/providers/Microsoft.Databricks/workspaces/bieno-da21-q-903767-adb-01"
+		},
+		"TRG_VN_A_ESS-RPTOOS_Scope": {
+			"value": "/subscriptions/105cc892-0276-4b01-b5ff-426df8be49e2/resourceGroups/bieno-da21-q-903767-rg/providers/Microsoft.Storage/storageAccounts/dbstorageda21q903767"
+		},
+		"TRG_VN_A_ACACY_DATADISPLAY_Scope":{
+            "value": "/subscriptions/105cc892-0276-4b01-b5ff-426df8be49e2/resourceGroups/bieno-da21-q-903767-rg/providers/Microsoft.Storage/storageAccounts/dbstorageda21q903767"
+		},
+		"TRG_VN_A_ACACY_DATASTORE_Scope": {
+            "value": "/subscriptions/105cc892-0276-4b01-b5ff-426df8be49e2/resourceGroups/bieno-da21-q-903767-rg/providers/Microsoft.Storage/storageAccounts/dbstorageda21q903767"
+		},
+		"TRG_VN_A_BEECOST_LAZADA_BEST_SELLING_Scope": {
+            "value": "/subscriptions/105cc892-0276-4b01-b5ff-426df8be49e2/resourceGroups/bieno-da21-q-903767-rg/providers/Microsoft.Storage/storageAccounts/dbstorageda21q903767"
+		},
+		"TRG_VN_A_BEECOST_LAZADA_CATEGORY_Scope": {
+            "value": "/subscriptions/105cc892-0276-4b01-b5ff-426df8be49e2/resourceGroups/bieno-da21-q-903767-rg/providers/Microsoft.Storage/storageAccounts/dbstorageda21q903767"
+		},
+		"TRG_VN_A_BEECOST_LAZADA_COMPETITOR_Scope": {
+            "value": "/subscriptions/105cc892-0276-4b01-b5ff-426df8be49e2/resourceGroups/bieno-da21-q-903767-rg/providers/Microsoft.Storage/storageAccounts/dbstorageda21q903767"
+		},
+		"TRG_VN_A_BEECOST_LAZADA_FLASH_SALE_Scope": {
+            "value": "/subscriptions/105cc892-0276-4b01-b5ff-426df8be49e2/resourceGroups/bieno-da21-q-903767-rg/providers/Microsoft.Storage/storageAccounts/dbstorageda21q903767"
+		},
+		"TRG_VN_A_BEECOST_SHOPEE_BEST_SELLING_Scope": {
+            "value": "/subscriptions/105cc892-0276-4b01-b5ff-426df8be49e2/resourceGroups/bieno-da21-q-903767-rg/providers/Microsoft.Storage/storageAccounts/dbstorageda21q903767"
+		},
+		"TRG_VN_A_BEECOST_SHOPEE_CATEGORY_Scope": {
+            "value": "/subscriptions/105cc892-0276-4b01-b5ff-426df8be49e2/resourceGroups/bieno-da21-q-903767-rg/providers/Microsoft.Storage/storageAccounts/dbstorageda21q903767"
+		},
+		"TRG_VN_A_BEECOST_SHOPEE_COMPETITOR_Scope": {
+            "value": "/subscriptions/105cc892-0276-4b01-b5ff-426df8be49e2/resourceGroups/bieno-da21-q-903767-rg/providers/Microsoft.Storage/storageAccounts/dbstorageda21q903767"
+		},
+		"TRG_VN_A_BEECOST_SHOPEE_FLASH_SALE_Scope": {
+            "value": "/subscriptions/105cc892-0276-4b01-b5ff-426df8be49e2/resourceGroups/bieno-da21-q-903767-rg/providers/Microsoft.Storage/storageAccounts/dbstorageda21q903767"
+		},
+		"TRG_VN_A_BEECOST_TIKI_CATEGORY_Scope": {
+            "value": "/subscriptions/105cc892-0276-4b01-b5ff-426df8be49e2/resourceGroups/bieno-da21-q-903767-rg/providers/Microsoft.Storage/storageAccounts/dbstorageda21q903767"
+		},
+		"TRG_VN_A_BEECOST_TIKI_FLASH_SALE_Scope": {
+            "value": "/subscriptions/105cc892-0276-4b01-b5ff-426df8be49e2/resourceGroups/bieno-da21-q-903767-rg/providers/Microsoft.Storage/storageAccounts/dbstorageda21q903767"
+		},
+		"LS_ABLB_properties_typeProperties_serviceEndpoint": {
+			"value": "https://dbstorageda21q903767.blob.core.windows.net"
+		},
+		"LS_KV_02_properties_typeProperties_baseUrl": {
+			"value": "https://bieno-da21-q-903767-kv02.vault.azure.net/"
+		},
+		"default_LOGICAPPS_ALERT_URL": {
+            "value": "https://prod-08.northeurope.logic.azure.com:443/workflows/d16ba08889ee44279767b5b7d0ec9f09/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=1eZz_DtSqtHoVdHfefo0uHYe_6Hr29W2pmhPHf70OhI"
+        },
+		"default_LOGICAPPS_UTILITIES_URL": {
+            "value": "https://prod-59.northeurope.logic.azure.com:443/workflows/0c031c9ea9b74e039ca4816160a6b05a/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=rmZ1ML87HYJVDQByTFQpI5YQvHV9iVVdbd66994ukQ8"
+        },
+		"default_PH_MDL_LOGICAPPS_01": {
+            "value": "https://prod-30.northeurope.logic.azure.com:443/workflows/5b1d3216f5664841a6361486dac3c2e4/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=dEDVTb32BO8AuwqB6BmjjZaO3XU_qUq6urvXi1RgZ9A"
+        },
+		"default_PH_MDL_LOGICAPPS_02": {
+            "value": "https://prod-45.northeurope.logic.azure.com:443/workflows/2774448cf48144a28f81c835e43df677/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=mViVf8ffNGGGqC4xGQJ8W14WLVhKqxJ0KnbzzzwTrD0"
+        },
+		"default_UNITY_CATALOG": {
+            "value": "mdl_seaa_qa"
+        },
+		"default_ENVIRONMENT": {
+            "value": "QA"
+        },
+		"default_PH_MDL_POWERAPP_DATAFLOW_URL": {
+            "value": "https://prod-220.westeurope.logic.azure.com:443/workflows/418967c7dfa9486391c696efe425b2bc/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=OdCJLHMlS5th4p515VCokgqyPMXNilJpToIN_4Di_8E"
+        }
+	}
+}

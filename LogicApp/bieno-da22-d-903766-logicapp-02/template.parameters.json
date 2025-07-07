@@ -1,0 +1,21 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "logicAppName02": {
+            "value": "bieno-da22-d-903766-logicapp-02"
+        },
+        "location": {
+            "value": "northeurope"
+        },
+        "logicAppO365apiConnection": {
+            "value": "bieno-da22-d-903766-logicapp-o365-01"
+        },
+        "logicAppDataOwner": {
+            "value": "@{triggerBody()?['data_owner']}"
+        },
+        "logicAppProcessOwner": {
+            "value": "@{triggerBody()?['process_owner']}"
+        }
+    }
+}

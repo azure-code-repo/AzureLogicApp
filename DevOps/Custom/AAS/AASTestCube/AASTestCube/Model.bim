@@ -1,0 +1,68 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1400,
+  "model": {
+    "culture": "en-GB",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/bnlwe-da04-d-00018-unilevercom-sql-01 database windows net;bnlwe-da04-d-0001",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "bnlwe-da04-d-00018-unilevercom-sql-01.database.windows.net",
+            "database": "bnlwe-da04-d-00018-unilevercom-sqldw-01"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "options": {},
+        "credential": {
+          "AuthenticationKind": "UsernamePassword",
+          "Username": "sqlssasuser",
+          "EncryptConnection": true
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "DevOpsTests TableTests",
+        "columns": [
+          {
+            "name": "Test_ID",
+            "dataType": "int64",
+            "sourceColumn": "Test_ID"
+          },
+          {
+            "name": "Test_Name",
+            "dataType": "string",
+            "sourceColumn": "Test_Name"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/bnlwe-da04-d-00018-unilevercom-sql-01 database windows net;bnlwe-da04-d-0001\",",
+                "    DevOpsTests_TableTests = Source{[Schema=\"DevOpsTests\",Item=\"TableTests\"]}[Data]",
+                "in",
+                "    DevOpsTests_TableTests"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "500"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}

@@ -1,0 +1,316 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "logicAppName02": {
+            "defaultValue": "bieno-da22-d-903766-logicapp-02",
+            "type": "String"
+        },
+        "location": {
+            "defaultValue": "northeurope",
+            "type": "string"
+        },
+        "logicAppO365apiConnection": {
+            "defaultValue": "bieno-da22-d-903766-logicapp-o365-015",
+            "type": "String"
+        },
+        "logicAppDataOwner": {
+            "defaultValue": "@{triggerBody()?['data_owner']}",
+            "type": "string"
+        },
+        "logicAppProcessOwner": {
+            "defaultValue": "@{triggerBody()?['process_owner']}",
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Logic/workflows",
+            "apiVersion": "2017-07-01",
+            "name": "[parameters('logicAppName02')]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "CostCentre": "A956001445",
+                "ITSG": "903766",
+                "Icc": "ICC16464",
+                "Platform": "Core Data Ecosystem",
+                "ServiceName": "MDL SEAA",
+                "Workload": "Existing"
+            },
+            "properties": {
+                "state": "Enabled",
+                "definition": {
+                    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {
+                        "$connections": {
+                            "defaultValue": {},
+                            "type": "Object"
+                        }
+                    },
+                    "triggers": {
+                        "manual": {
+                            "type": "Request",
+                            "kind": "Http",
+                            "inputs": {
+                                "schema": {
+                                    "properties": {
+                                        "data_owner": {
+                                            "type": "string"
+                                        },
+                                        "data_source": {
+                                            "type": "string"
+                                        },
+                                        "job_id": {
+                                            "type": "string"
+                                        },
+                                        "logicapps_case": {
+                                            "type": "string"
+                                        },
+                                        "object_name": {
+                                            "type": "string"
+                                        },
+                                        "process_owner": {
+                                            "type": "string"
+                                        },
+                                        "records": {
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "description": "Objective: Take in different inputs from ADF"
+                        }
+                    },
+                    "actions": {
+                        "Convert_time_zone": {
+                            "runAfter": {
+                                "Current_time": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "Expression",
+                            "kind": "ConvertTimeZone",
+                            "inputs": {
+                                "baseTime": "@body('Current_time')",
+                                "destinationTimeZone": "SE Asia Standard Time",
+                                "formatString": "yyyy.MM.dd-HH.mm",
+                                "sourceTimeZone": "UTC"
+                            }
+                        },
+                        "Current_time": {
+                            "runAfter": {},
+                            "type": "Expression",
+                            "kind": "CurrentTime",
+                            "inputs": {}
+                        },
+                        "Initialize_RECORDS_variable": {
+                            "runAfter": {
+                                "Convert_time_zone": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "InitializeVariable",
+                            "inputs": {
+                                "variables": [
+                                    {
+                                        "name": "records",
+                                        "type": "array",
+                                        "value": "@triggerBody()?['records']"
+                                    }
+                                ]
+                            }
+                        },
+                        "Switch": {
+                            "runAfter": {
+                                "Initialize_RECORDS_variable": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "cases": {
+                                "Case_-_CRITICAL_ERROR": {
+                                    "case": "CRITICAL_ERROR",
+                                    "actions": {
+                                        "Create_CSV_table_-_Critical_error_records": {
+                                            "runAfter": {},
+                                            "type": "Table",
+                                            "inputs": {
+                                                "format": "CSV",
+                                                "from": "@variables('records')"
+                                            }
+                                        },
+                                        "Send_an_email_(V2)_-_Critical_Alert": {
+                                            "runAfter": {
+                                                "Create_CSV_table_-_Critical_error_records": [
+                                                    "Succeeded"
+                                                ]
+                                            },
+                                            "type": "ApiConnection",
+                                            "inputs": {
+                                                "body": {
+                                                    "Attachments": [
+                                                        {
+                                                            "ContentBytes": "@{base64(body('Create_CSV_table_-_Critical_error_records'))}",
+                                                            "Name": "@{triggerBody()?['data_source']}_@{triggerBody()?['object_name']}_critial_error_records.csv"
+                                                        }
+                                                    ],
+                                                    "Body": "<p>Hi @{triggerBody()?['process_owner']},<br>\n<br>\nThe data ingestion pipeline <strong>has failed due to some critical errors</strong>. Please review the attached file for more detail and take the following actions:<br>\n1. Identify the root cause of the error.<br>\n2. Fix the error.<br>\n3. Connect to MDL team to restart the data ingestion pipeline.<br>\n<br>\n<u><strong>Do not reply to this email. This email was sent from an automated system and replies will not be received.</strong></u><br>\n<br>\n<span style=\"font-size: 11px\"><em>The errors were categorized into three levels:<br>\n- </em></span><span style=\"font-size: 11px\"><em><strong>CRITICAL: </strong></em></span><span style=\"font-size: 11px\"><em>These errors are the most serious and will cause the pipeline to fail. </em></span><span style=\"font-size: 11px\"><em><strong>No records will be loaded</strong></em></span><span style=\"font-size: 11px\"><em>.</em></span><span style=\"font-size: 11px\"><em><strong><br>\n- ERROR: </strong></em></span><span style=\"font-size: 11px\"><em>These errors will cause </em></span><span style=\"font-size: 11px\"><em><strong>the record to be dropped</strong></em></span><span style=\"font-size: 11px\"><em>. This means that the record will not be ingested, but the remaining records will be loaded successfully.</em></span><span style=\"font-size: 11px\"><em><strong><br>\n- WARN: </strong></em></span><span style=\"font-size: 11px\"><em>These errors do not cause the record to be dropped, but they may</em></span><span style=\"font-size: 11px\"><em><strong> indicate a problem with the data</strong></em></span><span style=\"font-size: 11px\"><em>. This could impact some operations on those data.<br>\n<br>\nPipeline job id: </em></span><span style=\"font-size: 11px\"><em>@{triggerBody()?['job_id']}</em></span><span style=\"font-size: 11px\"><em></em></span></p>",
+                                                    "To": "[parameters('logicAppProcessOwner')]",
+                                                    "Importance": "High",
+                                                    "Subject": "Urgent: Data Ingestion Failure - @{triggerBody()?['data_source']} - @{triggerBody()?['object_name']}",
+                                                    "Cc": "[parameters('logicAppDataOwner')]"
+                                                },
+                                                "host": {
+                                                    "connection": {
+                                                        "name": "@parameters('$connections')['office365']['connectionId']"
+                                                    }
+                                                },
+                                                "method": "post",
+                                                "path": "/v2/Mail"
+                                            }
+                                        }
+                                    }
+                                },
+                                "Case_-_ERROR_FILES": {
+                                    "case": "ERROR_FILES",
+                                    "actions": {
+                                        "Create_CSV_table_-_Invalid_files": {
+                                            "runAfter": {},
+                                            "type": "Table",
+                                            "inputs": {
+                                                "format": "CSV",
+                                                "from": "@variables('records')"
+                                            }
+                                        },
+                                        "Send_an_email_(V2)_-_Invalid_Files": {
+                                            "runAfter": {
+                                                "Create_CSV_table_-_Invalid_files": [
+                                                    "Succeeded"
+                                                ]
+                                            },
+                                            "type": "ApiConnection",
+                                            "inputs": {
+                                                "body": {
+                                                    "Attachments": [
+                                                        {
+                                                            "ContentBytes": "@{base64(body('Create_CSV_table_-_Invalid_files'))}",
+                                                            "Name": "@{triggerBody()?['data_source']}_@{triggerBody()?['object_name']}_invalid_files.csv"
+                                                        }
+                                                    ],
+                                                    "Body": "<p>Hi @{triggerBody()?['process_owner']},<br>\n<br>\n@{triggerBody()?['data_source']} - @{triggerBody()?['object_name']} pipeline run has found some invalid files. The invalid files are listed at attached file in this email.<br>\n<br>\n<u><strong>Please check the attachment file to correct the source file and inform to the MDL DevOps team to re-run if any.</strong></u><br>\n<br>\nDo not reply to this email. This email was sent from an automated system and replies will not be received.<br>\n<br>\n<span style=\"font-size: 11px\"><em>Pipeline job id: </em></span><span style=\"font-size: 11px\"><em>@{triggerBody()?['job_id']}</em></span><span style=\"font-size: 11px\"><em></em></span></p>",
+                                                    "Cc": "[parameters('logicAppDataOwner')]",
+                                                    "Importance": "High",
+                                                    "Subject": "Action Needed: Invalid Files Found @{triggerBody()?['data_source']} - @{triggerBody()?['object_name']}",
+                                                    "To": "[parameters('logicAppProcessOwner')]"
+                                                },
+                                                "host": {
+                                                    "connection": {
+                                                        "name": "@parameters('$connections')['office365']['connectionId']"
+                                                    }
+                                                },
+                                                "method": "post",
+                                                "path": "/v2/Mail"
+                                            }
+                                        }
+                                    }
+                                },
+                                "Case_-_INGEST_ERROR": {
+                                    "case": "INGEST_ERROR",
+                                    "actions": {
+                                        "Create_CSV_table_-_Invalid_records": {
+                                            "runAfter": {},
+                                            "type": "Table",
+                                            "inputs": {
+                                                "format": "CSV",
+                                                "from": "@variables('records')"
+                                            }
+                                        },
+                                        "Send_an_email_(V2)_-_Error_Alert": {
+                                            "runAfter": {
+                                                "Create_CSV_table_-_Invalid_records": [
+                                                    "Succeeded"
+                                                ]
+                                            },
+                                            "type": "ApiConnection",
+                                            "inputs": {
+                                                "body": {
+                                                    "Attachments": [
+                                                        {
+                                                            "ContentBytes": "@{base64(body('Create_CSV_table_-_Invalid_records'))}",
+                                                            "Name": "@{triggerBody()?['data_source']}_@{triggerBody()?['object_name']}_invalid_record.csv"
+                                                        }
+                                                    ],
+                                                    "Body": "<p>Hi @{triggerBody()?['process_owner']},<br>\n<br>\nThis email is to notify you that the <em>data ingestion process was completed successfully</em>, but there were <strong>some errors found</strong>. The attached file contains a list of the error rows.<br>\n<br>\nPlease review the attached file and take any necessary action.<br>\n<br>\n<u><strong>Do not reply to this email. This email was sent from an automated system and replies will not be received.</strong></u><br>\n<em><br>\n</em><span style=\"font-size: 11px\"><em>The errors were categorized into three levels:<br>\n</em></span><span style=\"font-size: 11px\"><em><strong>- CRITICAL:</strong></em></span><span style=\"font-size: 11px\"><em> These errors are the most serious and will cause the pipeline to fail.</em></span><span style=\"font-size: 11px\"><em><strong> No records will be loaded.</strong></em></span><span style=\"font-size: 11px\"><em><br>\n</em></span><span style=\"font-size: 11px\"><em><strong>- ERROR:</strong></em></span><span style=\"font-size: 11px\"><em> These errors will cause </em></span><span style=\"font-size: 11px\"><em><strong>the record to be dropped</strong></em></span><span style=\"font-size: 11px\"><em>. This means that the record will not be ingested, but the remaining records will be loaded successfully.<br>\n</em></span><span style=\"font-size: 11px\"><em><strong>- WARN:</strong></em></span><span style=\"font-size: 11px\"><em> These errors do not cause the record to be dropped, but they may</em></span><span style=\"font-size: 11px\"><em><strong> indicate a problem with the data</strong></em></span><span style=\"font-size: 11px\"><em>. This could impact some operations on those data.<br>\n<br>\nPipeline job id: </em></span><span style=\"font-size: 11px\"><em>@{triggerBody()?['job_id']}</em></span><span style=\"font-size: 11px\"><em></em></span></p>",
+                                                    "Bcc": "truong-chau-minh.huy@unilever.com",
+                                                    "To": "[parameters('logicAppProcessOwner')]",
+                                                    "Importance": "Normal",
+                                                    "Subject": "Action Required: Ingestion data have errors - @{triggerBody()?['data_source']} - @{triggerBody()?['object_name']}",
+                                                    "Cc": "[parameters('logicAppDataOwner')]"
+                                                },
+                                                "host": {
+                                                    "connection": {
+                                                        "name": "@parameters('$connections')['office365']['connectionId']"
+                                                    }
+                                                },
+                                                "method": "post",
+                                                "path": "/v2/Mail"
+                                            }
+                                        }
+                                    }
+                                },
+                                "Case_-_MISSING_FILES": {
+                                    "case": "MISSING_FILES",
+                                    "actions": {
+                                        "Send_an_email_(V2)_-_Missing_Alert": {
+                                            "runAfter": {},
+                                            "type": "ApiConnection",
+                                            "inputs": {
+                                                "body": {
+                                                    "Bcc": "truong-chau-minh.huy@unilever.com",
+                                                    "Body": "<p>Hi @{triggerBody()?['process_owner']},<br>\n<br>\n@{triggerBody()?['data_source']} - @{triggerBody()?['object_name']} pipeline run has failed today due to latest input file not being available in aligned location.<br>\n<br>\nPlease put the latest file in aligned location and inform to the MDL DevOps team to re-run if any.<br>\n<br>\n<u><strong>Do not reply to this email. This email was sent from an automated system and replies will not be received.</strong></u><br>\n<br>\n<span style=\"font-size: 11px\"><em>Pipeline job id: </em></span><span style=\"font-size: 11px\"><em>@{triggerBody()?['job_id']}</em></span><span style=\"font-size: 11px\"><em></em></span></p>",
+                                                    "Importance": "Normal",
+                                                    "Subject": "Warn: Missing Input file for @{triggerBody()?['data_source']} - @{triggerBody()?['object_name']}",
+                                                    "To": "[parameters('logicAppProcessOwner')]",
+                                                    "Cc": "[parameters('logicAppDataOwner')]"
+                                                },
+                                                "host": {
+                                                    "connection": {
+                                                        "name": "@parameters('$connections')['office365']['connectionId']"
+                                                    }
+                                                },
+                                                "method": "post",
+                                                "path": "/v2/Mail"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "default": {
+                                "actions": {}
+                            },
+                            "expression": "@triggerBody()?['logicapps_case']",
+                            "type": "Switch"
+                        }
+                    },
+                    "outputs": {}
+                },
+                "parameters": {
+                    "$connections": {
+                        "value": {
+                            "office365": {
+                                "connectionId": "[resourceId('Microsoft.Web/connections', parameters('logicAppO365apiConnection'))]",
+                                "connectionName": "[parameters('logicAppO365apiConnection')]",
+                                "id": "[concat(subscription().id, '/providers/Microsoft.Web/locations/', parameters('location'), '/managedApis/', 'office365')]"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

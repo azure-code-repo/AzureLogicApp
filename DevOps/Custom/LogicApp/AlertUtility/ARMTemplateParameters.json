@@ -1,0 +1,128 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "logicAppName": {
+
+      "value": "bnlwe-da04-d-56731-monitorlogicapp-01"
+    },
+    "RecurrenceFrequency": {
+      "value": "Minute"
+    },
+    "RecurrenceInterval": {
+      "value": 10
+    },
+    "RecurrenceTimeZone": {
+      "value": "UTC"
+    },
+    "Subscription": {
+      "value": "Core Data Ecosystem-04"
+    },
+    "ResourceGroup": {
+      "value": "bnlwe-da04-d-56731-rg"
+    },
+    "ITSG": {
+      "value": "56731"
+    },
+    "ProjectName": {
+      "value": ""
+    },
+    "HolidayList": {
+      "value": ["2020-05-01","2020-12-25"]
+    },
+  "o365_name": {
+    "value": ""
+  },
+  "o365_displayName": {
+    "value": "someone@example.com"
+  },
+    "EmailList": {
+      "value": "someone@example.com"
+    },
+    "AASEnabled": {
+      "value": true
+    },
+    "AASServerName": {
+      "value": "bnlweda04d56731unilevercomas01"
+    },
+    "AASIdleTime": {
+      "value": 15
+    },
+    "QPU_Metric": {
+      "value": "0"
+    },
+    "AASQPUMetricLimit": {
+      "value": "1"
+    },
+    "AASQPUFlag": {
+      "value": false
+    },
+    "AASTier": {
+      "value": "B2"
+    },
+    "AASStartHour": {
+      "value": "03"
+    },
+    "AASEndHour": {
+      "value": "21"
+    },
+    "AASStatusURL": {
+      "value": "https://management.azure.com/subscriptions/204671af-5130-4ef5-819c-e314b65f9d06/resourceGroups/bnlwe-da04-d-56731-app-rg/providers/Microsoft.AnalysisServices/servers/bnlweda04d56731unilevercomas01?api-version=2017-08-01"
+    },
+    "AASQPUMetricsURL": {
+      "value": "https://management.azure.com/subscriptions/204671af-5130-4ef5-819c-e314b65f9d06/resourceGroups/bnlwe-da04-d-56731-app-rg/providers/Microsoft.AnalysisServices/servers/bnlwedad56731unilevercomas01/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=qpu_metric&interval=PT@{variables('AASIdleTime')}M&aggregation=maximum"
+    },
+    "AASPauseFlag": {
+      "value": true
+    },
+    "AASPauseURL": {
+      "value": "https://s9events.azure-automation.net/webhooks?token=W72PjzYCL%2fRazcM2XWVtAipNTsWIXwZnNDc9f%2bWmsSE%3d"
+    },
+    "DWServerName": {
+      "value": "bnlwe-da04-d-56731-unilevercom-sqldw-01"
+    },
+    "DWEnabled": {
+      "value": true
+    },
+    "DWIdleTime": {
+      "value": 10
+    },
+    "DWTier": {
+      "value": "DW100c"
+    },
+    "DWStartHour": {
+      "value": "03"
+    },
+    "DWEndHour": {
+      "value": "21"
+    },
+    "DWStatusURL": {
+      "value": "https://management.azure.com/subscriptions/204671af-5130-4ef5-819c-e314b65f9d06/resourceGroups/bnlwe-da04-d-56731-data-rg/providers/Microsoft.Sql/servers/bnlwe-da04-d-56731-unilevercom-sql-01/databases/bnlwe-da04-d-56731-unilevercom-sqldw-01?api-version=2017-10-01-preview"
+    },
+    "DWPauseFlag": {
+      "value": true
+    },
+    "DWPauseURL": {
+      "value": "https://s9events.azure-automation.net/webhooks?token=Wl0490%2fRKuTB16bi2ecLs6Yf5z%2fiVcGTHbrhpJQ5XPw%3d"
+    },
+  "sqldw_name": {
+    "value": "bnlwe-da04-d-56731-monitorlogicapp-sqldb-01"
+  },
+    "sqldw_displayName": {
+      "value": "bnlwe-da04-d-56731-unilevercom-sqldb-01 bnlwe-da04-d-56731-unilevercom-sql-01.database.windows.net"
+    },
+    "sqldw_server": {
+      "value": "bnlwe-da04-d-56731-unilevercom-sql-01.database.windows.net"
+    },
+    "sqldw_database": {
+      "value": "bnlwe-da04-d-56731-unilevercom-sqldb-01"
+    },
+    "sqldw_username": {
+      "value": "sqllogicappdwuser"
+    },
+    "sqldw_password": {
+      "type": "securestring",
+      "Value": null
+    }
+  }
+}

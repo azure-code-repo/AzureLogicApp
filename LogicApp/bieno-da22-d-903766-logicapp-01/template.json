@@ -1,0 +1,654 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "logicAppName": {
+            "defaultValue": "bieno-da22-d-903766-logicapp-01",
+            "type": "String"
+        },
+        "location": {
+            "defaultValue": "northeurope",
+            "type": "string"
+        },
+        "logicAppStorageConnectionName": {
+            "defaultValue": "bieno-da22-d-903766-logicapp-blob-01",
+            "type": "string"
+        },
+        "logicAppSharePointConnectionName": {
+            "defaultValue": "bieno-da22-d-903766-logicapp-sharepoint-01",
+            "type": "string"
+        },
+        "logicAppO365apiConnection": {
+            "defaultValue": "bieno-da22-d-903766-logicapp-o365-015",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Logic/workflows",
+            "apiVersion": "2017-07-01",
+            "name": "[parameters('logicAppName')]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "CostCentre": "A956001445",
+                "ITSG": "903766",
+                "Icc": "ICC16464",
+                "Platform": "Core Data Ecosystem",
+                "ServiceName": "MDL SEAA",
+                "Workload": "Existing"
+            },
+            "properties": {
+                "state": "Enabled",
+                "definition": {
+                    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {
+                        "$connections": {
+                            "defaultValue": {},
+                            "type": "Object"
+                        }
+                    },
+                    "triggers": {
+                        "manual": {
+                            "type": "Request",
+                            "kind": "Http",
+                            "inputs": {
+                                "schema": {
+                                    "properties": {
+                                        "Destination": {
+                                            "type": "string"
+                                        },
+                                        "Email": {
+                                            "type": "string"
+                                        },
+                                        "Filename": {
+                                            "type": "string"
+                                        },
+                                        "Logic Apps Case": {
+                                            "type": "string"
+                                        },
+                                        "Missing Values": {
+                                            "type": "string"
+                                        },
+                                        "Point of Contact": {
+                                            "type": "string"
+                                        },
+                                        "SP List": {
+                                            "type": "string"
+                                        },
+                                        "Source": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "actions": {
+                        "Initialize_Counter": {
+                            "runAfter": {
+                                "Initialize_Missing_Values": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "InitializeVariable",
+                            "inputs": {
+                                "variables": [
+                                    {
+                                        "name": "Counter",
+                                        "type": "integer",
+                                        "value": 0
+                                    }
+                                ]
+                            }
+                        },
+                        "Initialize_Mapping_Library_List_variable": {
+                            "runAfter": {
+                                "Initialize_Counter": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "InitializeVariable",
+                            "inputs": {
+                                "variables": [
+                                    {
+                                        "name": "Mapping Library List",
+                                        "type": "array",
+                                        "value": [
+                                            "MINDSHARE - Segment Mapping Library"
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "Initialize_Missing_Values": {
+                            "runAfter": {},
+                            "type": "InitializeVariable",
+                            "inputs": {
+                                "variables": [
+                                    {
+                                        "name": "Missing_Values",
+                                        "type": "string",
+                                        "value": "a"
+                                    }
+                                ]
+                            }
+                        },
+                        "Response": {
+                            "runAfter": {
+                                "Switch": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "Response",
+                            "kind": "Http",
+                            "inputs": {
+                                "statusCode": 200
+                            }
+                        },
+                        "Switch": {
+                            "runAfter": {
+                                "Initialize_Mapping_Library_List_variable": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "cases": {
+                                "Case": {
+                                    "case": "SHAREPOINT",
+                                    "actions": {
+                                        "For_each": {
+                                            "foreach": "@body('List_folder')",
+                                            "actions": {
+                                                "Condition_2": {
+                                                    "actions": {
+                                                        "Create_file": {
+                                                            "runAfter": {
+                                                                "Get_file_content_2": [
+                                                                    "Succeeded"
+                                                                ]
+                                                            },
+                                                            "type": "ApiConnection",
+                                                            "inputs": {
+                                                                "body": "@body('Get_file_content_2')",
+                                                                "host": {
+                                                                    "connection": {
+                                                                        "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+                                                                    }
+                                                                },
+                                                                "method": "post",
+                                                                "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://unilever.sharepoint.com/sites/SEAI-MarketDataLake'))}/files",
+                                                                "queries": {
+                                                                    "folderPath": "/Shared Documents/LandingSpace/Saigon Coop/Offtake",
+                                                                    "name": "M@{items('For_each')?['DisplayName']}",
+                                                                    "queryParametersSingleEncoded": true
+                                                                }
+                                                            },
+                                                            "runtimeConfiguration": {
+                                                                "contentTransfer": {
+                                                                    "transferMode": "Chunked"
+                                                                }
+                                                            }
+                                                        },
+                                                        "Get_file_content_2": {
+                                                            "runAfter": {},
+                                                            "type": "ApiConnection",
+                                                            "inputs": {
+                                                                "host": {
+                                                                    "connection": {
+                                                                        "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+                                                                    }
+                                                                },
+                                                                "method": "get",
+                                                                "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://unilever.sharepoint.com/sites/SEAI-MarketDataLake'))}/files/@{encodeURIComponent(items('For_each')?['Id'])}/content",
+                                                                "queries": {
+                                                                    "inferContentType": true
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "runAfter": {},
+                                                    "expression": {
+                                                        "and": [
+                                                            {
+                                                                "equals": [
+                                                                    "@items('For_each')?['IsFolder']",
+                                                                    "@false"
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    "type": "If"
+                                                }
+                                            },
+                                            "runAfter": {
+                                                "List_folder": [
+                                                    "Succeeded"
+                                                ]
+                                            },
+                                            "type": "Foreach"
+                                        },
+                                        "List_folder": {
+                                            "runAfter": {},
+                                            "metadata": {
+                                                "%252fShared%2bDocuments%252fLandingSpace%252fSaigon%2bCoop%252fRAW_DATA%252f2020": "/Shared Documents/LandingSpace/Saigon Coop/RAW_DATA/2020",
+                                                "%252fShared%2bDocuments%252fLandingSpace%252fSaigon%2bCoop%252fRAW_DATA%252f2023": "/Shared Documents/LandingSpace/Saigon Coop/RAW_DATA/2023"
+                                            },
+                                            "type": "ApiConnection",
+                                            "inputs": {
+                                                "host": {
+                                                    "connection": {
+                                                        "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+                                                    }
+                                                },
+                                                "method": "get",
+                                                "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://unilever.sharepoint.com/sites/SEAI-MarketDataLake'))}/folders/@{encodeURIComponent('%252fShared%2bDocuments%252fLandingSpace%252fSaigon%2bCoop%252fRAW_DATA%252f2023')}"
+                                            }
+                                        }
+                                    }
+                                },
+                                "Case_ARCHIVE-_Move_Files_to_archival_folder": {
+                                    "case": "ARCHIVE",
+                                    "actions": {
+                                        "Move_source_file_to_archival_folder": {
+                                            "runAfter": {},
+                                            "type": "ApiConnection",
+                                            "inputs": {
+                                                "body": {
+                                                    "destinationDataset": "https://unilever.sharepoint.com/sites/SEAI-MarketDataLake",
+                                                    "destinationFolderPath": "@triggerBody()?['Destination']",
+                                                    "nameConflictBehavior": 1,
+                                                    "sourceFileId": "@{triggerBody()?['Source']}@{triggerBody()?['Filename']}"
+                                                },
+                                                "host": {
+                                                    "connection": {
+                                                        "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+                                                    }
+                                                },
+                                                "method": "post",
+                                                "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://unilever.sharepoint.com/sites/SEAI-MarketDataLake'))}/moveFileAsync"
+                                            }
+                                        }
+                                    }
+                                },
+                                "Case_COPY-_Copy_Files_from_Sharepoint_to_ABS": {
+                                    "case": "COPY",
+                                    "actions": {
+                                        "Copy_files_to_ABS": {
+                                            "foreach": "@body('List_folder2')",
+                                            "actions": {
+                                                "Condition": {
+                                                    "actions": {
+                                                        "Create_blob": {
+                                                            "runAfter": {
+                                                                "Get_file_content": [
+                                                                    "Succeeded"
+                                                                ]
+                                                            },
+                                                            "type": "ApiConnection",
+                                                            "inputs": {
+                                                                "body": "@body('Get_file_content')",
+                                                                "headers": {
+                                                                    "ReadFileMetadataFromServer": true
+                                                                },
+                                                                "host": {
+                                                                    "connection": {
+                                                                        "name": "@parameters('$connections')['azureblob']['connectionId']"
+                                                                    }
+                                                                },
+                                                                "method": "post",
+                                                                "path": "/v2/datasets/@{encodeURIComponent(encodeURIComponent('AccountNameFromSettings'))}/files",
+                                                                "queries": {
+                                                                    "folderPath": "@triggerBody()?['Destination']",
+                                                                    "name": "@items('Copy_files_to_ABS')?['DisplayName']",
+                                                                    "queryParametersSingleEncoded": true
+                                                                }
+                                                            },
+                                                            "runtimeConfiguration": {
+                                                                "contentTransfer": {
+                                                                    "transferMode": "Chunked"
+                                                                }
+                                                            }
+                                                        },
+                                                        "Get_file_content": {
+                                                            "runAfter": {},
+                                                            "type": "ApiConnection",
+                                                            "inputs": {
+                                                                "host": {
+                                                                    "connection": {
+                                                                        "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+                                                                    }
+                                                                },
+                                                                "method": "get",
+                                                                "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://unilever.sharepoint.com/sites/SEAI-MarketDataLake'))}/files/@{encodeURIComponent(items('Copy_files_to_ABS')?['Id'])}/content",
+                                                                "queries": {
+                                                                    "inferContentType": true
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "runAfter": {},
+                                                    "expression": {
+                                                        "and": [
+                                                            {
+                                                                "not": {
+                                                                    "equals": [
+                                                                        "@items('Copy_files_to_ABS')?['IsFolder']",
+                                                                        "@true"
+                                                                    ]
+                                                                }
+                                                            }
+                                                        ]
+                                                    },
+                                                    "type": "If"
+                                                }
+                                            },
+                                            "runAfter": {
+                                                "List_folder2": [
+                                                    "Succeeded"
+                                                ]
+                                            },
+                                            "type": "Foreach"
+                                        },
+                                        "List_folder2": {
+                                            "runAfter": {},
+                                            "metadata": {
+                                                "%252fShared%2bDocuments%252fLandingSpace%252fBach%2bHoa%2bXanh%252fInventoryReport": "/Shared Documents/LandingSpace/Bach Hoa Xanh/InventoryReport",
+                                                "%252fShared%2bDocuments%252fLandingSpace%252fBach%2bHoa%2bXanh%252fInventoryReport%252ftest": "/Shared Documents/LandingSpace/Bach Hoa Xanh/InventoryReport/test"
+                                            },
+                                            "type": "ApiConnection",
+                                            "inputs": {
+                                                "host": {
+                                                    "connection": {
+                                                        "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+                                                    }
+                                                },
+                                                "method": "get",
+                                                "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://unilever.sharepoint.com/sites/SEAI-MarketDataLake'))}/folders/@{encodeURIComponent(triggerBody()?['Source'])}"
+                                            }
+                                        }
+                                    }
+                                },
+                                "Case_MAPPING_-_Insert_missing_records_in_sharepoint_list": {
+                                    "case": "MAPPING",
+                                    "actions": {
+                                        "Delete_existing_items_of_sharepoint_list": {
+                                            "foreach": "@body('Get_existing_items_of_sharepoint_list_')?['value']",
+                                            "actions": {
+                                                "Delete_item_2": {
+                                                    "runAfter": {},
+                                                    "type": "ApiConnection",
+                                                    "inputs": {
+                                                        "host": {
+                                                            "connection": {
+                                                                "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+                                                            }
+                                                        },
+                                                        "method": "delete",
+                                                        "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://unilever.sharepoint.com/sites/SEAI-MarketDataLake'))}/tables/@{encodeURIComponent(encodeURIComponent(triggerBody()?['SP List']))}/items/@{encodeURIComponent(items('Delete_existing_items_of_sharepoint_list')?['ID'])}"
+                                                    }
+                                                }
+                                            },
+                                            "runAfter": {
+                                                "Get_existing_items_of_sharepoint_list_": [
+                                                    "Succeeded"
+                                                ]
+                                            },
+                                            "type": "Foreach"
+                                        },
+                                        "Get_existing_items_of_sharepoint_list_": {
+                                            "runAfter": {
+                                                "Parse_JSON_2": [
+                                                    "Succeeded"
+                                                ]
+                                            },
+                                            "type": "ApiConnection",
+                                            "inputs": {
+                                                "host": {
+                                                    "connection": {
+                                                        "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+                                                    }
+                                                },
+                                                "method": "get",
+                                                "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://unilever.sharepoint.com/sites/SEAI-MarketDataLake'))}/tables/@{encodeURIComponent(encodeURIComponent(triggerBody()?['SP List']))}/items"
+                                            }
+                                        },
+                                        "Insert_Missing_records_into_sharepoint_list": {
+                                            "foreach": "@body('Parse_JSON_2')",
+                                            "actions": {
+                                                "Create_item": {
+                                                    "runAfter": {
+                                                        "Increment_Counter_variable": [
+                                                            "Succeeded"
+                                                        ]
+                                                    },
+                                                    "type": "ApiConnection",
+                                                    "inputs": {
+                                                        "body": {
+                                                            "Brand": "@items('Insert_Missing_records_into_sharepoint_list')['Brand']",
+                                                            "Category": "@items('Insert_Missing_records_into_sharepoint_list')['Category']",
+                                                            "Model": "@items('Insert_Missing_records_into_sharepoint_list')['Model']",
+                                                            "Segment": "null",
+                                                            "Title": "@{variables('Counter')}"
+                                                        },
+                                                        "host": {
+                                                            "connection": {
+                                                                "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+                                                            }
+                                                        },
+                                                        "method": "post",
+                                                        "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://unilever.sharepoint.com/sites/SEAI-MarketDataLake'))}/tables/@{encodeURIComponent(encodeURIComponent(triggerBody()?['SP List']))}/items"
+                                                    }
+                                                },
+                                                "Increment_Counter_variable": {
+                                                    "runAfter": {},
+                                                    "type": "IncrementVariable",
+                                                    "inputs": {
+                                                        "name": "Counter",
+                                                        "value": 1
+                                                    }
+                                                }
+                                            },
+                                            "runAfter": {
+                                                "Delete_existing_items_of_sharepoint_list": [
+                                                    "Succeeded"
+                                                ]
+                                            },
+                                            "type": "Foreach",
+                                            "runtimeConfiguration": {
+                                                "concurrency": {
+                                                    "repetitions": 1
+                                                }
+                                            }
+                                        },
+                                        "Parse_JSON_2": {
+                                            "runAfter": {
+                                                "Set_variable_Missing_Values": [
+                                                    "Succeeded"
+                                                ]
+                                            },
+                                            "type": "ParseJson",
+                                            "inputs": {
+                                                "content": "@variables('Missing_Values')",
+                                                "schema": {
+                                                    "items": {
+                                                        "properties": {
+                                                            "Brand": {
+                                                                "type": "string"
+                                                            },
+                                                            "Category": {
+                                                                "type": "string"
+                                                            },
+                                                            "Model": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "Category",
+                                                            "Brand",
+                                                            "Model"
+                                                        ],
+                                                        "type": "object"
+                                                    },
+                                                    "type": "array"
+                                                }
+                                            }
+                                        },
+                                        "Send_an_email_to_business_to_update_mapping": {
+                                            "runAfter": {
+                                                "Insert_Missing_records_into_sharepoint_list": [
+                                                    "Succeeded"
+                                                ]
+                                            },
+                                            "type": "ApiConnection",
+                                            "inputs": {
+                                                "body": {
+                                                    "Body": "<p>Automated Data Service Email <br>\n<br>\nPlease update the missing mapping values in the @{triggerBody()?['SP List']}.</p>",
+                                                    "Importance": "Normal",
+                                                    "Subject": "Missing Mapping Values",
+                                                    "To": "@triggerBody()?['Email']"
+                                                },
+                                                "host": {
+                                                    "connection": {
+                                                        "name": "@parameters('$connections')['office365']['connectionId']"
+                                                    }
+                                                },
+                                                "method": "post",
+                                                "path": "/v2/Mail"
+                                            }
+                                        },
+                                        "Set_variable_Missing_Values": {
+                                            "runAfter": {},
+                                            "type": "SetVariable",
+                                            "inputs": {
+                                                "name": "Missing_Values",
+                                                "value": "@triggerBody()?['Missing Values']"
+                                            }
+                                        }
+                                    }
+                                },
+                                "Case_UPDATE_-_Update_Mapping": {
+                                    "case": "UPDATE",
+                                    "actions": {
+                                        "For_each_Mapping_Library_": {
+                                            "foreach": "@variables('Mapping Library List')",
+                                            "actions": {
+                                                "Condition-__Check_if_list_is_empty": {
+                                                    "actions": {
+                                                        "Create_CSV_table": {
+                                                            "runAfter": {},
+                                                            "type": "Table",
+                                                            "inputs": {
+                                                                "format": "CSV",
+                                                                "from": "@body('Get_items_sharepoint_list')?['value']"
+                                                            }
+                                                        },
+                                                        "Create_blob_(V2)_2": {
+                                                            "runAfter": {
+                                                                "Create_CSV_table": [
+                                                                    "Succeeded"
+                                                                ]
+                                                            },
+                                                            "type": "ApiConnection",
+                                                            "inputs": {
+                                                                "body": "@body('Create_CSV_table')",
+                                                                "headers": {
+                                                                    "ReadFileMetadataFromServer": true
+                                                                },
+                                                                "host": {
+                                                                    "connection": {
+                                                                        "name": "@parameters('$connections')['azureblob']['connectionId']"
+                                                                    }
+                                                                },
+                                                                "method": "post",
+                                                                "path": "/v2/datasets/@{encodeURIComponent(encodeURIComponent('AccountNameFromSettings'))}/files",
+                                                                "queries": {
+                                                                    "folderPath": "/mindshare/Mapping/",
+                                                                    "name": "@{items('For_each_Mapping_Library_')}.csv",
+                                                                    "queryParametersSingleEncoded": true
+                                                                }
+                                                            },
+                                                            "runtimeConfiguration": {
+                                                                "contentTransfer": {
+                                                                    "transferMode": "Chunked"
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "runAfter": {
+                                                        "Get_items_sharepoint_list": [
+                                                            "Succeeded"
+                                                        ]
+                                                    },
+                                                    "expression": {
+                                                        "and": [
+                                                            {
+                                                                "greater": [
+                                                                    "@length(body('Get_items_sharepoint_list')?['value'])",
+                                                                    0
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    "type": "If"
+                                                },
+                                                "Get_items_sharepoint_list": {
+                                                    "runAfter": {},
+                                                    "type": "ApiConnection",
+                                                    "inputs": {
+                                                        "host": {
+                                                            "connection": {
+                                                                "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+                                                            }
+                                                        },
+                                                        "method": "get",
+                                                        "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://unilever.sharepoint.com/sites/SEAI-MarketDataLake'))}/tables/@{encodeURIComponent(encodeURIComponent(items('For_each_Mapping_Library_')))}/items"
+                                                    },
+                                                    "runtimeConfiguration": {
+                                                        "paginationPolicy": {
+                                                            "minimumItemCount": 1000
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "runAfter": {},
+                                            "type": "Foreach"
+                                        }
+                                    }
+                                }
+                            },
+                            "default": {
+                                "actions": {}
+                            },
+                            "expression": "@triggerBody()?['Logic Apps Case']",
+                            "type": "Switch"
+                        }
+                    },
+                    "outputs": {}
+                },
+                "parameters": {
+                    "$connections": {
+                        "value": {
+                            "azureblob": {
+                                "connectionId": "[resourceId('Microsoft.Web/connections', parameters('logicAppStorageConnectionName'))]",
+                                "connectionName": "[parameters('logicAppStorageConnectionName')]",
+                                "id": "[concat(subscription().id, '/providers/Microsoft.Web/locations/', parameters('location'), '/managedApis/', 'azureblob')]"
+                            },
+                            "office365": {
+                                "connectionId": "[resourceId('Microsoft.Web/connections', parameters('logicAppO365apiConnection'))]",
+                                "connectionName": "[parameters('logicAppO365apiConnection')]",
+                                "id": "[concat(subscription().id, '/providers/Microsoft.Web/locations/', parameters('location'), '/managedApis/', 'office365')]"
+                            },
+                            "sharepointonline": {
+                                "connectionId": "[resourceId('Microsoft.Web/connections', parameters('logicAppSharePointConnectionName'))]",
+                                "connectionName": "[parameters('logicAppSharePointConnectionName')]",
+                                "id": "[concat(subscription().id, '/providers/Microsoft.Web/locations/', parameters('location'), '/managedApis/', 'sharepointonline')]"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

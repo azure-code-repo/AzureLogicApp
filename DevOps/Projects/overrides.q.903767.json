@@ -1,0 +1,18 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "northeurope",
+      "metadata": {
+        "description": "The location for deploying the Azure resources. West Europe is the default."
+      }
+    },
+    "subscriptionId": {
+      "value": "105cc892-0276-4b01-b5ff-426df8be49e2",
+      "metadata": {
+        "description": "The Azure subscription id where these resources are deployed to."
+      }
+    }
+  }
+}

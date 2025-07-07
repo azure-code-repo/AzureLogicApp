@@ -1,0 +1,107 @@
+﻿{
+"createOrReplace": {
+"object": {
+"database": "AASTestCube"
+},
+"database": {
+"name": "AASTestCube",
+"compatibilityLevel": 1400,
+"model": {
+"name": "AASTestCube",
+"culture": "en-GB",
+"dataSources": [
+{
+"type": "structured",
+ "name": "SQL/bnlwe-da04-d-00018-unilevercom-sql-01 database windows net;bnlwe-da04-d-0001",
+"connectionDetails": {
+"protocol": "tds",
+"address": {
+"server": "##databaseServerName##",
+"database": "##databaseName##"
+},
+"authentication": null,
+"query": null
+},
+"credential": {
+"AuthenticationKind": "UsernamePassword",
+"Username": "##userId##",
+"Password": "##password##",
+"EncryptConnection": true
+}
+}
+],
+"tables": [
+{
+	"name": "DevOpsTestsTableTests",
+	"columns": [
+			{
+				"name": "Test_ID",
+				"dataType": "int64",
+				"sourceColumn": "Test_ID"
+			},
+			{
+				"name": "Test_Name",
+				"dataType": "string",
+				"sourceColumn": "Test_Name"
+			}
+				],
+	"partitions": [
+			{
+				"name": "Partition",
+				"dataView": "full",
+					"source": {
+						"type": "m",
+							"expression": [
+								"let",
+								"    Source = #\"SQL/bnlwe-da04-d-00018-unilevercom-sql-01 database windows net;bnlwe-da04-d-0001\",",
+								"    DevOpsTests_TableTests = Source{[Schema=\"DevOpsTests\",Item=\"TableTests\"]}[Data]",
+								"in",
+							"    DevOpsTests_TableTests"
+									]
+								}
+			}
+					]
+}
+],
+
+"roles": [
+		{
+			"name": "admin",
+			"modelPermission": "readRefresh",
+			"members": [
+				{
+					"memberName": "Ecoturnkey.Developer@unilever.com",
+					"identityProvider": "AzureAD"
+				},
+				{
+					"memberName": "Ecoturnkey.Tester@unilever.com",
+					"identityProvider": "AzureAD"
+				},
+				{
+					"memberName": "Ecoturnkey.DevOps@unilever.com",
+					"identityProvider": "AzureAD"
+				}
+					]
+		},
+		{
+			"name": "ReadUsers",
+			"modelPermission": "read",
+			"members": [
+				{
+				"memberName": "Ecoturnkey.Tester@unilever.com",
+				"identityProvider": "AzureAD"
+				}
+						]
+		}
+		],
+"annotations": [
+			{
+			"name": "ClientCompatibilityLevel",
+			"value": "500"
+
+}
+]
+}
+}
+}
+}

@@ -1,0 +1,1831 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "versionNumber": {
+      "value": "1.7",
+      "metadata": {
+        "description": "The version number of the turnkey code that generated this parameter file."
+      }
+    },
+    "subscriptionId": {
+      "value": "e1d1de9f-a503-4330-86fb-88f5f6fc3107",
+      "metadata": {
+        "description": "The Azure subscription id where these resources are deployed to."
+      }
+    },
+    "tenantId": {
+      "value": "f66fae02-5d36-495b-bfe0-78a6ff9f8e6e",
+      "metadata": {
+        "description": "The Azure tenant id where the service principal is created."
+      }
+    },
+    "tenantDomainName": {
+      "value": "unilever.com",
+      "metadata": {
+        "description": "The Azure tenant domain name where the service principal is created."
+      }
+    },
+    "applicationId": {
+      "value": "2b68cbf5-9453-40fd-8d80-f6debe76a96c",
+      "metadata": {
+        "description": "The Azure Active Directory Application id. This is populated when you run the script New-EnvironmentParameterFile.ps1. Otherwise do this manually."
+      }
+    },
+    "applicationCertThumprint": {
+      "value": "",
+      "metadata": {
+        "description": "The certificate thumbprint of the Application SPNs self signed certificate. "
+      }
+    },
+    "adApplicationSecret": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/e1d1de9f-a503-4330-86fb-88f5f6fc3107/resourceGroups/bieno-da22-d-56731-rg/providers/Microsoft.KeyVault/vaults/bieno-da22-d-903766-kv01"
+        },
+        "secretName": "svc-b-da-d-903766-ina-aadprincipal"
+      },
+      "metadata": {
+        "description": "An ARM key vault reference to the application SPN secret."
+      }
+    },
+    "deploymentAdApplicationSecret": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/e1d1de9f-a503-4330-86fb-88f5f6fc3107/resourceGroups/bieno-da22-d-56731-rg/providers/Microsoft.KeyVault/vaults/bieno-da22-d-56731-kv-01"
+        },
+        "secretName": "svc-b-da-d-903766-ina-deployment"
+      },
+      "metadata": {
+        "description": "An ARM key vault reference to the deployment SPN secret."
+      }
+    },
+    "logicAppSqlUserSecret": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/e1d1de9f-a503-4330-86fb-88f5f6fc3107/resourceGroups/bieno-da22-d-56731-rg/providers/Microsoft.KeyVault/vaults/bieno-da22-d-903766-kv01"
+        },
+        "secretName": "sqllogicappuser"
+      },
+      "metadata": {
+        "description": "An ARM key vault reference to the logic app sql user secret."
+      }
+    },
+    "servicePrincipalId": {
+      "value": "940ebeb4-800c-4db5-9e19-bc2296894e7b",
+      "metadata": {
+        "description": "The service principal id for the Azure AD application. This is populated when you run the script New-EnvironmentParameterFile.ps1. Otherwise do this manually."
+      }
+    },
+    "deploymentApplicationId": {
+      "value": "33a32622-1567-44b8-8259-b106b7890db9",
+      "metadata": {
+        "description": "The Azure Active Directory Application id that has provisioning permissions. This is populated when you run the script New-EnvironmentParameterFile.ps1. Otherwise do this manually."
+      }
+    },
+    "deploymentServicePrincipalId": {
+      "value": "a4412807-971c-4c91-becd-3cd15ec7cc48",
+      "metadata": {
+        "description": "The service principal id for the Azure AD application that has provisioning permissions. This is populated when you run the script New-EnvironmentParameterFile.ps1. Otherwise do this manually."
+      }
+    },
+    "location": {
+      "value": "northeurope",
+      "metadata": {
+        "description": "The location for deploying the Azure resources. West Europe is the default."
+      }
+    },
+    "landscapeResourceGroupName": {
+      "value": "bieno-da22-d-56731-rg",
+      "metadata": {
+        "description": "The name of the landscape's private resource group"
+      }
+    },
+    "landscapeAutomationResourceGroupName": {
+      "value": "bieno-da12-d-56731-rg",
+      "metadata": {
+        "description": "The name of the landscape's private resource group that hosts the automation account."
+      }
+    },
+    "landscapeAutomationAccountName": {
+      "value": "bieno-da12-d-56731-auto-01",
+      "metadata": {
+        "description": "The name of the landscape's private automation account"
+      }
+    },
+    "dtlVnetId": {
+      "value": "/subscriptions/c9462478-f3d6-4345-acd0-feb25ebe28ca/resourceGroups/bieno-DA12-p-00000-net-rg/providers/Microsoft.Network/virtualNetworks/bieno-DA12-p-vnet01",
+      "metadata": {
+        "description": "The resource id of the DTL vnet for the region."
+      }
+    },
+    "dtlSubnetName": {
+      "value": "bieno-da12-p-dtl-subnet01",
+      "metadata": {
+        "description": "The name of the DTL subnet for the region."
+      }
+    },
+    "dtlServiceEndpointName": {
+      "value": "DTLSubnetNorthEurope",
+      "metadata": {
+        "description": "The name of the vnet firewall rule for workstations in the DTL subnet"
+      }
+    },
+    "dtl04publicIP": {
+      "value": "104.45.79.114",
+      "metadata": {
+        "description": "The public IP of DTL VMs hosted in CDE-04 West Europe"
+      }
+    },
+    "dtl12publicIP": {
+      "value": "194.60.106.152",
+      "metadata": {
+        "description": "The public IP of DTL VMs hosted in CDE-12 North Europe"
+      }
+    },
+    "citrix1PublicIP": {
+      "value": "40.67.200.41",
+      "metadata": {
+        "description": "The public IP of DTL InA's citrix1 cloud VMs"
+      }
+    },
+    "citrix2PublicIP": {
+      "value": "40.67.210.147",
+      "metadata": {
+        "description": "The public IP of DTL InA's citrix1 cloud VMs"
+      }
+    },
+    "vstsAccountName": {
+      "value": "bnlwe-p-56728-ia-01-unilevercom-vsts",
+      "metadata": {
+        "description": "The name of the I&A's VSTS account"
+      }
+    },
+    "vstsTeamProjectName": {
+      "value": "bieno-da-p-903766-vstsp",
+      "metadata": {
+        "description": "The name of your VSTS team project"
+      }
+    },
+    "landscapeStorageAccountName": {
+      "value": "bienostunileverda2256731",
+      "metadata": {
+        "description": "The name of the landscape's private storage account"
+      }
+    },
+    "landscapeKeyVaultName": {
+      "value": "bieno-da22-d-56731-kv-01",
+      "metadata": {
+        "description": "The name of the landscape's private key vault"
+      }
+    },
+    "landscapeDataFactoryResourceGroupName": {
+      "value": "bieno-da12-d-56731-rg",
+      "metadata": {
+        "description": "The name of the landscape's private resource group that contains the shared ADF"
+      }
+    },
+    "landscapeDataFactoryName": {
+      "value": "bieno-da12-d-56731-adf-01",
+      "metadata": {
+        "description": "The name of the landscape's private data factory.  This has the master self hosted IR that applications can share"
+      }
+    },
+    "landscapeDataFactorySelfHostedIRName": {
+      "value": "bieno-da12-d-56731-dfgw-master",
+      "metadata": {
+        "description": "The name of the landscape's self hosted IR that can be shared."
+      }
+    },
+    "dataLakeLocation": {
+      "value": "West Europe",
+      "metadata": {
+        "description": "The location for deploying the Azure Data Lake resources. East US 2 is the default."
+      }
+    },
+    "keyVaultResourceGroupName": {
+      "value": "bieno-da22-d-56731-rg",
+      "metadata": {
+        "description": "The Azure Resource Group where the key vault is to be created."
+      }
+    },
+    "keyVaultName": {
+      "value": "bieno-da22-d-903766-kv01",
+      "metadata": {
+        "description": "The name of the Azure Key Vault."
+      }
+    },
+    "keyVaultNameLocal": {
+      "value": "bieno-da22-d-903766-kv02",
+      "metadata": {
+        "description": "The name of the additional key Vault to be created in the application resource group."
+      }
+    },
+    "keyVaultSecretExpiryTerm": {
+      "value": 4,
+      "metadata": {
+        "description": "The duration in years for the keyVault Secrets. Default is 4 years."
+      }
+    },
+    "redisCacheName": {
+      "value": "bieno-da22-d-903766-RC-01",
+      "metadata": {
+        "description": "The name of redisCache."
+      }
+    },
+    "keyVaultAuditStorageAccountResourceGroupName": {
+      "value": "bieno-da22-d-903766-rg",
+      "metadata": {
+        "description": "The key vault audit storage account resource group."
+      }
+    },
+    "keyVaultAuditStorageAccountName": {
+      "value": "dbstorageda22d903766",
+      "metadata": {
+        "description": "The key vault audit storage account"
+      }
+    },
+    "storageAccountResourceGroupName": {
+      "value": "bieno-da22-d-903766-rg",
+      "metadata": {
+        "description": "The Azure Resource Group containing the storage account."
+      }
+    },
+    "storageAccountName": {
+      "value": "dbstorageda22d903766",
+      "metadata": {
+        "description": "The name of the storage account."
+      }
+    },
+    "storageAccountType": {
+      "value": "Standard_LRS",
+      "metadata": {
+        "description": "Type of data redundancy required."
+      }
+    },
+    "storageAccountSku": {
+      "value": "Standard_LRS",
+      "metadata": {
+        "description": "The pricing tier sku name for the storage account."
+      }
+    },
+    "adlStoreResourceGroupName": {
+      "value": "bieno-da22-d-903766-rg",
+      "metadata": {
+        "description": "The Azure Resource Group for creating the Azure Data Lake Store."
+      }
+    },
+    "adlStoreName": {
+      "value": "dbstorageda22d903766adls",
+      "metadata": {
+        "description": "The name of the Gen2 Azure Data Lake Store."
+      }
+    },
+    "adlStoreNameSecondary": {
+      "value": "dbstorageda22d903766adls-secondary",
+      "metadata": {
+        "description": "The name of the Gen2 Azure Data Lake Store Redundant Store Name."
+      }
+    },
+    "adlStoreSku": {
+      "value": "Standard_LRS",
+      "metadata": {
+        "description": "The name of the ADLSGen2 storage account sku."
+      }
+    },
+    "adlStoreNameGen1": {
+      "value": "bienostunileveda22903766",
+      "metadata": {
+        "description": "The name of the Gen1 Azure Data Lake Store."
+      }
+    },
+    "adlStoreFoldersFile": {
+      "value": "folders.d.903766.json",
+      "metadata": {
+        "description": "The name of the Azure Data Lake Store folders config file. Defines the folders and ACL permissions"
+      }
+    },
+    "sharedStorageAccountResourceGroupName": {
+      "value": "bieno-da06-b-80066-rg",
+      "metadata": {
+        "description": "The Azure Resource Group containing the UDL shared storage account."
+      }
+    },
+    "sharedStorageAccountName": {
+      "value": "dbstorageda06b80066",
+      "metadata": {
+        "description": "The name of the UDL shared storage account."
+      }
+    },
+    "sharedAdlStoreResourceGroupName": {
+      "value": "bieno-da06-b-80066-rg",
+      "metadata": {
+        "description": "The Azure Resource Group for creating the UDL shared Azure Data Lake Store."
+      }
+    },
+    "sharedAdlStoreName": {
+      "value": "dbstorageda06b80066adls",
+      "metadata": {
+        "description": "The name of the UDL Azure Data Lake Store."
+      }
+    },
+    "adlAnalyticsResourceGroupName": {
+      "value": "bieno-da22-d-903766-rg",
+      "metadata": {
+        "description": "The Azure Resource Group for creating the Azure Data Lake Analytics."
+      }
+    },
+    "adlAnalyticsName": {
+      "value": "bienoda22d903766appadla",
+      "metadata": {
+        "description": "The name of the Azure Data Analytics."
+      }
+    },
+    "sqlServerResourceGroupName": {
+      "value": "bieno-da22-d-903766-rg",
+      "metadata": {
+        "description": "The Azure Resource Group for creating the SQL Server."
+      }
+    },
+    "sqlServerName": {
+      "value": "bieno-da22-d-903766-unilevercom-sql-01",
+      "metadata": {
+        "description": "The name of the SQL Server."
+      }
+    },
+    "sqlServerSubnetName1": {
+      "value": "bieno-DA22-n-subnet01",
+      "metadata": {
+        "description": "The name of the subnet to include in the firewall rules."
+      }
+    },
+    "sqlDatabaseName": {
+      "value": "bieno-da22-d-903766-unilevercom-sqldb-01",
+      "metadata": {
+        "description": "The name of the SQL Database."
+      }
+    },
+    "sqlDatabaseEdition": {
+      "value": "Standard",
+      "metadata": {
+        "description": "The SQL Database Edition."
+      }
+    },
+    "sqlDatabaseSku": {
+      "value": "S0",
+      "metadata": {
+        "description": "The SQL Database Sku."
+      }
+    },
+    "sqlDatabaseMaxSizeInBytes": {
+      "value": "268435456000",
+      "metadata": {
+        "description": "The maximum size of the SQL Database. Default is 250GB."
+      }
+    },
+    "sqlDataWarehouseName": {
+      "value": "bieno-da22-d-903766-unilevercom-sqldw-01",
+      "metadata": {
+        "description": "The name of the SQL Data Warehouse."
+      }
+    },
+    "sqlDataWarehouseEdition": {
+      "value": "DataWarehouse",
+      "metadata": {
+        "description": "The SQL Data Warehouse Edition. This MUST be set to DataWarehouse to create a SQL Data Warehouse."
+      }
+    },
+    "sqlDataWarehouseSku": {
+      "value": "DW100C",
+      "metadata": {
+        "description": "The SQL Data Warehouse SKU."
+      }
+    },
+    "sqlDataWarehouseMaxSizeInBytes": {
+      "value": "10995116277760",
+      "metadata": {
+        "description": "The maximum size of the SQL Data Warehouse. Default is 10TB."
+      }
+    },
+    "sqlSelfHostedIRName": {
+      "value": "",
+      "metadata": {
+        "description": "Set this if you want to use a self hosted IR for your ADF sql linked service."
+      }
+    },
+    "sqlServerAdminLogin": {
+      "value": "sqladmin",
+      "metadata": {
+        "description": "The SQL Server Administrator username. Note that you cannot use this credential because the password is always unknown"
+      }
+    },
+    "sqlServerUserLogin": {
+      "value": "sqldeployuser",
+      "metadata": {
+        "description": "The SQL Server User for SQL Authentication.  Has read and write permissions."
+      }
+    },
+    "dataFactoryResourceGroupName": {
+      "value": "bieno-da22-d-903766-rg",
+      "metadata": {
+        "description": "The Azure Resource Group to create the Data Factory."
+      }
+    },
+    "dataFactoryName": {
+      "value": "bieno-da22-d-903766-adf-01",
+      "metadata": {
+        "description": "The name of the Data Factory."
+      }
+    },
+    "dataFactoryRootParameterFileName": {
+      "value": "landscape.adf.da22.d.903766.json",
+      "metadata": {
+        "description": "The name of root parameter file for the ADF ARM deployment.  This is auto generated by Landscape, do not edit it."
+      }
+    },
+    "dataFactoryGatewayName": {
+      "value": "dfgw-onprem",
+      "metadata": {
+        "description": "The name of the on prem self hosted IR."
+      }
+    },
+    "batchAccountResourceGroupName": {
+      "value": "bieno-da22-d-903766-rg",
+      "metadata": {
+        "description": "The name of the Azure Resource Group to create the Batch Account."
+      }
+    },
+    "batchAccountName": {
+      "value": "bienoda22d903766appban",
+      "metadata": {
+        "description": "The name of the Batch Account."
+      }
+    },
+    "batchPoolName": {
+      "value": "bienoda22d903766appbap",
+      "metadata": {
+        "description": "The name of the Batch Pool."
+      }
+    },
+    "batchAccountPoolMaxTasksPerComputeNode": {
+      "value": 4,
+      "metadata": {
+        "description": "The maximum number of tasks per compute node in the Batch Account. Default is 4."
+      }
+    },
+    "batchVMSize": {
+      "value": "Standard_D1_v2",
+      "metadata": {
+        "description": "The VM size used in the Batch Account."
+      }
+    },
+    "batchAutoScaleFormula": {
+      "value": "$TargetDedicated=1;",
+      "metadata": {
+        "description": "The auto scale formula. Default is a single dedicated account."
+      }
+    },
+    "batchOSFamily": {
+      "value": "6",
+      "metadata": {
+        "description": "The auto scale formula. Default is a single dedicated account."
+      }
+    },
+    "batchTargetOSVersion": {
+      "value": "*",
+      "metadata": {
+        "description": "The version of the target OS family * means latest"
+      }
+    },
+    "batchSelfHostedIRName": {
+      "value": "",
+      "metadata": {
+        "description": "Set this if you want to use a self host IR for your ADF batch linked service."
+      }
+    },
+    "adApplicationName": {
+      "value": "svc-b-da-d-903766-ina-aadprincipal",
+      "metadata": {
+        "description": "The name of the Azure AD Application."
+      }
+    },
+    "adApplicationUri": {
+      "value": "http://bienoda22d903766inaaadprincipal",
+      "metadata": {
+        "description": "A unique URI for the AD Application."
+      }
+    },
+    "deploymentAdApplicationName": {
+      "value": "svc-b-da-d-903766-ina-deployment",
+      "metadata": {
+        "description": "The name of the Azure AD Application responsible for deploying the application."
+      }
+    },
+    "deploymentAdApplicationUri": {
+      "value": "http://bienoda22d903766inadeploymentapp",
+      "metadata": {
+        "description": "A unique URI for the AD Application responsible for deploying the application."
+      }
+    },
+    "numberofDaysforClientSecret": {
+      "value": 90,
+      "metadata": {
+        "description": "The duration in days to keep the client secrets."
+      }
+    },
+    "storageApiVersion": {
+      "value": "2016-12-01",
+      "metadata": {
+        "description": "The api version for provisioning the storage system."
+      }
+    },
+    "projectName": {
+      "value": "MDL SEAA",
+      "metadata": {
+        "description": "The display name of the application. Used in cost tagging."
+      }
+    },
+    "projectNumber": {
+      "value": "903766",
+      "metadata": {
+        "description": "The ITSG number assigned to the application operating environment."
+      }
+    },
+    "projectEnvironment": {
+      "value": "d",
+      "metadata": {
+        "description": "The letter than denotes the environment type. d|q|u|b|p|r|x : dev|qa|preprod|UAT|prod|DR|Experiment"
+      }
+    },
+    "projectNumberDev": {
+      "value": "903766",
+      "metadata": {
+        "description": "The ITSG number assigned to the application's dev environment."
+      }
+    },
+    "tagValues": {
+      "value": {
+        "Name": "bieno-da22-d-903766-rg",
+        "Platform": "Core Data Ecosystem",
+        "Environment": "Development",
+        "ProvisionedBy": "S1\\periyasamy.munusamy2",
+        "CostCentre": "A956001445",
+        "ITSG": "903766",
+        "ProvisionedOn": "2022-06-23",
+        "Workload": "Existing",
+        "ServiceName": "MDL SEAA",
+        "DeliveryDirector": "Eric-Francis Chen",
+        "Icc": "ICC16464"
+      },
+      "metadata": {
+        "description": "The tag values to set on all components"
+      }
+    },
+    "applicationIdentityCertificateName": {
+      "value": "svc-b-da-d-903766-ina-aadprincipalCert",
+      "metadata": {
+        "description": "The applications identity certificate name to retrieve from key vault."
+      }
+    },
+    "projectAdminADGroupId": {
+      "value": "a34bca80-b7cc-47e4-a626-38bb590351e2",
+      "metadata": {
+        "description": "The Azure AD Group containing the admin of projects who becomes owners of all other project related AD groups."
+      }
+    },
+    "projectAdminADGroupName": {
+      "value": "SEC-ES-DA-d-903766-ProjectAdmins",
+      "metadata": {
+        "description": "The Azure AD Group containing the admin of projects who becomes owners of all other project related AD groups."
+      }
+    },
+    "developerADGroupName": {
+      "value": "SEC-ES-DA-d-903766-azure-developer",
+      "metadata": {
+        "description": "The Azure AD Group containing the developers for this project."
+      }
+    },
+    "developerADGroupId": {
+      "value": "a4282323-9d63-4954-85ca-b738d3cd581d",
+      "metadata": {
+        "description": "The Azure AD Group ID containing the developers for this project."
+      }
+    },
+    "developerSharepointADGroupName": {
+      "value": "SEC-ES-DA-p-56728-InA-Developer",
+      "metadata": {
+        "description": "The Azure AD Group containing the Sharepoint Access for this project."
+      }
+    },
+    "developerSharepointADGroupId": {
+      "value": "798f478e-ab10-468f-9cde-4fd9fd00b199",
+      "metadata": {
+        "description": "The Azure AD Group ID containing the Sharepoint Access for this project."
+      }
+    },
+    "managerADGroupName": {
+      "value": "SEC-ES-DA-p-56728-azure-landscape",
+      "metadata": {
+        "description": "The Azure AD Group containing the eco system managers."
+      }
+    },
+    "managerADGroupId": {
+      "value": "5f43d762-65cd-4fc6-a065-0232e6952a50",
+      "metadata": {
+        "description": "The Azure AD Group ID containing the eco system managers."
+      }
+    },
+    "testerADGroupName": {
+      "value": "SEC-ES-DA-d-903766-azure-tester",
+      "metadata": {
+        "description": "The Azure AD Group containing the testers for this project."
+      }
+    },
+    "testerADGroupId": {
+      "value": "27081913-54b7-4ff3-8b77-d0dcba7c4325",
+      "metadata": {
+        "description": "The Azure AD Group ID containing the testers for this project."
+      }
+    },
+    "selfServiceADGroupName": {
+      "value": "SEC-ES-DA-d-903766-azure-selfservice",
+      "metadata": {
+        "description": "The Azure AD Group containing the self service users for this project. Self service users have data reader access and access to synapse serverless compute"
+      }
+    },
+    "selfServiceADGroupId": {
+      "value": "b860949c-da9f-402e-a8c5-1ea1491adf2e",
+      "metadata": {
+        "description": "The Azure AD Group ID containing self service users for this project."
+      }
+    },
+    "dataReaderADGroupName": {
+      "value": "SEC-ES-DA-d-903766-azure-data-reader",
+      "metadata": {
+        "description": "The Azure AD Group containing the developers for this project."
+      }
+    },
+    "dataReaderADGroupId": {
+      "value": "0d1f832e-e423-4b6d-8177-193871ccb85f",
+      "metadata": {
+        "description": "The Azure AD Group ID containing the developers for this project."
+      }
+    },
+    "dataWriterADGroupName": {
+      "value": "SEC-ES-DA-d-903766-azure-data-writer",
+      "metadata": {
+        "description": "The Azure AD Group containing the developers for this project."
+      }
+    },
+    "dataWriterADGroupId": {
+      "value": "23042811-0732-430e-8133-cfd0587d676b",
+      "metadata": {
+        "description": "The Azure AD Group ID containing the developers for this project."
+      }
+    },
+    "dataOwnerADGroupName": {
+      "value": "SEC-ES-DA-d-903766-azure-data-owner",
+      "metadata": {
+        "description": "The Azure AD Group containing the data owners for this project. Can grant access to the data"
+      }
+    },
+    "dataOwnerADGroupId": {
+      "value": "a361a075-59a7-41ea-9555-9b2986a96aa2",
+      "metadata": {
+        "description": "The Azure AD Group ID containing the data owners for this project."
+      }
+    },
+    "supportADGroupName": {
+      "value": "SEC-ES-DA-d-903766-azure-devops",
+      "metadata": {
+        "description": "The Azure AD Group containing the support for this project."
+      }
+    },
+    "supportADGroupId": {
+      "value": "da72e428-98af-4579-9ec3-24676232b08e",
+      "metadata": {
+        "description": "The Azure AD Group ID containing the support for this project."
+      }
+    },
+    "supportLevel1ADGroupName": {
+      "value": "SEC-ES-DA-d-903766-azure-support",
+      "metadata": {
+        "description": "The Azure AD Group containing the support level1 for this project."
+      }
+    },
+    "supportLevel1ADGroupId": {
+      "value": "836a1fa2-54c0-4f1f-89eb-0e72da0e32c2",
+      "metadata": {
+        "description": "The Azure AD Group ID containing the support level1 for this project."
+      }
+    },
+    "OnPremiseFileServerHostName": {
+      "value": "OnPremiseFileServerHostName",
+      "metadata": {
+        "description": "The key vault secret name for on premise file server host name."
+      }
+    },
+    "OnPremiseFileServerUserName": {
+      "value": "OnPremiseFileServerUserName",
+      "metadata": {
+        "description": "The key vault secret name for on premise file server user name."
+      }
+    },
+    "OnPremiseFileServerPassword": {
+      "value": "OnPremiseFileServerPassword",
+      "metadata": {
+        "description": "The key vault secret name for on premise file server password."
+      }
+    },
+    "analysisServicesStorageAccountResourceGroupName": {
+      "value": "bieno-da22-d-903766-rg",
+      "metadata": {
+        "description": "The resource group for the storage account for Analysis Services backup"
+      }
+    },
+    "analysisServicesStorageAccountName": {
+      "value": "dbstorageda22d903766",
+      "metadata": {
+        "description": "The storage account for Analysis Services"
+      }
+    },
+    "analysisServicesStorageSasProperties": {
+      "value": {
+        "signedresource": "c",
+        "signedServices": "b",
+        "signedPermission": "racwdl",
+        "signedExpiry": "2072-06-23T16:26:05Z",
+        "signedResourceTypes": "sco",
+        "signedProtocol": "https"
+      },
+      "metadata": {
+        "description": "The values required to generate a SAS token for AAS to write backup to storage."
+      }
+    },
+    "analysisServicesFirewallRules": {
+      "value": [
+        {
+          "firewallRuleName": "DTLNorthEurope",
+          "rangeStart": "194.60.106.152",
+          "rangeEnd": "194.60.106.152"
+        },
+        {
+          "firewallRuleName": "DTLWestEurope",
+          "rangeStart": "104.45.79.114",
+          "rangeEnd": "104.45.79.114"
+        },
+        {
+          "firewallRuleName": "Citrix1",
+          "rangeStart": "40.67.200.41",
+          "rangeEnd": "40.67.200.41"
+        },
+        {
+          "firewallRuleName": "Citrix2",
+          "rangeStart": "40.67.210.147",
+          "rangeEnd": "40.67.210.147"
+        }
+      ],
+      "metadata": {
+        "description": "Firewall rules for approved platform clients."
+      }
+    },
+    "numberofYearsforAnalysisServicesContainerKey": {
+      "value": "2",
+      "metadata": {
+        "description": "The number of years for the storage key"
+      }
+    },
+    "analysisServicesName": {
+      "value": "bienoda22d903766unilevercomas01",
+      "metadata": {
+        "description": "The name of the Analysis Services"
+      }
+    },
+    "analysisServicesResourceGroupName": {
+      "value": "bieno-da22-d-903766-rg",
+      "metadata": {
+        "description": "The resource group name where the Analysis Services resides"
+      }
+    },
+    "analysisServicesAdminEmailId": {
+      "value": [
+        "obj:5f43d762-65cd-4fc6-a065-0232e6952a50@f66fae02-5d36-495b-bfe0-78a6ff9f8e6e",
+        "obj:20129d76-7c14-48fa-8b54-426bb6acfab7@f66fae02-5d36-495b-bfe0-78a6ff9f8e6e",
+        "app:2b68cbf5-9453-40fd-8d80-f6debe76a96c@f66fae02-5d36-495b-bfe0-78a6ff9f8e6e"
+      ],
+      "metadata": {
+        "description": "The Analysis Services administrator email address"
+      }
+    },
+    "analysisServicesSku": {
+      "value": "D1",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "analysisServicesSqlUserLogin": {
+      "value": "sqlssasuser",
+      "metadata": {
+        "description": "The name of the sql user login used by Analysis Services connections to SQLDW/SQLDB"
+      }
+    },
+    "analysisServicesOpdgName": {
+      "value": "",
+      "metadata": {
+        "description": "The name of the PaaS OPDG used by Analysis Services"
+      }
+    },
+    "analysisServicesOpdgInstallationName": {
+      "value": "",
+      "metadata": {
+        "description": "The name of the OPDG installation that was registered in Azure"
+      }
+    },
+    "azureSSISResourceGroupName": {
+      "value": "bieno-da22-d-903766-rg",
+      "metadata": {
+        "description": "Resource Group for SSIS"
+      }
+    },
+    "azureSSISName": {
+      "value": "bieno-da22-d-903766-unilevercom-ssis-01",
+      "metadata": {
+        "description": "SSIS Integration Runtime (IR) Name"
+      }
+    },
+    "azureSSISLocation": {
+      "value": "West Europe",
+      "metadata": {
+        "description": "Location for the SSIS IR"
+      }
+    },
+    "azureSSISNodeSize": {
+      "value": "Standard_A4_v2",
+      "metadata": {
+        "description": "SSIS Node Sku"
+      }
+    },
+    "azureSSISNodeNumber": {
+      "value": "1",
+      "metadata": {
+        "description": "Number of SSIS nodes"
+      }
+    },
+    "azureSSISMaxParallelExecutionsPerNode": {
+      "value": "1",
+      "metadata": {
+        "description": "Number of parallel SSIS executions per node"
+      }
+    },
+    "azureSSISDBServerEndpoint": {
+      "value": "bieno-da22-d-903766-unilevercom-sql-01.database.windows.net",
+      "metadata": {
+        "description": "The Sql Server hosting the SSIS packages"
+      }
+    },
+    "azureSSISDBPricingTier": {
+      "value": "Basic",
+      "metadata": {
+        "description": "Pricing tier for SSIS IR"
+      }
+    },
+    "iotHubResourceGroupName": {
+      "value": "bieno-da22-d-903766-rg",
+      "metadata": {
+        "description": "The name of the IoT Hub Resoruce Group"
+      }
+    },
+    "iotHubName": {
+      "value": "bieno-da22-d-903766-unilevercom-iot-01",
+      "metadata": {
+        "description": "The name of the IoT Hub"
+      }
+    },
+    "iotHubSku": {
+      "value": "F1",
+      "metadata": {
+        "description": "The IoT Hub Sku"
+      }
+    },
+    "capacityUnits": {
+      "value": "1",
+      "metadata": {
+        "description": "The capacity units"
+      }
+    },
+    "d2cMessageRetentionInDaysPeriod": {
+      "value": "1",
+      "metadata": {
+        "description": "The number of days to retain messages from the device to cloud"
+      }
+    },
+    "d2cPartitionCount": {
+      "value": "2",
+      "metadata": {
+        "description": "Number of desired partitions for device-to-cloud event ingestion."
+      }
+    },
+    "c2dMessagesTTLAsIso8601": {
+      "value": "PT1H",
+      "metadata": {
+        "description": "Default TTL in ISO_8601 format for cloud-to-device messages. The value can range from PT1M to PT2D (or any other format as per ISO_8601 standards for duration)."
+      }
+    },
+    "c2dMessagesMaxDeliveryCount": {
+      "value": 10,
+      "metadata": {
+        "description": "Maximum delivery count for cloud-to-device messages per-device queues."
+      }
+    },
+    "c2dFeebackMessagesTTLAsIso8601": {
+      "value": "PT1H",
+      "metadata": {
+        "description": "TTL in ISO_8601 format for service-bound feedback messages. The value can range from PT1M to PT2D (or any other format as per ISO_8601 standards for duration)."
+      }
+    },
+    "c2dFeedbackMessagesMaxDeliveryCount": {
+      "value": 10,
+      "metadata": {
+        "description": "Maximum delivery count for feedback queue."
+      }
+    },
+    "c2dFeedbackMessagesLockDurationAsIso8601": {
+      "value": "PT60S",
+      "metadata": {
+        "description": "Lock duration in ISO_8601 format for service-bound feedback messages. The value can range from PT5S to PT300S (or any other format as per ISO_8601 standards for duration)."
+      }
+    },
+    "d2cConsumerGroupName": {
+      "value": "cg1",
+      "metadata": {
+        "description": "Name of device-to-cloud consumer group to provision on the IoT Hub instance."
+      }
+    },
+    "tsInsightsResourceGroupName": {
+      "value": "bieno-da22-d-903766-rg",
+      "metadata": {
+        "description": "The name of the resource group for time series insights service"
+      }
+    },
+    "tsInsightsName": {
+      "value": "bieno-da22-d-903766-unilevercom-tsi-01",
+      "metadata": {
+        "description": "The name of the time series insights service"
+      }
+    },
+    "tsInsightsSkuName": {
+      "value": "S1",
+      "metadata": {
+        "description": "The sku for the time series insights service"
+      }
+    },
+    "tsInsightsSkuTier": {
+      "value": "Standard",
+      "metadata": {
+        "description": "The tier for the time series insights service"
+      }
+    },
+    "tsInsightsSkuSize": {
+      "value": "1",
+      "metadata": {
+        "description": "The size for the time series service"
+      }
+    },
+    "tsInsightsSkuCapacity": {
+      "value": "1",
+      "metadata": {
+        "description": "The capacity unites for the time series service"
+      }
+    },
+    "tsInsightsDataRetentionTime": {
+      "value": "P31D",
+      "metadata": {
+        "description": "The data retention time for the messages in the time series store"
+      }
+    },
+    "tsInsightsFieldName": {
+      "value": "deviceTimestamp",
+      "metadata": {
+        "description": "Timestamp field to use for time series insights"
+      }
+    },
+    "tsInsightsKeyName": {
+      "value": "service",
+      "metadata": {
+        "description": "key to use to access iot hub"
+      }
+    },
+    "storageAccountLinkedServiceName": {
+      "value": "LS_ABLB",
+      "metadata": {
+        "description": "Linked Service name for Storage Account"
+      }
+    },
+    "storageAccountLinkedServiceNameUdl": {
+      "value": "LS_ABLB_UDL",
+      "metadata": {
+        "description": "Linked Service name for Storage Account in t he UDL resorce group"
+      }
+    },
+    "dataSeedLinkedServiceName": {
+      "value": "LS_ABLB_DATASEED",
+      "metadata": {
+        "description": "The BLOB storage container where you deployment seed data is stored.  You can read data from here as part of your scripted deployment in any environment."
+      }
+    },
+    "dataLakeStoreLinkedServiceNameUdl": {
+      "value": "LS_ADLS_UDL",
+      "metadata": {
+        "description": "Linked Service name for Data Lake Store"
+      }
+    },
+    "dataLakeStoreLinkedServiceName": {
+      "value": "LS_ADLS",
+      "metadata": {
+        "description": "Linked Service name for Data Lake Store"
+      }
+    },
+    "sqlDataWarehouseLinkedServiceName": {
+      "value": "LS_ASDW",
+      "metadata": {
+        "description": "Linked Service name for Sql data warehouse"
+      }
+    },
+    "sqlDatabaseLinkedServiceName": {
+      "value": "LS_ASQL",
+      "metadata": {
+        "description": "Linked Service name for Sql database"
+      }
+    },
+    "batchAccountLinkedServiceName": {
+      "value": "LS_BATCH",
+      "metadata": {
+        "description": "Linked Service name for Batch Account"
+      }
+    },
+    "sftpLinkedServiceName": {
+      "value": "LS_SFTP",
+      "metadata": {
+        "description": "Linked Service name for sftp"
+      }
+    },
+    "OnPremisesFileServerLinkedServiceName": {
+      "value": "LS_FILE_ONPREM",
+      "metadata": {
+        "description": "Linked Service name for on prem file server"
+      }
+    },
+    "dataLakeAnalyticsLinkedServiceName": {
+      "value": "LS_ADLA",
+      "metadata": {
+        "description": "Linked Service name for Data Lake Analytics"
+      }
+    },
+    "keyVaultLinkedServiceName": {
+      "value": "LS_KV_LOCAL",
+      "metadata": {
+        "description": "Linked Service name for your private keyvault"
+      }
+    },
+    "appContributorGroupName": {
+      "value": "SEC-ES-DA-d-903766-azurecontributor",
+      "metadata": {
+        "description": "Non functional AD group - App Contributor Group Name"
+      }
+    },
+    "appContributorGroupId": {
+      "value": "20129d76-7c14-48fa-8b54-426bb6acfab7",
+      "metadata": {
+        "description": "Non functional AD group - App Contributor Group ID"
+      }
+    },
+    "appReaderGroupName": {
+      "value": "SEC-ES-DA-d-903766-azurereader",
+      "metadata": {
+        "description": "Non functional AD group - App Reader Group Name"
+      }
+    },
+    "appReaderGroupId": {
+      "value": "71a4b500-412a-4b3d-bfa4-7cf6f0b698c6",
+      "metadata": {
+        "description": "Non functional AD group - App Reader Group Id"
+      }
+    },
+    "dataReaderGroupName": {
+      "value": "SEC-ES-DA-d-903766-azurereader",
+      "metadata": {
+        "description": "Non functional AD group - Data Reader Group Name"
+      }
+    },
+    "dataAdminGroupName": {
+      "value": "SEC-ES-DA-d-903766-dataadmin",
+      "metadata": {
+        "description": "Functional AD group for privileged access to data - Data Admin Group Name"
+      }
+    },
+    "stgReaderGroupName": {
+      "value": "SEC-ES-DA-d-903766-azurereader",
+      "metadata": {
+        "description": "Non functional AD group - Storage Reader Group Name"
+      }
+    },
+    "databricksResourceGroupName": {
+      "value": "bieno-da22-d-903766-rg",
+      "metadata": {
+        "description": "The name of the resource group for your databrick workspace."
+      }
+    },
+    "databricksWorkspaceName": {
+      "value": "bieno-da22-d-903766-adb-01",
+      "metadata": {
+        "description": "The name of your databrick workspace."
+      }
+    },
+    "databricksTokenSecretName": {
+      "value": "DatabricksAccessToken",
+      "metadata": {
+        "description": "The name of the key vault secret for the databrick workspace."
+      }
+    },
+    "databricksPricingTier": {
+      "value": "standard",
+      "metadata": {
+        "description": "The name pricing tier for your databrick workspace."
+      }
+    },
+    "databricksSelfHostedIRName": {
+      "value": "",
+      "metadata": {
+        "description": "The name of the self hosted IR for the databricks linked service. To use MS hosted leave blank"
+      }
+    },
+    "databricksLinkedServiceName": {
+      "value": "LS_ADB",
+      "metadata": {
+        "description": "The name of the ADF linked service for a databrick cluster1"
+      }
+    },
+    "databricksCluster1": {
+      "value": {
+        "autoscale": {
+          "min_workers": 2,
+          "max_workers": 6
+        },
+        "cluster_name": "devSharedStandardSpark240",
+        "spark_version": "7.3.x-scala2.12",
+        "spark_conf": {
+          "spark.databricks.service.server.enabled": "true",
+          "spark.databricks.service.port": "8787",
+          "spark.driver.maxresultsize": "8g",
+          "spark.debug.maxToStringFields": "100"
+        },
+        "node_type_id": "Standard_DS12_v2",
+        "driver_node_type_id": "Standard_DS12_v2",
+        "ssh_public_keys": [],
+        "custom_tags": {
+          "Department": "I&A Tech",
+          "Project": "MDL SEAA",
+          "support_team": "SEC-ES-DA-p-56728-Landscape@unilever.com",
+          "Exclude_PMC": "Exclude_PMC"
+        },
+        "spark_env_vars": {
+          "PYSPARK_PYTHON": "/databricks/python3/bin/python3"
+        },
+        "autotermination_minutes": 20,
+        "enable_elastic_disk": true,
+        "cluster_source": "API",
+        "init_scripts": [],
+        "cluster_id": ""
+      },
+      "metadata": {
+        "description": "The config for a databrick cluster1"
+      }
+    },
+    "databricksCluster2": {
+      "value": {
+        "autoscale": {
+          "min_workers": 2,
+          "max_workers": 6
+        },
+        "cluster_name": "devSharedStandardSpark240",
+        "spark_version": "7.3.x-scala2.12",
+        "spark_conf": {
+          "spark.databricks.service.server.enabled": "true",
+          "spark.databricks.service.port": "8787",
+          "spark.driver.maxresultsize": "8g",
+          "spark.debug.maxToStringFields": "100"
+        },
+        "node_type_id": "Standard_F8s_v2",
+        "driver_node_type_id": "Standard_F8s_v2",
+        "ssh_public_keys": [],
+        "custom_tags": {
+          "Department": "I&A Tech",
+          "Project": "empty",
+          "support_team": "empty@me.com",
+          "Exclude_PMC": "Exclude_PMC"
+        },
+        "spark_env_vars": {
+          "PYSPARK_PYTHON": "/databricks/python3/bin/python3"
+        },
+        "autotermination_minutes": 20,
+        "enable_elastic_disk": true,
+        "cluster_source": "API",
+        "init_scripts": [],
+        "cluster_id": ""
+      },
+      "metadata": {
+        "description": "The config for a databrick cluster2"
+      }
+    },
+    "sftpHostSecretName": {
+      "value": "sftp-host-name",
+      "metadata": {
+        "description": "The name of the keyvault secret that stores the sftp linked service host name."
+      }
+    },
+    "sftpPortSecretName": {
+      "value": "sftp-port",
+      "metadata": {
+        "description": "The name of the keyvault secret that stores the sftp linked service port."
+      }
+    },
+    "sftpUserSecretName": {
+      "value": "sftp-username",
+      "metadata": {
+        "description": "The name of the keyvault secret that stores the sftp linked service user name."
+      }
+    },
+    "sftpPrivateKeySecretName": {
+      "value": "sftp-privateKeyContent",
+      "metadata": {
+        "description": "The name of the keyvault secret that stores the sftp linked service private key content."
+      }
+    },
+    "sftpPassPhraseSecretName": {
+      "value": "sftp-passPhrase",
+      "metadata": {
+        "description": "The name of the keyvault secret that stores the sftp linked service host name."
+      }
+    },
+    "sftpSelfHostedIRName": {
+      "value": "",
+      "metadata": {
+        "description": "Set this if you want to use a self host IR for your ADF sftp linked service."
+      }
+    },
+    "ftpHostSecretName": {
+      "value": "ftp-host-name",
+      "metadata": {
+        "description": "The name of the keyvault secret that stores the ftp linked service host name."
+      }
+    },
+    "ftpUserNameSecretName": {
+      "value": "ftp-username",
+      "metadata": {
+        "description": "The name of the keyvault secret that stores the ftp linked service user name."
+      }
+    },
+    "ftpPortSecretName": {
+      "value": "ftp-port",
+      "metadata": {
+        "description": "The name of the keyvault secret that stores the ftp linked service private key content."
+      }
+    },
+    "ftpPasswordSecretName": {
+      "value": "ftp-password",
+      "metadata": {
+        "description": "The name of the keyvault secret that stores the ftp linked service private key content."
+      }
+    },
+    "ftpSelfHostedIRName": {
+      "value": "",
+      "metadata": {
+        "description": "Set this if you want to use a self host IR for your ADF ftp linked service."
+      }
+    },
+    "virtualNetworkResourceGroupName": {
+      "value": "bieno-DA22-p-00000-Net-rg",
+      "metadata": {
+        "description": "The name of the central resource group that houses virtual networks."
+      }
+    },
+    "virtualNetworkName": {
+      "value": "bieno-DA22-p-vnet01",
+      "metadata": {
+        "description": "The name of the central virtual network."
+      }
+    },
+    "appServicePlanName": {
+      "value": "bieno-da22-d-903766-serviceplan-01",
+      "metadata": {
+        "description": "The name for the web application service plan."
+      }
+    },
+    "appServicePlanKind": {
+      "value": "app",
+      "metadata": {
+        "description": "The kind of web application service plan for window hosts. Pass 'app' for windows else linux"
+      }
+    },
+    "appServicePlanSku": {
+      "value": {
+        "name": "B1"
+      },
+      "metadata": {
+        "description": "The Sku for the web application service plan. Allowed values depends on appServicePlanKind"
+      }
+    },
+    "webAppResourceGroupName": {
+      "value": "bieno-da22-d-903766-rg",
+      "metadata": {
+        "description": "The name of the resource group web app resource group"
+      }
+    },
+    "webAppName": {
+      "value": "bieno-da22-d-903766-webapi-01",
+      "metadata": {
+        "description": "The name of the web application."
+      }
+    },
+    "webAppStack": {
+      "value": "dotnet",
+      "metadata": {
+        "description": "Set this for the web application platform."
+      }
+    },
+    "webAppNetFrameworkVersion": {
+      "value": "4.7",
+      "metadata": {
+        "description": "Set this for the web application dotnet platform."
+      }
+    },
+    "webappApiVersion": {
+      "value": "2020-09-01",
+      "metadata": {
+        "description": "Web apps resource provider API version."
+      }
+    },
+    "actionGroupSupportEmail": {
+      "value": "IATech.AzureLandscape@unilever.com",
+      "metadata": {
+        "description": "Email support address for automatic alerts metrics in ADF. Change to project support team"
+      }
+    },
+    "functionAppName": {
+      "value": "bieno-da22-d-903766-unilevercom-funapp-01",
+      "metadata": {
+        "description": "The function application name."
+      }
+    },
+    "logAnalyticsResourceGroupName": {
+      "value": "bieno-da22-d-903766-rg",
+      "metadata": {
+        "description": "The resource group name for log analytics."
+      }
+    },
+    "logAnalyticsWorkspaceName": {
+      "value": "bieno-da22-d-903766-loganalytics-01",
+      "metadata": {
+        "description": "The workspace name for log analytics."
+      }
+    },
+    "machineLearningWorkspaceName": {
+      "value": "bieno-da22-d-903766-aml-01",
+      "metadata": {
+        "description": "The workspace name for Machine Learning Studio."
+      }
+    },
+    "machineLearningComputeClusterName": {
+      "value": "aml-compute-01",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "machineLearningComputeIdleSecondsBeforeScaleDown": {
+      "value": "300",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "machineLearningComputeMaxNodes": {
+      "value": "2",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "machineLearningComputeMinNodes": {
+      "value": "0",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "machineLearningComputeVmSize": {
+      "value": "STANDARD_DS2_V2",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "machineLearningLocation": {
+      "value": "northeurope",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "machineLearningExperimentName": {
+      "value": "bieno-da22-d-903766-aml-experiment-01",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "machineLearningModelName": {
+      "value": "aml-model-01",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "machineLearningModelGitFolder": {
+      "value": "Model01",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "machineLearningResourceGroupName": {
+      "value": "bieno-da22-d-903766-rg",
+      "metadata": {
+        "description": "The name for Resource Group Name Machine Leanring Studio."
+      }
+    },
+    "machineLearningAKSClusterName": {
+      "value": "aml-aks-01",
+      "metadata": {
+        "description": "AKS cluster name."
+      }
+    },
+    "machineLearningACIInstance": {
+      "value": "aml-aci-01",
+      "metadata": {
+        "description": "ACI Instance name."
+      }
+    },
+    "containerRegistryName": {
+      "value": "bienoda22903766crn",
+      "metadata": {
+        "description": "The name for stand alone container registry."
+      }
+    },
+    "containerRegistrySku": {
+      "value": "Basic",
+      "metadata": {
+        "description": "The name for pricing sku for container registry."
+      }
+    },
+    "applicationInsightsName": {
+      "value": "bieno-da22-d-903766-appin-01",
+      "metadata": {
+        "description": "The name for Application Insights."
+      }
+    },
+    "budgetAlertResourceGroupName": {
+      "value": "bieno-da22-d-903766-rg",
+      "metadata": {
+        "description": "The resource group which the budget alert will be set to."
+      }
+    },
+    "budgetAlertName": {
+      "value": "bieno-da22-d-903766-budget-rg",
+      "metadata": {
+        "description": "The resource group budget alert name."
+      }
+    },
+    "budgetLimitGBP": {
+      "value": "840",
+      "metadata": {
+        "description": "The month budget limit for a resource group in GBP"
+      }
+    },
+    "logicAppResourceGroupName": {
+      "value": "bieno-da22-d-903766-rg",
+      "metadata": {
+        "description": "Logic App Resource Group name"
+      }
+    },
+    "logicAppName": {
+      "value": "bieno-da22-d-903766-logicapp-01",
+      "metadata": {
+        "description": "Logic App name"
+      }
+    },
+    "logicAppName02": {
+      "value": "bieno-da22-d-903766-logicapp-02",
+      "metadata": {
+        "description": "Logic App name"
+      }
+    },
+    "PHlogicAppName01": {
+      "value": "bieno-da22-d-903766-logicapp-PH-01",
+      "metadata": {
+        "description": "Logic App name for PH 01"
+      }
+    },
+    "PHlogicAppName02": {
+      "value": "bieno-da22-d-903766-logicapp-PH-02",
+      "metadata": {
+        "description": "Logic App name for PH 02"
+      }
+    },
+    "logicAppSqlUserLogin": {
+      "value": "sqllogicappuser",
+      "metadata": {
+        "description": "Logic App SQLDW login name"
+      }
+    },
+    "logicAppO365apiConnection": {
+      "value": "bieno-da22-d-903766-logicapp-o365-01",
+      "metadata": {
+        "description": "Logic App O365 API connection name"
+      }
+    },
+    "logicAppDatalakeapiConnection": {
+      "value": "bieno-da22-d-903766-logicapp-datalake-01",
+      "metadata": {
+        "description": "Logic App Data Lake API connection name"
+      }
+    },
+    "logicAppDatalakeapiConnectionDisplay": {
+      "value": "datalake",
+      "metadata": {
+        "description": "Logic App Data Lake API connection Display name"
+      }
+    },
+    "logicAppSqlDWapiConnection": {
+      "value": "bieno-da22-d-903766-logicapp-sqldw-01",
+      "metadata": {
+        "description": "Logic App Azure SQLDW API connection name"
+      }
+    },
+    "logicAppSqlDWapiConnectionDisplay": {
+      "value": "bieno-da22-d-903766-logicapp-sqldw-01",
+      "metadata": {
+        "description": "Logic App Azure SQLDW API connection Display name"
+      }
+    },
+    "logicAppSqlapiConnection": {
+      "value": "bieno-da22-d-903766-logicapp-sql-01",
+      "metadata": {
+        "description": "Logic App Azure SQL API connection name"
+      }
+    },
+    "logicAppSqlapiConnectionDisplay": {
+      "value": "SqlDb",
+      "metadata": {
+        "description": "Logic App Azure SQL API connection Display name"
+      }
+    },
+    "logicAppStorageConnectionName": {
+      "value": "bieno-da22-d-903766-logicapp-blob-01",
+      "metadata": {
+        "description": "Logic App blob storage connector name"
+      }
+    },
+    "logicAppPowerBIConnectionName": {
+      "value": "bieno-da22-d-903766-logicapp-powerbi-01",
+      "metadata": {
+        "description": "Logic App PowerBI connector name"
+      }
+    },
+    "PHlogicAppPowerBIConnectionName": {
+      "value": "bieno-da22-d-903766-logicapp-dataflow-01",
+      "metadata": {
+        "description": "PH Logic App PowerBI dataflow connector name"
+      }
+    },
+    "logicAppSharePointConnectionName": {
+      "value": "bieno-da22-d-903766-logicapp-sharepoint-01",
+      "metadata": {
+        "description": "Logic App SharePoint connector name"
+      }
+    },
+    "PHlogicAppSharePointConnectionName": {
+      "value": "bieno-da22-d-903766-logicapp-sharepoint-PH-01",
+      "metadata": {
+        "description": "Logic App SharePoint connector name for PH"
+      }
+    },
+    "logicAppADFConnectionName": {
+      "value": "bieno-da22-d-903766-logicapp-adf-01",
+      "metadata": {
+        "description": "Logic App ADF connector name"
+      }
+    },
+    "logicAppDataOwner": {
+      "value": "truong-chau-minh.huy@unilever.com",
+      "metadata": {
+        "description": "Parameter Data owner for LogicApp"
+      }
+    },
+    "logicAppProcessOwner": {
+      "value": "truong-chau-minh.huy@unilever.com",
+      "metadata": {
+        "description": "Parameter Process owner for LogicApp"
+      }
+    },
+    "azuremonitorlogs_name": {
+      "value": "bieno-da22-d-903766-logicapp-monitorlogs-01",
+      "metadata": {
+        "description": "Logic App Azure Monitor Logs connection name"
+      }
+    },
+    "azuremonitorlogs_DisplayName": {
+      "value": "LogAnalytics",
+      "metadata": {
+        "description": "Logic App Azure Monitor Logs connection Display name"
+      }
+    },
+    "deployLogicAppWorkflow": {
+      "value": false,
+      "metadata": {
+        "description": "The switch to create Logic App workflow."
+      }
+    },
+    "deployLogicAppSqlDwConnection": {
+      "value": false,
+      "metadata": {
+        "description": "The switch to create SQL DW connection."
+      }
+    },
+    "deployLogicAppO365Connection": {
+      "value": false,
+      "metadata": {
+        "description": "The switch to create the o365 email connection."
+      }
+    },
+    "deployLogicAppSqlConnection": {
+      "value": false,
+      "metadata": {
+        "description": "The switch to create SQL connection."
+      }
+    },
+    "deployLogicAppSharePointConnection": {
+      "value": false,
+      "metadata": {
+        "description": "The switch to create a PowerBI connection."
+      }
+    },
+    "deployLogicAppMonitorLogsConnection": {
+      "value": false,
+      "metadata": {
+        "description": "The switch to create Monitor Logs connection."
+      }
+    },
+    "deployLogicAppStorageConnection": {
+      "value": false,
+      "metadata": {
+        "description": "The switch to create blob storage account connection."
+      }
+    },
+    "deployLogicAppDatalakeConnection": {
+      "value": false,
+      "metadata": {
+        "description": "The switch to create Datalake connection."
+      }
+    },
+    "deployLogicAppADLSGen2Connection": {
+      "value": false,
+      "metadata": {
+        "description": "The switch to create ADLS Gen 2 connection."
+      }
+    },
+    "deployLogicAppADFConnection": {
+      "value": false,
+      "metadata": {
+        "description": "The switch to create ADF connection."
+      }
+    },
+    "deployLogicAppPowerBIConnection": {
+      "value": false,
+      "metadata": {
+        "description": "The switch to create a PowerBI connection."
+      }
+    },
+    "streamAnalyticsJobResourceGroupName": {
+      "value": "bieno-da22-d-903766-rg",
+      "metadata": {
+        "description": "Stream Analytics Job ResourceGroup Name"
+      }
+    },
+    "streamAnalyticsJobName": {
+      "value": "bieno-da22-d-903766-strmanlytjob-01",
+      "metadata": {
+        "description": "Stream Analytics Job Name"
+      }
+    },
+    "numberOfStreamingUnits": {
+      "value": "1",
+      "metadata": {
+        "description": "Number Of Streaming Units"
+      }
+    },
+    "apiconnection_adlsgen2_name": {
+      "value": "bieno-da22-d-903766-logicapp-adlsgen2-01",
+      "metadata": {
+        "description": "Logic App ADLS Gen2 API Connection name"
+      }
+    },
+    "apiManagementServiceName": {
+      "value": "bieno-da22-d-903766-apim-01",
+      "metadata": {
+        "description": "api Management Service name"
+      }
+    },
+    "acrName": {
+      "value": "bienoda22d903766acr01",
+      "metadata": {
+        "description": "Azure Container Registry name"
+      }
+    },
+    "translatorCognitiveServiceName": {
+      "value": "bieno-da22-d-903766-tcs-01",
+      "metadata": {
+        "description": "Translator cognitive service name"
+      }
+    },
+    "synapseWorkspaceName": {
+      "value": "bieno-da22-d-903766-synapse-01",
+      "metadata": {
+        "description": "The name of your synapse workspace"
+      }
+    },
+    "synapseDatabaseName": {
+      "value": "bieno-da22-d-903766-synapsedb-01",
+      "metadata": {
+        "description": "The name of your synapse serverless database"
+      }
+    },
+    "synapseResourceGroupName": {
+      "value": "bieno-da22-d-903766-rg",
+      "metadata": {
+        "description": "The name of the resource group used by your synapse workspace"
+      }
+    },
+    "synapseManagedResourceGroupName": {
+      "value": "bieno-da22-d-903766-syn1-rg",
+      "metadata": {
+        "description": "The name of the managed resource group used by your synapse workspace"
+      }
+    },
+    "staticWebName": {
+      "value": "bieno-da22-d-903766-staticweb-01",
+      "metadata": {
+        "description": "The name of the static web component"
+      }
+    },
+    "staticWebSku": {
+      "value": "Standard",
+      "metadata": {
+        "description": "The pricing sku of the static web component"
+      }
+    },
+    "staticWebRepositoryUrl": {
+      "value": "https://bnlwe-p-56728-ia-01-unilevercom-vsts.visualstudio.com/bieno-da-p-903766-vstsp/_git/bieno-da-p-903766-vstsp",
+      "metadata": {
+        "description": "The azure devops git repo of the static web component"
+      }
+    },
+    "staticWebBranch": {
+      "value": "develop",
+      "metadata": {
+        "description": "The git repo branch name of the static web component"
+      }
+    },
+    "staticWebRepositoryToken": {
+      "value": "devTeamMustCreatePAT",
+      "metadata": {
+        "description": "The GIT PAT for the static web component. Dev team must create one in Azure Dev Ops and set it on the static web component"
+      }
+    },
+    "staticWebAppLocation": {
+      "value": "/Web",
+      "metadata": {
+        "description": "The path to the app code within the repository."
+      }
+    },
+    "staticWebApiLocation": {
+      "value": "api",
+      "metadata": {
+        "description": "The path to the api code within the repository."
+      }
+    },
+    "staticWebOutputLocation": {
+      "value": "/Web",
+      "metadata": {
+        "description": "The output path of the app after building"
+      }
+    },
+    "webhookV2Url": {
+      "value": "https://58aa0e39-9d27-49e5-b6b8-62c34ebca19d.webhook.ne.azure-automation.net/webhooks?token=5YAOtPHqnZurkDoQRkdFU2W%2fOAg5hByVJnrS%2fbH%2fOpI%3d",
+      "metadata": {
+        "description": "The end point for platform webhookv2 implementation."
+      }
+    }
+  }
+}

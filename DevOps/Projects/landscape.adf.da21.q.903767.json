@@ -1,0 +1,108 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "factoryName": {
+      "value": "bieno-da21-q-903767-adf-01"
+    },
+    "LS_ADLS_properties_typeProperties_dataLakeStoreUri": {
+      "value": ""
+    },
+    "LS_ADLS_properties_typeProperties_servicePrincipalId": {
+      "value": "1a5e04b2-0f9b-47ed-922e-075fb7ffa410"
+    },
+    "LS_ADLS_properties_typeProperties_servicePrincipalKey_secretName": {
+      "value": "svc-b-da-q-903767-ina-aadprincipal"
+    },
+    "LS_ADLS_properties_typeProperties_subscriptionId": {
+      "value": "105cc892-0276-4b01-b5ff-426df8be49e2"
+    },
+    "LS_ADLS_properties_typeProperties_resourceGroupName": {
+      "value": "bieno-da21-q-903767-rg"
+    },
+    "LS_ADLS_properties_typeProperties_Url": {
+      "value": "https://dbstorageda21q903767adls.dfs.core.windows.net/"
+    },
+    "LS_ADLS_UDL_properties_typeProperties_dataLakeStoreUri": {
+      "value": "https://dbstorageda06b80066adls.dfs.core.windows.net/"
+    },
+    "LS_ADLS_UDL_properties_typeProperties_servicePrincipalId": {
+      "value": "1a5e04b2-0f9b-47ed-922e-075fb7ffa410"
+    },
+    "LS_ADLS_UDL_properties_typeProperties_servicePrincipalKey_secretName": {
+      "value": "svc-b-da-q-903767-ina-aadprincipal"
+    },
+    "LS_ADLS_UDL_properties_typeProperties_subscriptionId": {
+      "value": "50327adb-f8a0-4908-8d31-aa182df19f02"
+    },
+    "LS_ADLS_UDL_properties_typeProperties_resourceGroupName": {
+      "value": "bieno-da06-b-80066-rg"
+    },
+    "LS_ASDW_properties_typeProperties_connectionString": {
+      "value": "Data Source=tcp:bieno-da21-q-903767-unilevercom-sql-01.database.windows.net,1433;Initial Catalog=bieno-da21-q-903767-unilevercom-sqldw-01;Integrated Security=False;Encrypt=True;Connect Timeout=30"
+    },
+    "LS_ASDW_properties_typeProperties_tenant": {
+      "value": "f66fae02-5d36-495b-bfe0-78a6ff9f8e6e"
+    },
+    "LS_ASQL_properties_typeProperties_connectionString": {
+      "value": "Data Source=tcp:bieno-da21-q-903767-unilevercom-sql-01.database.windows.net,1433;Initial Catalog=bieno-da21-q-903767-unilevercom-sqldb-01;Integrated Security=False;Encrypt=True;Connect Timeout=30"
+    },
+    "LS_ASQL_properties_typeProperties_servicePrincipalId": {
+      "value": "1a5e04b2-0f9b-47ed-922e-075fb7ffa410"
+    },
+    "LS_ASQL_properties_typeProperties_servicePrincipalKey_secretName": {
+      "value": "svc-b-da-q-903767-ina-aadprincipal"
+    },
+    "LS_KV_LOCAL_properties_typeProperties_baseUrl": {
+      "value": "https://bieno-da21-q-903767-kv01.vault.azure.net/"
+    },
+    "dfgw-onprem_properties_typeProperties_linkedInfo_resourceId": {
+      "value": "/subscriptions/c9462478-f3d6-4345-acd0-feb25ebe28ca/resourceGroups/bieno-da12-d-56731-rg/providers/Microsoft.DataFactory/factories/bieno-da12-d-56731-adf-01/integrationruntimes/bieno-da12-d-56731-dfgw-master"
+    },
+    "PL_PAUSE_AAS_properties_0_typeProperties_url": {
+      "value": "https://s9events.azure-automation.net/webhooks?token=4aI%2fxOY6ZODut%2fIzbtmjXmgULTQ%2fExCKc9kTyyG050w%3d"
+    },
+    "PL_PAUSE_SQLDW_properties_0_typeProperties_url": {
+      "value": "https://s9events.azure-automation.net/webhooks?token=r8AyRg6kdZ8vv%2fH7Ryc7WGr1Yo4351RxBNXcObk%2feLo%3d"
+    },
+    "PL_RESUME_AAS_properties_0_typeProperties_url": {
+      "value": "https://s9events.azure-automation.net/webhooks?token=peBg2hEuvrd%2bglsWS5LDKkczhebozGRs8YyOD64acos%3d"
+    },
+    "PL_RESUME_SQLDW_properties_0_typeProperties_url": {
+      "value": "https://s9events.azure-automation.net/webhooks?token=JRi9QKLI6HmnwaMGrHQx%2fyi%2be98ADBWhWc5t8UWH4Ew%3d"
+    },
+    "PL_RESUME_SQLDW_WITH_CALLBACK_properties_0_typeProperties_url": {
+      "value": "https://s9events.azure-automation.net/webhooks?token=JRi9QKLI6HmnwaMGrHQx%2fyi%2be98ADBWhWc5t8UWH4Ew%3d"
+    },
+    "PL_SCALE_AAS_properties_0_typeProperties_url": {
+      "value": "https://58aa0e39-9d27-49e5-b6b8-62c34ebca19d.webhook.ne.azure-automation.net/webhooks?token=VdlIPH%2biX3ERduL7vrv7vsvr0T%2fggcyATmwLqN3m8qU%3d"
+    },
+    "PL_SCALE_SQLDB_properties_0_typeProperties_url": {
+      "value": "https://s9events.azure-automation.net/webhooks?token=lriM4WaRsRSMkgcX5klkrgDwj0s%2fF1zUOg1GZ1jBtFs%3d"
+    },
+    "PL_SCALE_SQLDW_properties_0_typeProperties_url": {
+      "value": "https://s9events.azure-automation.net/webhooks?token=lriM4WaRsRSMkgcX5klkrgDwj0s%2fF1zUOg1GZ1jBtFs%3d"
+    },
+    "PL_PROCESS_CUBE_properties_0_typeProperties_url": {
+      "value": "https://s9events.azure-automation.net/webhooks?token=pbNj8QScN5%2feViIkAaOZgwyoAvstRVtsoY5IlRwB4FM%3d"
+    },
+    "PL_SCALE_WEB_properties_0_typeProperties_url": {
+      "value": "https://58aa0e39-9d27-49e5-b6b8-62c34ebca19d.webhook.ne.azure-automation.net/webhooks?token=KnHQYVO2QDmSRYcdpEzZ5qo9zVkQm3BhwRimYQ%2bPf5I%3d"
+    },
+    "PL_PROCESS_AASV2_WORKFLOW_properties_0_typeProperties_url": {
+      "value": "https://58aa0e39-9d27-49e5-b6b8-62c34ebca19d.webhook.ne.azure-automation.net/webhooks?token=5YAOtPHqnZurkDoQRkdFU2W%2fOAg5hByVJnrS%2fbH%2fOpI%3d"
+    },
+    "PL_PROCESS_AASV2_WORKFLOW_properties_1_typeProperties_url": {
+      "value": "https://58aa0e39-9d27-49e5-b6b8-62c34ebca19d.webhook.ne.azure-automation.net/webhooks?token=5YAOtPHqnZurkDoQRkdFU2W%2fOAg5hByVJnrS%2fbH%2fOpI%3d"
+    },
+    "PL_PROCESS_AASV2_WORKFLOW_properties_2_typeProperties_url": {
+      "value": "https://58aa0e39-9d27-49e5-b6b8-62c34ebca19d.webhook.ne.azure-automation.net/webhooks?token=5YAOtPHqnZurkDoQRkdFU2W%2fOAg5hByVJnrS%2fbH%2fOpI%3d"
+    },
+    "PL_PROCESS_AASV2_WORKFLOW_properties_3_typeProperties_url": {
+      "value": "https://58aa0e39-9d27-49e5-b6b8-62c34ebca19d.webhook.ne.azure-automation.net/webhooks?token=5YAOtPHqnZurkDoQRkdFU2W%2fOAg5hByVJnrS%2fbH%2fOpI%3d"
+    },
+    "PL_PROCESS_AASV2_WORKFLOW_properties_4_typeProperties_url": {
+      "value": "https://58aa0e39-9d27-49e5-b6b8-62c34ebca19d.webhook.ne.azure-automation.net/webhooks?token=5YAOtPHqnZurkDoQRkdFU2W%2fOAg5hByVJnrS%2fbH%2fOpI%3d"
+    }
+  }
+}
