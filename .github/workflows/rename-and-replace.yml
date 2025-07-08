@@ -11,9 +11,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Safely rename files and folders with '90376' to 'test'
+      - name: Rename and replace (ignore .git)
         run: |
-          find . -depth -name '*90376*' | while read path; do
+          find . -path "./.git" -prune -o -depth -name '*90376*' -print | while read path; do
             new_path=$(echo "$path" | sed 's/90376/test/g')
             if [ "$path" != "$new_path" ]; then
               if [ ! -e "$new_path" ]; then
@@ -22,11 +22,8 @@ jobs:
               fi
             fi
           done
-
-      - name: Replace '90376' and 'unilver' inside all files
-        run: |
-          grep -rl '90376' . | xargs sed -i 's/90376/github/g'
-          grep -rl 'unilver' . | xargs sed -i 's/unilver/github/g'
+          grep -rl '90376' . --exclude-dir=".git" | xargs sed -i 's/90376/github/g'
+          grep -rl 'unilver' . --exclude-dir=".git" | xargs sed -i 's/unilver/github/g'
 
       - name: Commit and push changes
         run: |
