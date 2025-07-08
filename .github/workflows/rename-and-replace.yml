@@ -1,0 +1,38 @@
+name: Replace 90376 and Unilver with GitHub
+
+on:
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  rename-and-replace:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Safely rename files and folders with '90376' to 'test'
+        run: |
+          find . -depth -name '*90376*' | while read path; do
+            new_path=$(echo "$path" | sed 's/90376/test/g')
+            if [ "$path" != "$new_path" ]; then
+              if [ ! -e "$new_path" ]; then
+                echo "Renaming: $path -> $new_path"
+                mv "$path" "$new_path"
+              fi
+            fi
+          done
+
+      - name: Replace '90376' and 'unilver' inside all files
+        run: |
+          grep -rl '90376' . | xargs sed -i 's/90376/github/g'
+          grep -rl 'unilver' . | xargs sed -i 's/unilver/github/g'
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add .
+          git commit -m "🔁 Replace 90376/unilver with github"
+          git push

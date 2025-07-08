@@ -1,16 +1,16 @@
 $rootPath = (Get-Item -Path $PSScriptRoot).FullName
 # Parameters
 # For token authN & authZ
-# svc-b-da-p-80010-ecosystem-adls-permissions
-$clientId="1df7846b-461f-42f4-9fba-4b193824756e"
+# svc-test-p-80010-ecosystem-test-permissions
+$clientId="1df7846b-test-42f4-test-4b193824756e"
 $clientSecret = "??"
 # set true if you want to get bearer token using the client secret
 $useClientSecret = $true
-#$clientId="35757ac0-0aa9-4e62-9ef5-b39734c989ff" #svc-b-da-b-80066-ina-dataowner
-$tenant="f66fae02-5d36-495b-bfe0-78a6ff9f8e6e"
+#$clientId="35757ac0-test-4e62-test-b39734c989ff" #svc-test-b-10000-ina-dataowner
+$tenant="f66fae02-test-495b-test-78a6ff9f8e6e"
 # Identify location to apply ACL update from
-$accountName = "dbstorageda06b80066adls"
-$container = "unilever"
+$accountName = "dbstorageda06b10000adls"
+$container = "google"
 
 #$rootDir = "UniversalDataLake/ExternalSources/SecondarySales"
 #$rootDir = "UniversalDataLake/ExternalSources/FeatureVision"
@@ -18,14 +18,14 @@ $rootDir = "UniversalDataLake/InternalSources/UltraDT/BlobFileShare/ACCH_TRANSAC
 
 # Specify how the ACL should be updated. 2 modes:
 #  1. Absolute ACL - gets applied across the entire structure - assign $absoluteAcl - including default permissions, masks, etc.
-#       Eg: user::rwx,default:user::rwx,group::r-x,default:group::r-x,other::---,default:other::---,mask::rwx,default:mask::rwx,user:mary@contoso.com:rwx,default:user:mary@contoso.com:rwx,group:5117a2b0-f09b-44e9-b92a-fa91a95d5c28:rwx,default:group:5117a2b0-f09b-44e9-b92a-fa91a95d5c28:rwx
+#       Eg: user::rwx,default:user::rwx,group::r-x,default:group::r-x,other::---,default:other::---,mask::rwx,default:mask::rwx,user:mary@contoso.com:rwx,default:user:mary@contoso.com:rwx,group:5117a2b0-test-44e9-test-fa91a95d5c28:rwx,default:group:5117a2b0-test-44e9-test-fa91a95d5c28:rwx
 #  2. Merge an ACE with existing ACL - assign $mergePricipal, $mergeType & $mergePerms
 # $absoluteAcl & $mergePrincipal are mutually exclusive - 1 of them must be $null
 #$absoluteAcl = "[scope:][type]:[id]:[permissions],[scope:][type]:[id]:[permissions]"
 $mergeType = "group"
 $mergePerms = "r-x"
 
-$mergePrincipal = "c0505d9b-eef2-45e2-9acc-23df836b7928"
+$mergePrincipal = "c0505d9b-test-45e2-test-23df836b7928"
 # Use this variable in conjunction with $mergePrincipal & $mergeType to remove an ACE
 $removeEntry = $false
 
@@ -310,12 +310,12 @@ do {
     }
 } while ($listResp.StatusCode -eq 200 -and $null -ne $continuationToken)
 Add-Content -Path $itemParams.logFile -Value "Total number of batches submitted: $batchCount"
-$host.UI.WriteLine("---------------------------------------------")
+$host.UI.WriteLine("-TEST--TEST--TEST--TEST--TEST--TEST--TEST----")
 $host.UI.WriteLine("Total number of batches submitted: $batchCount")
 # Cleanup
 $host.UI.WriteLine("Waiting for completion & cleaning up")
 Add-Content -Path $itemParams.logFile -Value "Waiting for completion & cleaning up"
-$host.UI.WriteLine("---------------------------------------------")
+$host.UI.WriteLine("-TEST--TEST--TEST--TEST--TEST--TEST--TEST----")
 $cleanUpErrors=0
 while ($runSpaces.Count -gt 0) {
     $idx = [System.Threading.WaitHandle]::WaitAny($($runSpaces | Select-Object -First 64 | ForEach-Object { $_.Handle.AsyncWaitHandle }))
@@ -325,7 +325,7 @@ while ($runSpaces.Count -gt 0) {
     $runSpaces.RemoveAt($idx)
 }
 $Global:ProgressPreference = $oldProgressPreference
-$host.UI.WriteLine("---------------------------------------------")
+$host.UI.WriteLine("-TEST--TEST--TEST--TEST--TEST--TEST--TEST----")
 $message = "Completed. Items processed: $($itemsStats.itemsProcessed.CurrentCount), items updated: $($itemsStats.itemsUpdated.CurrentCount), errors: $($itemsStats.itemsErrors.CurrentCount)"
 $host.UI.WriteLine($message)
 Add-Content -Path $itemParams.logFile -Value $message
@@ -334,7 +334,7 @@ $totalTime = "{0:HH:mm:ss}" -f ([datetime]$elapsedTime.Ticks)
 $message = "Total Job Elapsed time $totalTime"
 $host.UI.WriteLine($message)
 Add-Content -Path $itemParams.logFile -Value $message
-$host.UI.WriteLine("---------------------------------------------")
+$host.UI.WriteLine("-TEST--TEST--TEST--TEST--TEST--TEST--TEST----")
 if ($itemsStats.itemsErrors.CurrentCount -eq 0) {
     Remove-Item -Path $itemParams.errorLogFile | Out-Null
 }

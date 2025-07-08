@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "logicAppName": {
-            "defaultValue": "bieno-da22-d-903766-logicapp-01",
+            "defaultValue": "bieno-test-d-TEST6-logicapp-01",
             "type": "String"
         },
         "location": {
@@ -11,15 +11,15 @@
             "type": "string"
         },
         "logicAppStorageConnectionName": {
-            "defaultValue": "bieno-da22-d-903766-logicapp-blob-01",
+            "defaultValue": "bieno-test-d-TEST6-logicapp-test-01",
             "type": "string"
         },
         "logicAppSharePointConnectionName": {
-            "defaultValue": "bieno-da22-d-903766-logicapp-sharepoint-01",
+            "defaultValue": "bieno-test-d-TEST6-logicapp-sharepoint-01",
             "type": "string"
         },
         "logicAppO365apiConnection": {
-            "defaultValue": "bieno-da22-d-903766-logicapp-o365-015",
+            "defaultValue": "bieno-test-d-TEST6-logicapp-test-015",
             "type": "String"
         }
     },
@@ -32,7 +32,7 @@
             "location": "[parameters('location')]",
             "tags": {
                 "CostCentre": "A956001445",
-                "ITSG": "903766",
+                "ITSG": "TEST6",
                 "Icc": "ICC16464",
                 "Platform": "Core Data Ecosystem",
                 "ServiceName": "MDL SEAA",
@@ -178,7 +178,7 @@
                                                                     }
                                                                 },
                                                                 "method": "post",
-                                                                "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://unilever.sharepoint.com/sites/SEAI-MarketDataLake'))}/files",
+                                                                "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://google.sharepoint.com/sites/SEAI-MarketDataLake'))}/files",
                                                                 "queries": {
                                                                     "folderPath": "/Shared Documents/LandingSpace/Saigon Coop/Offtake",
                                                                     "name": "M@{items('For_each')?['DisplayName']}",
@@ -201,7 +201,7 @@
                                                                     }
                                                                 },
                                                                 "method": "get",
-                                                                "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://unilever.sharepoint.com/sites/SEAI-MarketDataLake'))}/files/@{encodeURIComponent(items('For_each')?['Id'])}/content",
+                                                                "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://google.sharepoint.com/sites/SEAI-MarketDataLake'))}/files/@{encodeURIComponent(items('For_each')?['Id'])}/content",
                                                                 "queries": {
                                                                     "inferContentType": true
                                                                 }
@@ -243,7 +243,7 @@
                                                     }
                                                 },
                                                 "method": "get",
-                                                "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://unilever.sharepoint.com/sites/SEAI-MarketDataLake'))}/folders/@{encodeURIComponent('%252fShared%2bDocuments%252fLandingSpace%252fSaigon%2bCoop%252fRAW_DATA%252f2023')}"
+                                                "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://google.sharepoint.com/sites/SEAI-MarketDataLake'))}/folders/@{encodeURIComponent('%252fShared%2bDocuments%252fLandingSpace%252fSaigon%2bCoop%252fRAW_DATA%252f2023')}"
                                             }
                                         }
                                     }
@@ -256,7 +256,7 @@
                                             "type": "ApiConnection",
                                             "inputs": {
                                                 "body": {
-                                                    "destinationDataset": "https://unilever.sharepoint.com/sites/SEAI-MarketDataLake",
+                                                    "destinationDataset": "https://google.sharepoint.com/sites/SEAI-MarketDataLake",
                                                     "destinationFolderPath": "@triggerBody()?['Destination']",
                                                     "nameConflictBehavior": 1,
                                                     "sourceFileId": "@{triggerBody()?['Source']}@{triggerBody()?['Filename']}"
@@ -267,7 +267,7 @@
                                                     }
                                                 },
                                                 "method": "post",
-                                                "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://unilever.sharepoint.com/sites/SEAI-MarketDataLake'))}/moveFileAsync"
+                                                "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://google.sharepoint.com/sites/SEAI-MarketDataLake'))}/moveFileAsync"
                                             }
                                         }
                                     }
@@ -321,7 +321,7 @@
                                                                     }
                                                                 },
                                                                 "method": "get",
-                                                                "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://unilever.sharepoint.com/sites/SEAI-MarketDataLake'))}/files/@{encodeURIComponent(items('Copy_files_to_ABS')?['Id'])}/content",
+                                                                "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://google.sharepoint.com/sites/SEAI-MarketDataLake'))}/files/@{encodeURIComponent(items('Copy_files_to_ABS')?['Id'])}/content",
                                                                 "queries": {
                                                                     "inferContentType": true
                                                                 }
@@ -365,7 +365,7 @@
                                                     }
                                                 },
                                                 "method": "get",
-                                                "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://unilever.sharepoint.com/sites/SEAI-MarketDataLake'))}/folders/@{encodeURIComponent(triggerBody()?['Source'])}"
+                                                "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://google.sharepoint.com/sites/SEAI-MarketDataLake'))}/folders/@{encodeURIComponent(triggerBody()?['Source'])}"
                                             }
                                         }
                                     }
@@ -386,7 +386,7 @@
                                                             }
                                                         },
                                                         "method": "delete",
-                                                        "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://unilever.sharepoint.com/sites/SEAI-MarketDataLake'))}/tables/@{encodeURIComponent(encodeURIComponent(triggerBody()?['SP List']))}/items/@{encodeURIComponent(items('Delete_existing_items_of_sharepoint_list')?['ID'])}"
+                                                        "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://google.sharepoint.com/sites/SEAI-MarketDataLake'))}/tables/@{encodeURIComponent(encodeURIComponent(triggerBody()?['SP List']))}/items/@{encodeURIComponent(items('Delete_existing_items_of_sharepoint_list')?['ID'])}"
                                                     }
                                                 }
                                             },
@@ -411,7 +411,7 @@
                                                     }
                                                 },
                                                 "method": "get",
-                                                "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://unilever.sharepoint.com/sites/SEAI-MarketDataLake'))}/tables/@{encodeURIComponent(encodeURIComponent(triggerBody()?['SP List']))}/items"
+                                                "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://google.sharepoint.com/sites/SEAI-MarketDataLake'))}/tables/@{encodeURIComponent(encodeURIComponent(triggerBody()?['SP List']))}/items"
                                             }
                                         },
                                         "Insert_Missing_records_into_sharepoint_list": {
@@ -438,7 +438,7 @@
                                                             }
                                                         },
                                                         "method": "post",
-                                                        "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://unilever.sharepoint.com/sites/SEAI-MarketDataLake'))}/tables/@{encodeURIComponent(encodeURIComponent(triggerBody()?['SP List']))}/items"
+                                                        "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://google.sharepoint.com/sites/SEAI-MarketDataLake'))}/tables/@{encodeURIComponent(encodeURIComponent(triggerBody()?['SP List']))}/items"
                                                     }
                                                 },
                                                 "Increment_Counter_variable": {
@@ -603,7 +603,7 @@
                                                             }
                                                         },
                                                         "method": "get",
-                                                        "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://unilever.sharepoint.com/sites/SEAI-MarketDataLake'))}/tables/@{encodeURIComponent(encodeURIComponent(items('For_each_Mapping_Library_')))}/items"
+                                                        "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://google.sharepoint.com/sites/SEAI-MarketDataLake'))}/tables/@{encodeURIComponent(encodeURIComponent(items('For_each_Mapping_Library_')))}/items"
                                                     },
                                                     "runtimeConfiguration": {
                                                         "paginationPolicy": {

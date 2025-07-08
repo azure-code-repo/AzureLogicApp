@@ -9,25 +9,25 @@
       }
     },
     "subscriptionId": {
-      "value": "23c97e5c-d961-43fd-8653-5a528cb5a2f5",
+      "value": "23c97e5c-test-43fd-TEST-5a528cb5a2f5",
       "metadata": {
         "description": "The Azure subscription id where these resources are deployed to."
       }
     },
     "tenantId": {
-      "value": "f66fae02-5d36-495b-bfe0-78a6ff9f8e6e",
+      "value": "f66fae02-test-495b-test-78a6ff9f8e6e",
       "metadata": {
         "description": "The Azure tenant id where the service principal is created."
       }
     },
     "tenantDomainName": {
-      "value": "unilever.com",
+      "value": "google.com",
       "metadata": {
         "description": "The Azure tenant domain name where the service principal is created."
       }
     },
     "applicationId": {
-      "value": "04493cd8-9048-405b-ab3a-0d057e1c39ce",
+      "value": "04493cd8-TEST-405b-test-0d057e1c39ce",
       "metadata": {
         "description": "The Azure Active Directory Application id. This is populated when you run the script New-EnvironmentParameterFile.ps1. Otherwise do this manually."
       }
@@ -41,9 +41,9 @@
     "adApplicationSecret": {
       "reference": {
         "keyVault": {
-          "id": "/subscriptions/23c97e5c-d961-43fd-8653-5a528cb5a2f5/resourceGroups/bieno-da18-p-56728-rg/providers/Microsoft.KeyVault/vaults/bieno-da18-p-903765-kv01"
+          "id": "/subscriptions/23c97e5c-test-43fd-TEST-5a528cb5a2f5/resourceGroups/bieno-test-p-56728-rg/providers/Microsoft.KeyVault/vaults/bieno-test-p-TEST5-kv01"
         },
-        "secretName": "svc-b-da-p-903765-ina-aadprincipal"
+        "secretName": "svc-test-p-TEST5-ina-aadprincipal"
       },
       "metadata": {
         "description": "An ARM key vault reference to the application SPN secret."
@@ -52,9 +52,9 @@
     "deploymentAdApplicationSecret": {
       "reference": {
         "keyVault": {
-          "id": "/subscriptions/23c97e5c-d961-43fd-8653-5a528cb5a2f5/resourceGroups/bieno-da18-p-56728-rg/providers/Microsoft.KeyVault/vaults/bieno-da18-p-56728-kv-01"
+          "id": "/subscriptions/23c97e5c-test-43fd-TEST-5a528cb5a2f5/resourceGroups/bieno-test-p-56728-rg/providers/Microsoft.KeyVault/vaults/bieno-test-p-56728-kv-01"
         },
-        "secretName": "svc-b-da-p-903765-ina-deployment"
+        "secretName": "svc-test-p-TEST5-ina-deployment"
       },
       "metadata": {
         "description": "An ARM key vault reference to the deployment SPN secret."
@@ -63,7 +63,7 @@
     "logicAppSqlUserSecret": {
       "reference": {
         "keyVault": {
-          "id": "/subscriptions/23c97e5c-d961-43fd-8653-5a528cb5a2f5/resourceGroups/bieno-da18-p-56728-rg/providers/Microsoft.KeyVault/vaults/bieno-da18-p-903765-kv01"
+          "id": "/subscriptions/23c97e5c-test-43fd-TEST-5a528cb5a2f5/resourceGroups/bieno-test-p-56728-rg/providers/Microsoft.KeyVault/vaults/bieno-test-p-TEST5-kv01"
         },
         "secretName": "sqllogicappuser"
       },
@@ -72,19 +72,19 @@
       }
     },
     "servicePrincipalId": {
-      "value": "b94adebe-ca5d-460a-a6f3-033233770c50",
+      "value": "b94adebe-test-460a-test-033233770c50",
       "metadata": {
         "description": "The service principal id for the Azure AD application. This is populated when you run the script New-EnvironmentParameterFile.ps1. Otherwise do this manually."
       }
     },
     "deploymentApplicationId": {
-      "value": "51f93c82-01cf-4ca2-9bbf-80220f8af46b",
+      "value": "51f93c82-test-4ca2-test-80220f8af46b",
       "metadata": {
         "description": "The Azure Active Directory Application id that has provisioning permissions. This is populated when you run the script New-EnvironmentParameterFile.ps1. Otherwise do this manually."
       }
     },
     "deploymentServicePrincipalId": {
-      "value": "f82ac35a-ef66-4cc3-b95d-cd2412b0b487",
+      "value": "f82ac35a-test-4cc3-test-cd2412b0b487",
       "metadata": {
         "description": "The service principal id for the Azure AD application that has provisioning permissions. This is populated when you run the script New-EnvironmentParameterFile.ps1. Otherwise do this manually."
       }
@@ -96,31 +96,31 @@
       }
     },
     "landscapeResourceGroupName": {
-      "value": "bieno-da18-p-56728-rg",
+      "value": "bieno-test-p-56728-rg",
       "metadata": {
         "description": "The name of the landscape's private resource group"
       }
     },
     "landscapeAutomationResourceGroupName": {
-      "value": "bieno-da09-p-56728-rg",
+      "value": "bieno-test-p-56728-rg",
       "metadata": {
         "description": "The name of the landscape's private resource group that hosts the automation account."
       }
     },
     "landscapeAutomationAccountName": {
-      "value": "bieno-da09-p-56728-auto-01",
+      "value": "bieno-test-p-56728-test-01",
       "metadata": {
         "description": "The name of the landscape's private automation account"
       }
     },
     "dtlVnetId": {
-      "value": "/subscriptions/c9462478-f3d6-4345-acd0-feb25ebe28ca/resourceGroups/bieno-DA12-p-00000-net-rg/providers/Microsoft.Network/virtualNetworks/bieno-DA12-p-vnet01",
+      "value": "/subscriptions/c9462478-test-4345-test-feb25ebe28ca/resourceGroups/bieno-TEST-p-00000-net-rg/providers/Microsoft.Network/virtualNetworks/bieno-TEST-p-vnet01",
       "metadata": {
         "description": "The resource id of the DTL vnet for the region."
       }
     },
     "dtlSubnetName": {
-      "value": "bieno-da12-p-dtl-subnet01",
+      "value": "bieno-test-p-dtl-subnet01",
       "metadata": {
         "description": "The name of the DTL subnet for the region."
       }
@@ -156,43 +156,43 @@
       }
     },
     "vstsAccountName": {
-      "value": "bnlwe-p-56728-ia-01-unilevercom-vsts",
+      "value": "prod-p-56728-ia-01-googlecom-vsts",
       "metadata": {
         "description": "The name of the I&A's VSTS account"
       }
     },
     "vstsTeamProjectName": {
-      "value": "bieno-da-p-903766-vstsp",
+      "value": "bieno-test-TEST6-vstsp",
       "metadata": {
         "description": "The name of your VSTS team project"
       }
     },
     "landscapeStorageAccountName": {
-      "value": "bienostunileverda1856728",
+      "value": "bienostgoogleda1856728",
       "metadata": {
         "description": "The name of the landscape's private storage account"
       }
     },
     "landscapeKeyVaultName": {
-      "value": "bieno-da18-p-56728-kv-01",
+      "value": "bieno-test-p-56728-kv-01",
       "metadata": {
         "description": "The name of the landscape's private key vault"
       }
     },
     "landscapeDataFactoryResourceGroupName": {
-      "value": "bieno-da09-p-56728-rg",
+      "value": "bieno-test-p-56728-rg",
       "metadata": {
         "description": "The name of the landscape's private resource group that contains the shared ADF"
       }
     },
     "landscapeDataFactoryName": {
-      "value": "bieno-da09-p-56728-adf-01",
+      "value": "bieno-test-p-56728-adf-01",
       "metadata": {
         "description": "The name of the landscape's private data factory.  This has the master self hosted IR that applications can share"
       }
     },
     "landscapeDataFactorySelfHostedIRName": {
-      "value": "bieno-da09-p-56728-dfgw-master",
+      "value": "bieno-test-p-56728-test-master",
       "metadata": {
         "description": "The name of the landscape's self hosted IR that can be shared."
       }
@@ -204,19 +204,19 @@
       }
     },
     "keyVaultResourceGroupName": {
-      "value": "bieno-da18-p-56728-rg",
+      "value": "bieno-test-p-56728-rg",
       "metadata": {
         "description": "The Azure Resource Group where the key vault is to be created."
       }
     },
     "keyVaultName": {
-      "value": "bieno-da18-p-903765-kv01",
+      "value": "bieno-test-p-TEST5-kv01",
       "metadata": {
         "description": "The name of the Azure Key Vault."
       }
     },
     "keyVaultNameLocal": {
-      "value": "bieno-da18-p-903765-kv02",
+      "value": "bieno-test-p-TEST5-kv02",
       "metadata": {
         "description": "The name of the additional key Vault to be created in the application resource group."
       }
@@ -228,31 +228,31 @@
       }
     },
     "redisCacheName": {
-      "value": "bieno-da18-p-903765-RC-01",
+      "value": "bieno-test-p-TEST5-RC-01",
       "metadata": {
         "description": "The name of redisCache."
       }
     },
     "keyVaultAuditStorageAccountResourceGroupName": {
-      "value": "bieno-da18-p-903765-rg",
+      "value": "bieno-test-p-TEST5-rg",
       "metadata": {
         "description": "The key vault audit storage account resource group."
       }
     },
     "keyVaultAuditStorageAccountName": {
-      "value": "dbstorageda18p903765",
+      "value": "dbstorageda18pTEST5",
       "metadata": {
         "description": "The key vault audit storage account"
       }
     },
     "storageAccountResourceGroupName": {
-      "value": "bieno-da18-p-903765-rg",
+      "value": "bieno-test-p-TEST5-rg",
       "metadata": {
         "description": "The Azure Resource Group containing the storage account."
       }
     },
     "storageAccountName": {
-      "value": "dbstorageda18p903765",
+      "value": "dbstorageda18pTEST5",
       "metadata": {
         "description": "The name of the storage account."
       }
@@ -270,19 +270,19 @@
       }
     },
     "adlStoreResourceGroupName": {
-      "value": "bieno-da18-p-903765-rg",
+      "value": "bieno-test-p-TEST5-rg",
       "metadata": {
         "description": "The Azure Resource Group for creating the Azure Data Lake Store."
       }
     },
     "adlStoreName": {
-      "value": "dbstorageda18p903765adls",
+      "value": "dbstorageda18pTEST5adls",
       "metadata": {
         "description": "The name of the Gen2 Azure Data Lake Store."
       }
     },
     "adlStoreNameSecondary": {
-      "value": "dbstorageda18p903765adls-secondary",
+      "value": "dbstorageda18pTEST5adls-secondary",
       "metadata": {
         "description": "The name of the Gen2 Azure Data Lake Store Redundant Store Name."
       }
@@ -294,19 +294,19 @@
       }
     },
     "adlStoreNameGen1": {
-      "value": "bienostunileveda18903765",
+      "value": "bienostunileveda18TEST5",
       "metadata": {
         "description": "The name of the Gen1 Azure Data Lake Store."
       }
     },
     "adlStoreFoldersFile": {
-      "value": "folders.p.903765.json",
+      "value": "folders.p.TEST5.json",
       "metadata": {
         "description": "The name of the Azure Data Lake Store folders config file. Defines the folders and ACL permissions"
       }
     },
     "sharedStorageAccountResourceGroupName": {
-      "value": "bieno-da05-p-80010-rg",
+      "value": "bieno-test-p-80010-rg",
       "metadata": {
         "description": "The Azure Resource Group containing the UDL shared storage account."
       }
@@ -318,7 +318,7 @@
       }
     },
     "sharedAdlStoreResourceGroupName": {
-      "value": "bieno-da05-p-80010-rg",
+      "value": "bieno-test-p-80010-rg",
       "metadata": {
         "description": "The Azure Resource Group for creating the UDL shared Azure Data Lake Store."
       }
@@ -330,37 +330,37 @@
       }
     },
     "adlAnalyticsResourceGroupName": {
-      "value": "bieno-da18-p-903765-rg",
+      "value": "bieno-test-p-TEST5-rg",
       "metadata": {
         "description": "The Azure Resource Group for creating the Azure Data Lake Analytics."
       }
     },
     "adlAnalyticsName": {
-      "value": "bienoda18p903765appadla",
+      "value": "bienoda18pTEST5appadla",
       "metadata": {
         "description": "The name of the Azure Data Analytics."
       }
     },
     "sqlServerResourceGroupName": {
-      "value": "bieno-da18-p-903765-rg",
+      "value": "bieno-test-p-TEST5-rg",
       "metadata": {
         "description": "The Azure Resource Group for creating the SQL Server."
       }
     },
     "sqlServerName": {
-      "value": "bieno-da18-p-903765-unilevercom-sql-01",
+      "value": "bieno-test-p-TEST5-googlecom-sql-01",
       "metadata": {
         "description": "The name of the SQL Server."
       }
     },
     "sqlServerSubnetName1": {
-      "value": "bieno-DA18-p-subnet01",
+      "value": "bieno-TEST-p-subnet01",
       "metadata": {
         "description": "The name of the subnet to include in the firewall rules."
       }
     },
     "sqlDatabaseName": {
-      "value": "bieno-da18-p-903765-unilevercom-sqldb-01",
+      "value": "bieno-test-p-TEST5-googlecom-sqldb-01",
       "metadata": {
         "description": "The name of the SQL Database."
       }
@@ -384,7 +384,7 @@
       }
     },
     "sqlDataWarehouseName": {
-      "value": "bieno-da18-p-903765-unilevercom-sqldw-01",
+      "value": "bieno-test-p-TEST5-googlecom-sqldw-01",
       "metadata": {
         "description": "The name of the SQL Data Warehouse."
       }
@@ -426,19 +426,19 @@
       }
     },
     "dataFactoryResourceGroupName": {
-      "value": "bieno-da18-p-903765-rg",
+      "value": "bieno-test-p-TEST5-rg",
       "metadata": {
         "description": "The Azure Resource Group to create the Data Factory."
       }
     },
     "dataFactoryName": {
-      "value": "bieno-da18-p-903765-adf-01",
+      "value": "bieno-test-p-TEST5-adf-01",
       "metadata": {
         "description": "The name of the Data Factory."
       }
     },
     "dataFactoryRootParameterFileName": {
-      "value": "landscape.adf.da18.p.903765.json",
+      "value": "landscape.adf.da18.p.TEST5.json",
       "metadata": {
         "description": "The name of root parameter file for the ADF ARM deployment.  This is auto generated by Landscape, do not edit it."
       }
@@ -450,19 +450,19 @@
       }
     },
     "batchAccountResourceGroupName": {
-      "value": "bieno-da18-p-903765-rg",
+      "value": "bieno-test-p-TEST5-rg",
       "metadata": {
         "description": "The name of the Azure Resource Group to create the Batch Account."
       }
     },
     "batchAccountName": {
-      "value": "bienoda18p903765appban",
+      "value": "bienoda18pTEST5appban",
       "metadata": {
         "description": "The name of the Batch Account."
       }
     },
     "batchPoolName": {
-      "value": "bienoda18p903765appbap",
+      "value": "bienoda18pTEST5appbap",
       "metadata": {
         "description": "The name of the Batch Pool."
       }
@@ -504,25 +504,25 @@
       }
     },
     "adApplicationName": {
-      "value": "svc-b-da-p-903765-ina-aadprincipal",
+      "value": "svc-test-p-TEST5-ina-aadprincipal",
       "metadata": {
         "description": "The name of the Azure AD Application."
       }
     },
     "adApplicationUri": {
-      "value": "http://bienoda18p903765inaaadprincipal",
+      "value": "http://bienoda18pTEST5inaaadprincipal",
       "metadata": {
         "description": "A unique URI for the AD Application."
       }
     },
     "deploymentAdApplicationName": {
-      "value": "svc-b-da-p-903765-ina-deployment",
+      "value": "svc-test-p-TEST5-ina-deployment",
       "metadata": {
         "description": "The name of the Azure AD Application responsible for deploying the application."
       }
     },
     "deploymentAdApplicationUri": {
-      "value": "http://bienoda18p903765inadeploymentapp",
+      "value": "http://bienoda18pTEST5inadeploymentapp",
       "metadata": {
         "description": "A unique URI for the AD Application responsible for deploying the application."
       }
@@ -546,7 +546,7 @@
       }
     },
     "projectNumber": {
-      "value": "903765",
+      "value": "TEST5",
       "metadata": {
         "description": "The ITSG number assigned to the application operating environment."
       }
@@ -558,19 +558,19 @@
       }
     },
     "projectNumberDev": {
-      "value": "903766",
+      "value": "TEST6",
       "metadata": {
         "description": "The ITSG number assigned to the application's dev environment."
       }
     },
     "tagValues": {
       "value": {
-        "Name": "bieno-da18-p-903765-rg",
+        "Name": "bieno-test-p-TEST5-rg",
         "Platform": "Core Data Ecosystem",
         "Environment": "Production",
         "ProvisionedBy": "S1\\periyasamy.munusamy2",
         "CostCentre": "A956001445",
-        "ITSG": "903765",
+        "ITSG": "TEST5",
         "ProvisionedOn": "2022-06-23",
         "Workload": "Existing",
         "ServiceName": "MDL SEAA",
@@ -582,139 +582,139 @@
       }
     },
     "applicationIdentityCertificateName": {
-      "value": "svc-b-da-p-903765-ina-aadprincipalCert",
+      "value": "svc-test-p-TEST5-ina-aadprincipalCert",
       "metadata": {
         "description": "The applications identity certificate name to retrieve from key vault."
       }
     },
     "projectAdminADGroupId": {
-      "value": "a34bca80-b7cc-47e4-a626-38bb590351e2",
+      "value": "a34bca80-test-47e4-test-38bb590351e2",
       "metadata": {
         "description": "The Azure AD Group containing the admin of projects who becomes owners of all other project related AD groups."
       }
     },
     "projectAdminADGroupName": {
-      "value": "SEC-ES-DA-d-903766-ProjectAdmins",
+      "value": "SEC-ES-test-TEST6-ProjectAdmins",
       "metadata": {
         "description": "The Azure AD Group containing the admin of projects who becomes owners of all other project related AD groups."
       }
     },
     "developerADGroupName": {
-      "value": "SEC-ES-DA-d-903766-azure-developer",
+      "value": "SEC-ES-test-TEST6-azure-developer",
       "metadata": {
         "description": "The Azure AD Group containing the developers for this project."
       }
     },
     "developerADGroupId": {
-      "value": "a4282323-9d63-4954-85ca-b738d3cd581d",
+      "value": "a4282323-test-4954-test-b738d3cd581d",
       "metadata": {
         "description": "The Azure AD Group ID containing the developers for this project."
       }
     },
     "developerSharepointADGroupName": {
-      "value": "SEC-ES-DA-p-56728-InA-Developer",
+      "value": "SEC-ES-test-56728-InA-Developer",
       "metadata": {
         "description": "The Azure AD Group containing the Sharepoint Access for this project."
       }
     },
     "developerSharepointADGroupId": {
-      "value": "798f478e-ab10-468f-9cde-4fd9fd00b199",
+      "value": "798f478e-test-468f-test-4fd9fd00b199",
       "metadata": {
         "description": "The Azure AD Group ID containing the Sharepoint Access for this project."
       }
     },
     "managerADGroupName": {
-      "value": "SEC-ES-DA-p-56728-azure-landscape",
+      "value": "SEC-ES-test-56728-azure-landscape",
       "metadata": {
         "description": "The Azure AD Group containing the eco system managers."
       }
     },
     "managerADGroupId": {
-      "value": "5f43d762-65cd-4fc6-a065-0232e6952a50",
+      "value": "5f43d762-test-4fc6-test-0232e6952a50",
       "metadata": {
         "description": "The Azure AD Group ID containing the eco system managers."
       }
     },
     "testerADGroupName": {
-      "value": "SEC-ES-DA-d-903766-azure-tester",
+      "value": "SEC-ES-test-TEST6-azure-tester",
       "metadata": {
         "description": "The Azure AD Group containing the testers for this project."
       }
     },
     "testerADGroupId": {
-      "value": "27081913-54b7-4ff3-8b77-d0dcba7c4325",
+      "value": "27081913-test-4ff3-test-d0dcba7c4325",
       "metadata": {
         "description": "The Azure AD Group ID containing the testers for this project."
       }
     },
     "selfServiceADGroupName": {
-      "value": "SEC-ES-DA-d-903766-azure-selfservice",
+      "value": "SEC-ES-test-TEST6-azure-selfservice",
       "metadata": {
         "description": "The Azure AD Group containing the self service users for this project. Self service users have data reader access and access to synapse serverless compute"
       }
     },
     "selfServiceADGroupId": {
-      "value": "b860949c-da9f-402e-a8c5-1ea1491adf2e",
+      "value": "b860949c-test-402e-test-1ea1491adf2e",
       "metadata": {
         "description": "The Azure AD Group ID containing self service users for this project."
       }
     },
     "dataReaderADGroupName": {
-      "value": "SEC-ES-DA-p-903765-azure-data-reader",
+      "value": "SEC-ES-test-TEST5-azure-test-reader",
       "metadata": {
         "description": "The Azure AD Group containing the developers for this project."
       }
     },
     "dataReaderADGroupId": {
-      "value": "08f6497e-b0c7-40d6-b46c-9cffeb1e31e4",
+      "value": "08f6497e-test-40d6-test-9cffeb1e31e4",
       "metadata": {
         "description": "The Azure AD Group ID containing the developers for this project."
       }
     },
     "dataWriterADGroupName": {
-      "value": "SEC-ES-DA-p-903765-azure-data-writer",
+      "value": "SEC-ES-test-TEST5-azure-test-writer",
       "metadata": {
         "description": "The Azure AD Group containing the developers for this project."
       }
     },
     "dataWriterADGroupId": {
-      "value": "41053daa-eeb6-472a-a6e3-1b2db64b239a",
+      "value": "41053daa-test-472a-test-1b2db64b239a",
       "metadata": {
         "description": "The Azure AD Group ID containing the developers for this project."
       }
     },
     "dataOwnerADGroupName": {
-      "value": "SEC-ES-DA-p-903765-azure-data-owner",
+      "value": "SEC-ES-test-TEST5-azure-test-owner",
       "metadata": {
         "description": "The Azure AD Group containing the data owners for this project. Can grant access to the data"
       }
     },
     "dataOwnerADGroupId": {
-      "value": "86d0e738-3e85-4479-a59f-958eddce92ac",
+      "value": "86d0e738-test-4479-test-958eddce92ac",
       "metadata": {
         "description": "The Azure AD Group ID containing the data owners for this project."
       }
     },
     "supportADGroupName": {
-      "value": "SEC-ES-DA-d-903766-azure-devops",
+      "value": "SEC-ES-test-TEST6-azure-devops",
       "metadata": {
         "description": "The Azure AD Group containing the support for this project."
       }
     },
     "supportADGroupId": {
-      "value": "da72e428-98af-4579-9ec3-24676232b08e",
+      "value": "da72e428-test-4579-test-24676232b08e",
       "metadata": {
         "description": "The Azure AD Group ID containing the support for this project."
       }
     },
     "supportLevel1ADGroupName": {
-      "value": "SEC-ES-DA-d-903766-azure-support",
+      "value": "SEC-ES-test-TEST6-azure-support",
       "metadata": {
         "description": "The Azure AD Group containing the support level1 for this project."
       }
     },
     "supportLevel1ADGroupId": {
-      "value": "836a1fa2-54c0-4f1f-89eb-0e72da0e32c2",
+      "value": "836a1fa2-test-4f1f-test-0e72da0e32c2",
       "metadata": {
         "description": "The Azure AD Group ID containing the support level1 for this project."
       }
@@ -738,13 +738,13 @@
       }
     },
     "analysisServicesStorageAccountResourceGroupName": {
-      "value": "bieno-da18-p-903765-rg",
+      "value": "bieno-test-p-TEST5-rg",
       "metadata": {
         "description": "The resource group for the storage account for Analysis Services backup"
       }
     },
     "analysisServicesStorageAccountName": {
-      "value": "dbstorageda18p903765",
+      "value": "dbstorageda18pTEST5",
       "metadata": {
         "description": "The storage account for Analysis Services"
       }
@@ -796,23 +796,23 @@
       }
     },
     "analysisServicesName": {
-      "value": "bienoda18p903765unilevercomas01",
+      "value": "bienoda18pTEST5googlecomas01",
       "metadata": {
         "description": "The name of the Analysis Services"
       }
     },
     "analysisServicesResourceGroupName": {
-      "value": "bieno-da18-p-903765-rg",
+      "value": "bieno-test-p-TEST5-rg",
       "metadata": {
         "description": "The resource group name where the Analysis Services resides"
       }
     },
     "analysisServicesAdminEmailId": {
       "value": [
-        "obj:5f43d762-65cd-4fc6-a065-0232e6952a50@f66fae02-5d36-495b-bfe0-78a6ff9f8e6e",
-        "obj:948b3106-5887-483e-8e9f-4d84d8a0e266@f66fae02-5d36-495b-bfe0-78a6ff9f8e6e",
-        "app:04493cd8-9048-405b-ab3a-0d057e1c39ce@f66fae02-5d36-495b-bfe0-78a6ff9f8e6e",
-        "obj:da72e428-98af-4579-9ec3-24676232b08e@f66fae02-5d36-495b-bfe0-78a6ff9f8e6e"
+        "obj:5f43d762-test-4fc6-test-0232e6952a50@f66fae02-test-495b-test-78a6ff9f8e6e",
+        "obj:948b3106-TEST-483e-test-4d84d8a0e266@f66fae02-test-495b-test-78a6ff9f8e6e",
+        "app:04493cd8-TEST-405b-test-0d057e1c39ce@f66fae02-test-495b-test-78a6ff9f8e6e",
+        "obj:da72e428-test-4579-test-24676232b08e@f66fae02-test-495b-test-78a6ff9f8e6e"
       ],
       "metadata": {
         "description": "The Analysis Services administrator email address"
@@ -843,13 +843,13 @@
       }
     },
     "azureSSISResourceGroupName": {
-      "value": "bieno-da18-p-903765-rg",
+      "value": "bieno-test-p-TEST5-rg",
       "metadata": {
         "description": "Resource Group for SSIS"
       }
     },
     "azureSSISName": {
-      "value": "bieno-da18-p-903765-unilevercom-ssis-01",
+      "value": "bieno-test-p-TEST5-googlecom-test-01",
       "metadata": {
         "description": "SSIS Integration Runtime (IR) Name"
       }
@@ -879,7 +879,7 @@
       }
     },
     "azureSSISDBServerEndpoint": {
-      "value": "bieno-da18-p-903765-unilevercom-sql-01.database.windows.net",
+      "value": "bieno-test-p-TEST5-googlecom-sql-01.database.windows.net",
       "metadata": {
         "description": "The Sql Server hosting the SSIS packages"
       }
@@ -891,13 +891,13 @@
       }
     },
     "iotHubResourceGroupName": {
-      "value": "bieno-da18-p-903765-rg",
+      "value": "bieno-test-p-TEST5-rg",
       "metadata": {
         "description": "The name of the IoT Hub Resoruce Group"
       }
     },
     "iotHubName": {
-      "value": "bieno-da18-p-903765-unilevercom-iot-01",
+      "value": "bieno-test-p-TEST5-googlecom-iot-01",
       "metadata": {
         "description": "The name of the IoT Hub"
       }
@@ -963,13 +963,13 @@
       }
     },
     "tsInsightsResourceGroupName": {
-      "value": "bieno-da18-p-903765-rg",
+      "value": "bieno-test-p-TEST5-rg",
       "metadata": {
         "description": "The name of the resource group for time series insights service"
       }
     },
     "tsInsightsName": {
-      "value": "bieno-da18-p-903765-unilevercom-tsi-01",
+      "value": "bieno-test-p-TEST5-googlecom-tsi-01",
       "metadata": {
         "description": "The name of the time series insights service"
       }
@@ -1089,55 +1089,55 @@
       }
     },
     "appContributorGroupName": {
-      "value": "SEC-ES-DA-p-903765-azurecontributor",
+      "value": "SEC-ES-test-TEST5-azurecontributor",
       "metadata": {
         "description": "Non functional AD group - App Contributor Group Name"
       }
     },
     "appContributorGroupId": {
-      "value": "948b3106-5887-483e-8e9f-4d84d8a0e266",
+      "value": "948b3106-TEST-483e-test-4d84d8a0e266",
       "metadata": {
         "description": "Non functional AD group - App Contributor Group ID"
       }
     },
     "appReaderGroupName": {
-      "value": "SEC-ES-DA-p-903765-azurereader",
+      "value": "SEC-ES-test-TEST5-azurereader",
       "metadata": {
         "description": "Non functional AD group - App Reader Group Name"
       }
     },
     "appReaderGroupId": {
-      "value": "29ca31e3-ed76-4d95-b409-7db3754b8515",
+      "value": "29ca31e3-test-4d95-test-7db3754b8515",
       "metadata": {
         "description": "Non functional AD group - App Reader Group Id"
       }
     },
     "dataReaderGroupName": {
-      "value": "SEC-ES-DA-p-903765-azurereader",
+      "value": "SEC-ES-test-TEST5-azurereader",
       "metadata": {
         "description": "Non functional AD group - Data Reader Group Name"
       }
     },
     "dataAdminGroupName": {
-      "value": "SEC-ES-DA-p-903765-dataadmin",
+      "value": "SEC-ES-test-TEST5-dataadmin",
       "metadata": {
         "description": "Functional AD group for privileged access to data - Data Admin Group Name"
       }
     },
     "stgReaderGroupName": {
-      "value": "SEC-ES-DA-p-903765-azurereader",
+      "value": "SEC-ES-test-TEST5-azurereader",
       "metadata": {
         "description": "Non functional AD group - Storage Reader Group Name"
       }
     },
     "databricksResourceGroupName": {
-      "value": "bieno-da18-p-903765-rg",
+      "value": "bieno-test-p-TEST5-rg",
       "metadata": {
         "description": "The name of the resource group for your databrick workspace."
       }
     },
     "databricksWorkspaceName": {
-      "value": "bieno-da18-p-903765-adb-01",
+      "value": "bieno-test-p-TEST5-adb-01",
       "metadata": {
         "description": "The name of your databrick workspace."
       }
@@ -1184,7 +1184,7 @@
         "custom_tags": {
           "Department": "I&A Tech",
           "Project": "MDL SEAA",
-          "support_team": "SEC-ES-DA-p-56728-Landscape@unilever.com",
+          "support_team": "SEC-ES-test-56728-Landscape@google.com",
           "Exclude_PMC": "Exclude_PMC"
         },
         "spark_env_vars": {
@@ -1235,7 +1235,7 @@
       }
     },
     "sftpHostSecretName": {
-      "value": "sftp-host-name",
+      "value": "sftp-test-name",
       "metadata": {
         "description": "The name of the keyvault secret that stores the sftp linked service host name."
       }
@@ -1271,7 +1271,7 @@
       }
     },
     "ftpHostSecretName": {
-      "value": "ftp-host-name",
+      "value": "ftp-test-name",
       "metadata": {
         "description": "The name of the keyvault secret that stores the ftp linked service host name."
       }
@@ -1301,19 +1301,19 @@
       }
     },
     "virtualNetworkResourceGroupName": {
-      "value": "bieno-DA18-p-00000-Net-rg",
+      "value": "bieno-TEST-p-00000-Net-rg",
       "metadata": {
         "description": "The name of the central resource group that houses virtual networks."
       }
     },
     "virtualNetworkName": {
-      "value": "bieno-DA18-p-vnet01",
+      "value": "bieno-TEST-p-vnet01",
       "metadata": {
         "description": "The name of the central virtual network."
       }
     },
     "appServicePlanName": {
-      "value": "bieno-da18-p-903765-serviceplan-01",
+      "value": "bieno-test-p-TEST5-serviceplan-01",
       "metadata": {
         "description": "The name for the web application service plan."
       }
@@ -1333,13 +1333,13 @@
       }
     },
     "webAppResourceGroupName": {
-      "value": "bieno-da18-p-903765-rg",
+      "value": "bieno-test-p-TEST5-rg",
       "metadata": {
         "description": "The name of the resource group web app resource group"
       }
     },
     "webAppName": {
-      "value": "bieno-da18-p-903765-webapi-01",
+      "value": "bieno-test-p-TEST5-webapi-01",
       "metadata": {
         "description": "The name of the web application."
       }
@@ -1363,31 +1363,31 @@
       }
     },
     "actionGroupSupportEmail": {
-      "value": "IATech.AzureLandscape@unilever.com",
+      "value": "IATech.AzureLandscape@google.com",
       "metadata": {
         "description": "Email support address for automatic alerts metrics in ADF. Change to project support team"
       }
     },
     "functionAppName": {
-      "value": "bieno-da18-p-903765-unilevercom-funapp-01",
+      "value": "bieno-test-p-TEST5-googlecom-funapp-01",
       "metadata": {
         "description": "The function application name."
       }
     },
     "logAnalyticsResourceGroupName": {
-      "value": "bieno-da18-p-903765-rg",
+      "value": "bieno-test-p-TEST5-rg",
       "metadata": {
         "description": "The resource group name for log analytics."
       }
     },
     "logAnalyticsWorkspaceName": {
-      "value": "bieno-da18-p-903765-loganalytics-01",
+      "value": "bieno-test-p-TEST5-loganalytics-01",
       "metadata": {
         "description": "The workspace name for log analytics."
       }
     },
     "machineLearningWorkspaceName": {
-      "value": "bieno-da18-p-903765-aml-01",
+      "value": "bieno-test-p-TEST5-aml-01",
       "metadata": {
         "description": "The workspace name for Machine Learning Studio."
       }
@@ -1429,7 +1429,7 @@
       }
     },
     "machineLearningExperimentName": {
-      "value": "bieno-da18-p-903765-aml-experiment-01",
+      "value": "bieno-test-p-TEST5-aml-experiment-01",
       "metadata": {
         "description": ""
       }
@@ -1447,7 +1447,7 @@
       }
     },
     "machineLearningResourceGroupName": {
-      "value": "bieno-da18-p-903765-rg",
+      "value": "bieno-test-p-TEST5-rg",
       "metadata": {
         "description": "The name for Resource Group Name Machine Leanring Studio."
       }
@@ -1465,7 +1465,7 @@
       }
     },
     "containerRegistryName": {
-      "value": "bienoda18903765crn",
+      "value": "bienoda18TEST5crn",
       "metadata": {
         "description": "The name for stand alone container registry."
       }
@@ -1477,19 +1477,19 @@
       }
     },
     "applicationInsightsName": {
-      "value": "bieno-da18-p-903765-appin-01",
+      "value": "bieno-test-p-TEST5-appin-01",
       "metadata": {
         "description": "The name for Application Insights."
       }
     },
     "budgetAlertResourceGroupName": {
-      "value": "bieno-da18-p-903765-rg",
+      "value": "bieno-test-p-TEST5-rg",
       "metadata": {
         "description": "The resource group which the budget alert will be set to."
       }
     },
     "budgetAlertName": {
-      "value": "bieno-da18-p-903765-budget-rg",
+      "value": "bieno-test-p-TEST5-budget-rg",
       "metadata": {
         "description": "The resource group budget alert name."
       }
@@ -1501,31 +1501,31 @@
       }
     },
     "logicAppResourceGroupName": {
-      "value": "bieno-da18-p-903765-rg",
+      "value": "bieno-test-p-TEST5-rg",
       "metadata": {
         "description": "Logic App Resource Group name"
       }
     },
     "logicAppName": {
-      "value": "bieno-da18-p-903765-logicapp-01",
+      "value": "bieno-test-p-TEST5-logicapp-01",
       "metadata": {
         "description": "Logic App name"
       }
     },
     "logicAppName02": {
-      "value": "bieno-da18-p-903765-logicapp-02",
+      "value": "bieno-test-p-TEST5-logicapp-02",
       "metadata": {
         "description": "Logic App name"
       }
     },
     "PHlogicAppName01": {
-      "value": "bieno-da18-p-903765-logicapp-PH-01",
+      "value": "bieno-test-p-TEST5-logicapp-PH-01",
       "metadata": {
         "description": "Logic App name for PH 01"
       }
     },
     "PHlogicAppName02": {
-      "value": "bieno-da18-p-903765-logicapp-PH-02",
+      "value": "bieno-test-p-TEST5-logicapp-PH-02",
       "metadata": {
         "description": "Logic App name for PH 02"
       }
@@ -1537,13 +1537,13 @@
       }
     },
     "logicAppO365apiConnection": {
-      "value": "bieno-da18-p-903765-logicapp-o365-01",
+      "value": "bieno-test-p-TEST5-logicapp-test-01",
       "metadata": {
         "description": "Logic App O365 API connection name"
       }
     },
     "logicAppDatalakeapiConnection": {
-      "value": "bieno-da18-p-903765-logicapp-datalake-01",
+      "value": "bieno-test-p-TEST5-logicapp-datalake-01",
       "metadata": {
         "description": "Logic App Data Lake API connection name"
       }
@@ -1555,19 +1555,19 @@
       }
     },
     "logicAppSqlDWapiConnection": {
-      "value": "bieno-da18-p-903765-logicapp-sqldw-01",
+      "value": "bieno-test-p-TEST5-logicapp-sqldw-01",
       "metadata": {
         "description": "Logic App Azure SQLDW API connection name"
       }
     },
     "logicAppSqlDWapiConnectionDisplay": {
-      "value": "bieno-da18-p-903765-logicapp-sqldw-01",
+      "value": "bieno-test-p-TEST5-logicapp-sqldw-01",
       "metadata": {
         "description": "Logic App Azure SQLDW API connection Display name"
       }
     },
     "logicAppSqlapiConnection": {
-      "value": "bieno-da18-p-903765-logicapp-sql-01",
+      "value": "bieno-test-p-TEST5-logicapp-sql-01",
       "metadata": {
         "description": "Logic App Azure SQL API connection name"
       }
@@ -1579,37 +1579,37 @@
       }
     },
     "logicAppStorageConnectionName": {
-      "value": "bieno-da18-p-903765-logicapp-blob-01",
+      "value": "bieno-test-p-TEST5-logicapp-test-01",
       "metadata": {
         "description": "Logic App blob storage connector name"
       }
     },
     "logicAppPowerBIConnectionName": {
-      "value": "bieno-da18-p-903765-logicapp-powerbi-01",
+      "value": "bieno-test-p-TEST5-logicapp-powerbi-01",
       "metadata": {
         "description": "Logic App PowerBI connector name"
       }
     },
     "PHlogicAppPowerBIConnectionName": {
-      "value": "bieno-da18-p-903765-logicapp-dataflow-01",
+      "value": "bieno-test-p-TEST5-logicapp-dataflow-01",
       "metadata": {
         "description": "PH Logic App PowerBI dataflow connector name"
       }
     },
     "logicAppSharePointConnectionName": {
-      "value": "bieno-da18-p-903765-logicapp-sharepoint-01",
+      "value": "bieno-test-p-TEST5-logicapp-sharepoint-01",
       "metadata": {
         "description": "Logic App SharePoint connector name"
       }
     },
     "PHlogicAppSharePointConnectionName": {
-      "value": "bieno-da18-p-903765-logicapp-sharepoint-PH-01",
+      "value": "bieno-test-p-TEST5-logicapp-sharepoint-PH-01",
       "metadata": {
         "description": "Logic App SharePoint connector name for PH"
       }
     },
     "logicAppADFConnectionName": {
-      "value": "bieno-da18-p-903765-logicapp-adf-01",
+      "value": "bieno-test-p-TEST5-logicapp-adf-01",
       "metadata": {
         "description": "Logic App ADF connector name"
       }
@@ -1627,7 +1627,7 @@
       }
     },
     "azuremonitorlogs_name": {
-      "value": "bieno-da18-p-903765-logicapp-monitorlogs-01",
+      "value": "bieno-test-p-TEST5-logicapp-monitorlogs-01",
       "metadata": {
         "description": "Logic App Azure Monitor Logs connection name"
       }
@@ -1705,13 +1705,13 @@
       }
     },
     "streamAnalyticsJobResourceGroupName": {
-      "value": "bieno-da18-p-903765-rg",
+      "value": "bieno-test-p-TEST5-rg",
       "metadata": {
         "description": "Stream Analytics Job ResourceGroup Name"
       }
     },
     "streamAnalyticsJobName": {
-      "value": "bieno-da18-p-903765-strmanlytjob-01",
+      "value": "bieno-test-p-TEST5-strmanlytjob-01",
       "metadata": {
         "description": "Stream Analytics Job Name"
       }
@@ -1723,55 +1723,55 @@
       }
     },
     "apiconnection_adlsgen2_name": {
-      "value": "bieno-da18-p-903765-logicapp-adlsgen2-01",
+      "value": "bieno-test-p-TEST5-logicapp-adlsgen2-01",
       "metadata": {
         "description": "Logic App ADLS Gen2 API Connection name"
       }
     },
     "apiManagementServiceName": {
-      "value": "bieno-da18-p-903765-apim-01",
+      "value": "bieno-test-p-TEST5-test-01",
       "metadata": {
         "description": "api Management Service name"
       }
     },
     "acrName": {
-      "value": "bienoda18p903765acr01",
+      "value": "bienoda18pTEST5acr01",
       "metadata": {
         "description": "Azure Container Registry name"
       }
     },
     "translatorCognitiveServiceName": {
-      "value": "bieno-da18-p-903765-tcs-01",
+      "value": "bieno-test-p-TEST5-tcs-01",
       "metadata": {
         "description": "Translator cognitive service name"
       }
     },
     "synapseWorkspaceName": {
-      "value": "bieno-da18-p-903765-synapse-01",
+      "value": "bieno-test-p-TEST5-synapse-01",
       "metadata": {
         "description": "The name of your synapse workspace"
       }
     },
     "synapseDatabaseName": {
-      "value": "bieno-da18-p-903765-synapsedb-01",
+      "value": "bieno-test-p-TEST5-synapsedb-01",
       "metadata": {
         "description": "The name of your synapse serverless database"
       }
     },
     "synapseResourceGroupName": {
-      "value": "bieno-da18-p-903765-rg",
+      "value": "bieno-test-p-TEST5-rg",
       "metadata": {
         "description": "The name of the resource group used by your synapse workspace"
       }
     },
     "synapseManagedResourceGroupName": {
-      "value": "bieno-da18-p-903765-syn1-rg",
+      "value": "bieno-test-p-TEST5-test-rg",
       "metadata": {
         "description": "The name of the managed resource group used by your synapse workspace"
       }
     },
     "staticWebName": {
-      "value": "bieno-da18-p-903765-staticweb-01",
+      "value": "bieno-test-p-TEST5-staticweb-01",
       "metadata": {
         "description": "The name of the static web component"
       }
@@ -1783,7 +1783,7 @@
       }
     },
     "staticWebRepositoryUrl": {
-      "value": "https://bnlwe-p-56728-ia-01-unilevercom-vsts.visualstudio.com/bieno-da-p-903766-vstsp/_git/bieno-da-p-903766-vstsp",
+      "value": "https://prod-p-56728-ia-01-googlecom-vsts.visualstudio.com/bieno-test-TEST6-vstsp/_git/bieno-test-TEST6-vstsp",
       "metadata": {
         "description": "The azure devops git repo of the static web component"
       }
@@ -1819,7 +1819,7 @@
       }
     },
     "webhookV2Url": {
-      "value": "https://6f448717-1c7f-4249-8c16-88a41769d9eb.webhook.ne.azure-automation.net/webhooks?token=D1KK5%2fTE2QA6T3cBBWwT028BV9VWjnMWcCTH8dbCnq0%3d",
+      "value": "https://6f448717-test-4249-test-88a41769d9eb.webhook.ne.azure-automation.net/webhooks?token=D1KK5%2fTE2QA6T3cBBWwT028BV9VWjnMWcCTH8dbCnq0%3d",
       "metadata": {
         "description": "The end point for platform webhookv2 implementation."
       }

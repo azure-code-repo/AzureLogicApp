@@ -6,12 +6,12 @@
     "dataSources": [
       {
         "type": "structured",
-        "name": "SQL/bnlwe-da04-d-00018-unilevercom-sql-01 database windows net;bnlwe-da04-d-0001",
+        "name": "SQL/prod-test-d-10000-googlecom-sql-01 database windows net;prod-test-d-0001",
         "connectionDetails": {
           "protocol": "tds",
           "address": {
-            "server": "bnlwe-da04-d-00018-unilevercom-sql-01.database.windows.net",
-            "database": "bnlwe-da04-d-00018-unilevercom-sqldw-01"
+            "server": "prod-test-d-10000-googlecom-sql-01.database.windows.net",
+            "database": "prod-test-d-10000-googlecom-sqldw-01"
           },
           "authentication": null,
           "query": null
@@ -47,7 +47,7 @@
               "type": "m",
               "expression": [
                 "let",
-                "    Source = #\"SQL/bnlwe-da04-d-00018-unilevercom-sql-01 database windows net;bnlwe-da04-d-0001\",",
+                "    Source = #\"SQL/prod-test-d-10000-googlecom-sql-01 database windows net;prod-test-d-0001\",",
                 "    DevOpsTests_TableTests = Source{[Schema=\"DevOpsTests\",Item=\"TableTests\"]}[Data]",
                 "in",
                 "    DevOpsTests_TableTests"

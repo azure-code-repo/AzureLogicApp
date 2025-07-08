@@ -4,7 +4,7 @@
     "parameters": {
         "logicAppName": {
             "type": "string",
-            "defaultValue": "bieno-da04-d-56731-monitorlogicapp-01",
+            "defaultValue": "bieno-test-d-10000-monitorlogicapp-01",
             "metadata": {
                 "description": "Name of the Logic App."
             }
@@ -27,11 +27,11 @@
         },
         "ResourceGroup": {
             "type": "string",
-            "defaultValue": "bieno-da04-d-56731-app-rg"
+            "defaultValue": "bieno-test-d-10000-app-rg"
         },
         "ITSG": {
             "type": "string",
-            "defaultValue": "56731"
+            "defaultValue": "10000"
         },
         "ProjectName": {
             "type": "string",
@@ -43,7 +43,7 @@
         },
         "o365_name": {
             "type": "string",
-            "defaultValue": "bieno-da04-d-80235-logicapp-o365-01"
+            "defaultValue": "bieno-test-d-10000-logicapp-test-01"
         },
         "o365_displayName": {
             "type": "string",
@@ -59,7 +59,7 @@
         },
         "AASServerName": {
             "type": "string",
-            "defaultValue": "bnlweda04d80235unilevercomas01"
+            "defaultValue": "prodda01d10000googlecomas01"
         },
         "AASIdleTime": {
             "type": "int",
@@ -91,11 +91,11 @@
         },
         "AASStatusURL": {
             "type": "string",
-            "defaultValue": "https://management.azure.com/subscriptions/204671af-5130-4ef5-819c-e314b65f9d06/resourceGroups/bieno-da04-d-80235-app-rg/providers/Microsoft.AnalysisServices/servers/bnlweda04d80235unilevercomas01?api-version=2017-08-01"
+            "defaultValue": "https://management.azure.com/subscriptions/204671af-TEST-4ef5-test-e314b65f9d06/resourceGroups/bieno-test-d-10000-app-rg/providers/Microsoft.AnalysisServices/servers/prodda01d10000googlecomas01?api-version=2017-08-01"
         },
         "AASQPUMetricsURL": {
             "type": "string",
-            "defaultValue": "https://management.azure.com/subscriptions/204671af-5130-4ef5-819c-e314b65f9d06/resourceGroups/bieno-da04-d-80235-app-rg/providers/Microsoft.AnalysisServices/servers/bnlweda04d80235unilevercomas01/providers/microsoft.insights/metrics?api-version=2018-01-01\u0026metricnames=qpu_metric\u0026interval=PT@{variables(\u0027AASIdleTime\u0027)}M\u0026aggregation=maximum"
+            "defaultValue": "https://management.azure.com/subscriptions/204671af-TEST-4ef5-test-e314b65f9d06/resourceGroups/bieno-test-d-10000-app-rg/providers/Microsoft.AnalysisServices/servers/prodda01d10000googlecomas01/providers/microsoft.insights/metrics?api-version=2018-01-01\u0026metricnames=qpu_metric\u0026interval=PT@{variables(\u0027AASIdleTime\u0027)}M\u0026aggregation=maximum"
         },
         "AASPauseFlag": {
             "type": "bool",
@@ -107,7 +107,7 @@
         },
         "DWServerName": {
             "type": "string",
-            "defaultValue": "bnlwe-da04-d-80235-unilevercom-sqldw-01"
+            "defaultValue": "prod-test-d-10000-googlecom-sqldw-01"
         },
         "DWEnabled": {
             "type": "bool",
@@ -131,7 +131,7 @@
         },
         "DWStatusURL": {
             "type": "string",
-            "defaultValue": "https://management.azure.com/subscriptions/105fbd8d-388f-4b19-9fda-d56f44121122/resourceGroups/bnlwe-da04-d-80235-rg/providers/Microsoft.Sql/servers/bnlwe-da04-d-80235-unilevercom-sql-01/databases/bnlwe-da04-d-80235-unilevercom-sqldw-01?api-version=2017-10-01-preview"
+            "defaultValue": "https://management.azure.com/subscriptions/105fbd8d-test-4b19-test-d56f44121122/resourceGroups/prod-test-d-10000-rg/providers/Microsoft.Sql/servers/prod-test-d-10000-googlecom-sql-01/databases/prod-test-d-10000-googlecom-sqldw-01?api-version=2017-10-01-preview"
         },
         "DWPauseFlag": {
             "type": "bool",
@@ -143,22 +143,22 @@
         },
         "sqldw_name": {
             "type": "string",
-            "defaultValue": "bieno-da04-d-80235-logicapp-sqldw-01"
+            "defaultValue": "bieno-test-d-10000-logicapp-sqldw-01"
         },
         "sqldw_displayName": {
             "type": "string",
-            "defaultValue": "bnlwe-da04-d-80235-unilevercom-sql-01 bnlwe-da04-d-80235-unilevercom-sql-01.database.windows.net"
+            "defaultValue": "prod-test-d-10000-googlecom-sql-01 prod-test-d-10000-googlecom-sql-01.database.windows.net"
         },
         "sqldw_server": {
             "type": "string",
-            "defaultValue": "bnlwe-da04-d-80235-unilevercom-sql-01.database.windows.net",
+            "defaultValue": "prod-test-d-10000-googlecom-sql-01.database.windows.net",
             "metadata": {
                 "description": "SQL server name"
             }
         },
         "sqldw_database": {
             "type": "string",
-            "defaultValue": "bnlwe-da04-d-80235-unilevercom-sqldw-01",
+            "defaultValue": "prod-test-d-10000-googlecom-sqldw-01",
             "metadata": {
                 "description": "SQL database name"
             }
@@ -423,7 +423,7 @@
                                                                     {
                                                                         "displayDescription": "QPU. Range 0-100 for S1, 0-200 for S2 and 0-400 for S4",
                                                                         "errorCode": "Success",
-                                                                        "id": "/subscriptions/4bba5e2f-e764-4648-b876-a84c8fa03526/resourceGroups/CloudSolutions/providers/Microsoft.AnalysisServices/servers/demosolaas/providers/Microsoft.Insights/metrics/qpu_metric",
+                                                                        "id": "/subscriptions/4bba5e2f-test-4648-test-a84c8fa03526/resourceGroups/CloudSolutions/providers/Microsoft.AnalysisServices/servers/demosolaas/providers/Microsoft.Insights/metrics/qpu_metric",
                                                                         "name": {
                                                                             "localizedValue": "QPU",
                                                                             "value": "qpu_metric"
@@ -489,7 +489,7 @@
                                                                     {
                                                                         "displayDescription": "QPU. Range 0-100 for S1, 0-200 for S2 and 0-400 for S4",
                                                                         "errorCode": "Success",
-                                                                        "id": "/subscriptions/4bba5e2f-e764-4648-b876-a84c8fa03526/resourceGroups/CloudSolutions/providers/Microsoft.AnalysisServices/servers/demosolaas/providers/Microsoft.Insights/metrics/qpu_metric",
+                                                                        "id": "/subscriptions/4bba5e2f-test-4648-test-a84c8fa03526/resourceGroups/CloudSolutions/providers/Microsoft.AnalysisServices/servers/demosolaas/providers/Microsoft.Insights/metrics/qpu_metric",
                                                                         "name": {
                                                                             "localizedValue": "QPU",
                                                                             "value": "qpu_metric"
@@ -571,7 +571,7 @@
                                                                         "default": "",
                                                                         "description": "An explanation about the purpose of this instance.",
                                                                         "examples": [
-                                                                            "/subscriptions/4bba5e2f-e764-4648-b876-a84c8fa03526/resourceGroups/CloudSolutions/providers/Microsoft.AnalysisServices/servers/demosolaas/providers/Microsoft.Insights/metrics/qpu_metric"
+                                                                            "/subscriptions/4bba5e2f-test-4648-test-a84c8fa03526/resourceGroups/CloudSolutions/providers/Microsoft.AnalysisServices/servers/demosolaas/providers/Microsoft.Insights/metrics/qpu_metric"
                                                                         ],
                                                                         "title": "The Id Schema",
                                                                         "type": "string"
@@ -1232,7 +1232,7 @@
                                                     "default": "",
                                                     "description": "An explanation about the purpose of this instance.",
                                                     "examples": [
-                                                        "/subscriptions/4bba5e2f-e764-4648-b876-a84c8fa03526/resourceGroups/CloudSolutions/providers/Microsoft.AnalysisServices/servers/demosolaas"
+                                                        "/subscriptions/4bba5e2f-test-4648-test-a84c8fa03526/resourceGroups/CloudSolutions/providers/Microsoft.AnalysisServices/servers/demosolaas"
                                                     ],
                                                     "title": "The Id Schema",
                                                     "type": "string"

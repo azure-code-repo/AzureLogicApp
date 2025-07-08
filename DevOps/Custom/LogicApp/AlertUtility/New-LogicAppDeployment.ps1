@@ -82,7 +82,7 @@ function GrantPermissionToSqlUser {
     $request = Invoke-RestMethod -Method POST `
       -Uri "https://login.microsoftonline.com/$tenantid/oauth2/token"`
       -Body @{ resource = "https://database.windows.net/"; grant_type = "client_credentials"; client_id = $clientid; client_secret = $secret }`
-      -ContentType "application/x-www-form-urlencoded"
+      -ContentType "application/x-www-test-urlencoded"
 
     Invoke-Sqlcmd -ServerInstance "$serverName.database.windows.net" -Database $databaseName -AccessToken $request.access_token -query $sqlUserCmdStr -ErrorAction Stop
     Write-Host "Granted VIEW DATABASE STATE permission to $SqlUserName on database $databaseName"
@@ -128,7 +128,7 @@ if ($Permissions) {
     if ($logicAppConnector.Name.Contains("sqldw")) {
       New-AzRoleAssignment -ResourceGroupName $resourceGroupName -ResourceName $logicAppConnector.Name -RoleDefinitionName "Logic App Contributor" -ResourceType $logicAppConnector.ResourceType -ObjectId $granteeObjectId
     }
-    if ($logicAppConnector.Name.Contains("-o365-")) {
+    if ($logicAppConnector.Name.Contains("-test-")) {
       if ($parameters.parameters.projectEnvironment.value -eq "d" -or $parameters.parameters.projectEnvironment.value -eq "q" ) {
         New-AzRoleAssignment -ResourceGroupName $resourceGroupName -ResourceName $logicAppConnector.Name  -RoleDefinitionName "Logic App Contributor" -ResourceType $logicAppConnector.ResourceType -ObjectId $granteeObjectId
       }

@@ -9,7 +9,7 @@
       }
     },
     "subscriptionId": {
-      "value": "105cc892-0276-4b01-b5ff-426df8be49e2",
+      "value": "105cc892-TEST-4b01-test-426df8be49e2",
       "metadata": {
         "description": "The Azure subscription id where these resources are deployed to."
       }

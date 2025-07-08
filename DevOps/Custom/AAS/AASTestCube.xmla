@@ -12,7 +12,7 @@
 "dataSources": [
 {
 "type": "structured",
- "name": "SQL/bnlwe-da04-d-00018-unilevercom-sql-01 database windows net;bnlwe-da04-d-0001",
+ "name": "SQL/prod-test-d-10000-googlecom-sql-01 database windows net;prod-test-d-0001",
 "connectionDetails": {
 "protocol": "tds",
 "address": {
@@ -53,7 +53,7 @@
 						"type": "m",
 							"expression": [
 								"let",
-								"    Source = #\"SQL/bnlwe-da04-d-00018-unilevercom-sql-01 database windows net;bnlwe-da04-d-0001\",",
+								"    Source = #\"SQL/prod-test-d-10000-googlecom-sql-01 database windows net;prod-test-d-0001\",",
 								"    DevOpsTests_TableTests = Source{[Schema=\"DevOpsTests\",Item=\"TableTests\"]}[Data]",
 								"in",
 							"    DevOpsTests_TableTests"
@@ -70,15 +70,15 @@
 			"modelPermission": "readRefresh",
 			"members": [
 				{
-					"memberName": "Ecoturnkey.Developer@unilever.com",
+					"memberName": "Ecoturnkey.Developer@google.com",
 					"identityProvider": "AzureAD"
 				},
 				{
-					"memberName": "Ecoturnkey.Tester@unilever.com",
+					"memberName": "Ecoturnkey.Tester@google.com",
 					"identityProvider": "AzureAD"
 				},
 				{
-					"memberName": "Ecoturnkey.DevOps@unilever.com",
+					"memberName": "Ecoturnkey.DevOps@google.com",
 					"identityProvider": "AzureAD"
 				}
 					]
@@ -88,7 +88,7 @@
 			"modelPermission": "read",
 			"members": [
 				{
-				"memberName": "Ecoturnkey.Tester@unilever.com",
+				"memberName": "Ecoturnkey.Tester@google.com",
 				"identityProvider": "AzureAD"
 				}
 						]

@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "logicAppName02": {
-            "defaultValue": "bieno-da22-d-903766-logicapp-02",
+            "defaultValue": "bieno-test-d-TEST6-logicapp-02",
             "type": "String"
         },
         "location": {
@@ -11,7 +11,7 @@
             "type": "string"
         },
         "logicAppO365apiConnection": {
-            "defaultValue": "bieno-da22-d-903766-logicapp-o365-015",
+            "defaultValue": "bieno-test-d-TEST6-logicapp-test-015",
             "type": "String"
         },
         "logicAppDataOwner": {
@@ -32,7 +32,7 @@
             "location": "[parameters('location')]",
             "tags": {
                 "CostCentre": "A956001445",
-                "ITSG": "903766",
+                "ITSG": "TEST6",
                 "Icc": "ICC16464",
                 "Platform": "Core Data Ecosystem",
                 "ServiceName": "MDL SEAA",
@@ -246,7 +246,7 @@
                                                         }
                                                     ],
                                                     "Body": "<p>Hi @{triggerBody()?['process_owner']},<br>\n<br>\nThis email is to notify you that the <em>data ingestion process was completed successfully</em>, but there were <strong>some errors found</strong>. The attached file contains a list of the error rows.<br>\n<br>\nPlease review the attached file and take any necessary action.<br>\n<br>\n<u><strong>Do not reply to this email. This email was sent from an automated system and replies will not be received.</strong></u><br>\n<em><br>\n</em><span style=\"font-size: 11px\"><em>The errors were categorized into three levels:<br>\n</em></span><span style=\"font-size: 11px\"><em><strong>- CRITICAL:</strong></em></span><span style=\"font-size: 11px\"><em> These errors are the most serious and will cause the pipeline to fail.</em></span><span style=\"font-size: 11px\"><em><strong> No records will be loaded.</strong></em></span><span style=\"font-size: 11px\"><em><br>\n</em></span><span style=\"font-size: 11px\"><em><strong>- ERROR:</strong></em></span><span style=\"font-size: 11px\"><em> These errors will cause </em></span><span style=\"font-size: 11px\"><em><strong>the record to be dropped</strong></em></span><span style=\"font-size: 11px\"><em>. This means that the record will not be ingested, but the remaining records will be loaded successfully.<br>\n</em></span><span style=\"font-size: 11px\"><em><strong>- WARN:</strong></em></span><span style=\"font-size: 11px\"><em> These errors do not cause the record to be dropped, but they may</em></span><span style=\"font-size: 11px\"><em><strong> indicate a problem with the data</strong></em></span><span style=\"font-size: 11px\"><em>. This could impact some operations on those data.<br>\n<br>\nPipeline job id: </em></span><span style=\"font-size: 11px\"><em>@{triggerBody()?['job_id']}</em></span><span style=\"font-size: 11px\"><em></em></span></p>",
-                                                    "Bcc": "truong-chau-minh.huy@unilever.com",
+                                                    "Bcc": "truong-test-minh.huy@google.com",
                                                     "To": "[parameters('logicAppProcessOwner')]",
                                                     "Importance": "Normal",
                                                     "Subject": "Action Required: Ingestion data have errors - @{triggerBody()?['data_source']} - @{triggerBody()?['object_name']}",
@@ -271,7 +271,7 @@
                                             "type": "ApiConnection",
                                             "inputs": {
                                                 "body": {
-                                                    "Bcc": "truong-chau-minh.huy@unilever.com",
+                                                    "Bcc": "truong-test-minh.huy@google.com",
                                                     "Body": "<p>Hi @{triggerBody()?['process_owner']},<br>\n<br>\n@{triggerBody()?['data_source']} - @{triggerBody()?['object_name']} pipeline run has failed today due to latest input file not being available in aligned location.<br>\n<br>\nPlease put the latest file in aligned location and inform to the MDL DevOps team to re-run if any.<br>\n<br>\n<u><strong>Do not reply to this email. This email was sent from an automated system and replies will not be received.</strong></u><br>\n<br>\n<span style=\"font-size: 11px\"><em>Pipeline job id: </em></span><span style=\"font-size: 11px\"><em>@{triggerBody()?['job_id']}</em></span><span style=\"font-size: 11px\"><em></em></span></p>",
                                                     "Importance": "Normal",
                                                     "Subject": "Warn: Missing Input file for @{triggerBody()?['data_source']} - @{triggerBody()?['object_name']}",

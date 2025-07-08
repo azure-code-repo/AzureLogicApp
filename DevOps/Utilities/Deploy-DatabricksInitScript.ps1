@@ -13,12 +13,12 @@ $URI = "https://login.microsoftonline.com/$tenantId/oauth2/token/"
 
 $Secret = [System.Web.HttpUtility]::UrlEncode($spnSecret)
 $BodyText="grant_type=client_credentials&client_id=$applicationId&resource=https://management.core.windows.net/&client_secret=$Secret"
-$Response = Invoke-RestMethod -Method POST -Body $BodyText -Uri $URI -ContentType application/x-www-form-urlencoded
+$Response = Invoke-RestMethod -Method POST -Body $BodyText -Uri $URI -ContentType application/x-www-test-urlencoded
 $ManagementAccessToken = $Response.access_token
 
 Write-Verbose "Getting new AAD Databricks Token"
-$BodyText="grant_type=client_credentials&client_id=$applicationId&resource=2ff814a6-3304-4ab8-85cb-cd0e6f879c1d&client_secret=$Secret"
-$Response = Invoke-RestMethod -Method POST -Body $BodyText -Uri $URI -ContentType application/x-www-form-urlencoded
+$BodyText="grant_type=client_credentials&client_id=$applicationId&resource=2ff814a6-TEST-4ab8-test-cd0e6f879c1d&client_secret=$Secret"
+$Response = Invoke-RestMethod -Method POST -Body $BodyText -Uri $URI -ContentType application/x-www-test-urlencoded
 $DatabricksAccessToken = $Response.access_token
 
 $Header = @{

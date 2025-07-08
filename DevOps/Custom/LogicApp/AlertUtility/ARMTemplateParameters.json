@@ -4,7 +4,7 @@
   "parameters": {
     "logicAppName": {
 
-      "value": "bnlwe-da04-d-56731-monitorlogicapp-01"
+      "value": "prod-test-d-10000-monitorlogicapp-01"
     },
     "RecurrenceFrequency": {
       "value": "Minute"
@@ -19,10 +19,10 @@
       "value": "Core Data Ecosystem-04"
     },
     "ResourceGroup": {
-      "value": "bnlwe-da04-d-56731-rg"
+      "value": "prod-test-d-10000-rg"
     },
     "ITSG": {
-      "value": "56731"
+      "value": "10000"
     },
     "ProjectName": {
       "value": ""
@@ -43,7 +43,7 @@
       "value": true
     },
     "AASServerName": {
-      "value": "bnlweda04d56731unilevercomas01"
+      "value": "prodda01d10000googlecomas01"
     },
     "AASIdleTime": {
       "value": 15
@@ -67,10 +67,10 @@
       "value": "21"
     },
     "AASStatusURL": {
-      "value": "https://management.azure.com/subscriptions/204671af-5130-4ef5-819c-e314b65f9d06/resourceGroups/bnlwe-da04-d-56731-app-rg/providers/Microsoft.AnalysisServices/servers/bnlweda04d56731unilevercomas01?api-version=2017-08-01"
+      "value": "https://management.azure.com/subscriptions/204671af-TEST-4ef5-test-e314b65f9d06/resourceGroups/prod-test-d-10000-app-rg/providers/Microsoft.AnalysisServices/servers/prodda01d10000googlecomas01?api-version=2017-08-01"
     },
     "AASQPUMetricsURL": {
-      "value": "https://management.azure.com/subscriptions/204671af-5130-4ef5-819c-e314b65f9d06/resourceGroups/bnlwe-da04-d-56731-app-rg/providers/Microsoft.AnalysisServices/servers/bnlwedad56731unilevercomas01/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=qpu_metric&interval=PT@{variables('AASIdleTime')}M&aggregation=maximum"
+      "value": "https://management.azure.com/subscriptions/204671af-TEST-4ef5-test-e314b65f9d06/resourceGroups/prod-test-d-10000-app-rg/providers/Microsoft.AnalysisServices/servers/proddad10000googlecomas01/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=qpu_metric&interval=PT@{variables('AASIdleTime')}M&aggregation=maximum"
     },
     "AASPauseFlag": {
       "value": true
@@ -79,7 +79,7 @@
       "value": "https://s9events.azure-automation.net/webhooks?token=W72PjzYCL%2fRazcM2XWVtAipNTsWIXwZnNDc9f%2bWmsSE%3d"
     },
     "DWServerName": {
-      "value": "bnlwe-da04-d-56731-unilevercom-sqldw-01"
+      "value": "prod-test-d-10000-googlecom-sqldw-01"
     },
     "DWEnabled": {
       "value": true
@@ -97,7 +97,7 @@
       "value": "21"
     },
     "DWStatusURL": {
-      "value": "https://management.azure.com/subscriptions/204671af-5130-4ef5-819c-e314b65f9d06/resourceGroups/bnlwe-da04-d-56731-data-rg/providers/Microsoft.Sql/servers/bnlwe-da04-d-56731-unilevercom-sql-01/databases/bnlwe-da04-d-56731-unilevercom-sqldw-01?api-version=2017-10-01-preview"
+      "value": "https://management.azure.com/subscriptions/204671af-TEST-4ef5-test-e314b65f9d06/resourceGroups/prod-test-d-10000-test-rg/providers/Microsoft.Sql/servers/prod-test-d-10000-googlecom-sql-01/databases/prod-test-d-10000-googlecom-sqldw-01?api-version=2017-10-01-preview"
     },
     "DWPauseFlag": {
       "value": true
@@ -106,16 +106,16 @@
       "value": "https://s9events.azure-automation.net/webhooks?token=Wl0490%2fRKuTB16bi2ecLs6Yf5z%2fiVcGTHbrhpJQ5XPw%3d"
     },
   "sqldw_name": {
-    "value": "bnlwe-da04-d-56731-monitorlogicapp-sqldb-01"
+    "value": "prod-test-d-10000-monitorlogicapp-sqldb-01"
   },
     "sqldw_displayName": {
-      "value": "bnlwe-da04-d-56731-unilevercom-sqldb-01 bnlwe-da04-d-56731-unilevercom-sql-01.database.windows.net"
+      "value": "prod-test-d-10000-googlecom-sqldb-01 prod-test-d-10000-googlecom-sql-01.database.windows.net"
     },
     "sqldw_server": {
-      "value": "bnlwe-da04-d-56731-unilevercom-sql-01.database.windows.net"
+      "value": "prod-test-d-10000-googlecom-sql-01.database.windows.net"
     },
     "sqldw_database": {
-      "value": "bnlwe-da04-d-56731-unilevercom-sqldb-01"
+      "value": "prod-test-d-10000-googlecom-sqldb-01"
     },
     "sqldw_username": {
       "value": "sqllogicappdwuser"

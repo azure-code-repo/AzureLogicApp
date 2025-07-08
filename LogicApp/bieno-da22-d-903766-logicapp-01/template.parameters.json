@@ -3,19 +3,19 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "logicAppName": {
-            "value": "bieno-da22-d-903766-logicapp-01"
+            "value": "bieno-test-d-TEST6-logicapp-01"
         },
         "location": {
             "value": "northeurope"
         },
         "logicAppStorageConnectionName": {
-            "value": "bieno-da22-d-903766-logicapp-blob-01"
+            "value": "bieno-test-d-TEST6-logicapp-test-01"
         },
         "logicAppSharePointConnectionName": {
-            "value": "bieno-da22-d-903766-logicapp-sharepoint-01"
+            "value": "bieno-test-d-TEST6-logicapp-sharepoint-01"
         },
         "logicAppO365apiConnection": {
-            "value": "bieno-da22-d-903766-logicapp-o365-015"
+            "value": "bieno-test-d-TEST6-logicapp-test-015"
         }
     }
 }

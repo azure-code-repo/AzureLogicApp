@@ -3,22 +3,22 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "PHlogicAppName01": {
-            "value": "bieno-da22-d-903766-logicapp-PH-01"
+            "value": "bieno-test-d-TEST6-logicapp-PH-01"
         },
         "logicAppStorageConnectionName": {
-            "value": "bieno-da22-d-903766-logicapp-blob-01"
+            "value": "bieno-test-d-TEST6-logicapp-test-01"
         },
         "logicAppO365apiConnection": {
-            "value": "bieno-da22-d-903766-logicapp-o365-01"
+            "value": "bieno-test-d-TEST6-logicapp-test-01"
         },
         "logicAppSharePointConnectionName": {
-            "value": "bieno-da22-d-903766-logicapp-sharepoint-01"
+            "value": "bieno-test-d-TEST6-logicapp-sharepoint-01"
         },
         "PHlogicAppSharePointConnectionName": {
-            "value": "bieno-da22-d-903766-logicapp-sharepoint-PH-01"
+            "value": "bieno-test-d-TEST6-logicapp-sharepoint-PH-01"
         },
         "PHlogicAppPowerBIConnectionName": {
-            "value": "bieno-da22-d-903766-logicapp-dataflow-01"
+            "value": "bieno-test-d-TEST6-logicapp-dataflow-01"
         },
         "location": {
             "value": "northeurope"

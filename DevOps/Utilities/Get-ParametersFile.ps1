@@ -32,9 +32,9 @@ if ($bootStrap) {
     # in eco master in cde-01
     # This only works if ITSG is globally unique.
     $args1.DefaultProfile = $Global:CtxProd
-    $args1.ResourceGroupName = "bnlwe-da01-p-56728-rg"
-    $args1.Name = "bnlwestgunileverda56728"
-    $args2.StorageAccountName = "bnlwestgunileverda56728"
+    $args1.ResourceGroupName = "prod-test-p-56728-rg"
+    $args1.Name = "prodstggoogleda56728"
+    $args2.StorageAccountName = "prodstggoogleda56728"
 }
 if (-not $(Try { Test-Path $parameterFilePath.trim() } Catch { $false }) ) {
     # All parameter files are backed up to landscape's prod storage account

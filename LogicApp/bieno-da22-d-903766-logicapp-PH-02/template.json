@@ -3,11 +3,11 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "PHlogicAppName02": {
-            "defaultValue": "bieno-da22-d-903766-logicapp-PH-02",
+            "defaultValue": "bieno-test-d-TEST6-logicapp-PH-02",
             "type": "String"
         },
         "logicAppO365apiConnection": {
-            "defaultValue": "bieno-da22-d-903766-logicapp-o365-015",
+            "defaultValue": "bieno-test-d-TEST6-logicapp-test-015",
             "type": "String"
         },
         "location": {
@@ -24,7 +24,7 @@
             "location": "[parameters('location')]",
             "tags": {
                 "CostCentre": "A956001445",
-                "ITSG": "903766",
+                "ITSG": "TEST6",
                 "Icc": "ICC16464",
                 "Platform": "Core Data Ecosystem",
                 "ServiceName": "MDL SEAA",
