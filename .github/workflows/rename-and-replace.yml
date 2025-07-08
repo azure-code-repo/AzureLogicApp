@@ -3,6 +3,11 @@ name: Replace 90376 and Unilver with GitHub
 on:
   workflow_dispatch: # Manual trigger
 
+permissions:
+  contents: write          # Needed for git push
+  id-token: write          # Only if you're using OIDC (can be skipped)
+  actions: write
+
 jobs:
   rename-and-replace:
     runs-on: ubuntu-latest
